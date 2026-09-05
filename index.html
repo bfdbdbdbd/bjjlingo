@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BJJLingo - Seu Duolingo de Jiu-Jitsu</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div id="loginScreen">
+    <div class="login-box">
+        <div class="brand login-brand">BJJ<span>Lingo</span></div>
+        <p class="login-sub">Entre para nao perder seu progresso!</p>
+        <input type="text" id="loginUser" placeholder="Nome de usuario" autocomplete="username">
+<input type="password" id="loginPass" placeholder="Senha" autocomplete="current-password">
+        <div class="login-error" id="loginError"></div>
+        <div class="or-divider"><span>ou</span></div>
+        <button class="btn btn-google btn-block" id="btnGoogle">Continuar com Google</button>
+        <div id="googleButton" style="display:none"></div>
+        <button class="btn btn-primary btn-block" id="btnLogin">Entrar</button>
+        <button class="btn btn-green btn-block" id="btnCreateAccount">Criar conta nova</button>
+        <p class="login-hint">Seus dados ficam salvos neste navegador.</p>
+    </div>
+</div>
+
+<div id="app">
+
+    <header class="topbar">
+        <div class="brand">BJJ<span>Lingo</span></div>
+        <div class="topbar-right">
+            <div class="hearts" id="hearts"></div>
+            <div class="pill xp-pill" title="Pontos de XP">&#11088; <span class="pill-num" id="xpCount">0</span></div>
+            <div class="pill streak-pill" title="Sequencia de aulas">&#128293; <span class="pill-num" id="streakCount">0</span></div>
+        </div>
+    </header>
+
+    <main class="page active" id="pageHome">
+        <div class="card hero-card">
+            <h1 class="greeting">Oi, <span id="userName">Aluno</span>!</h1>
+            <p class="sub" id="profLine">Seu professor: <strong id="profName">Professor</strong></p>
+            <div class="belt-row" id="beltRow"></div>
+            <p class="sub mode-line" id="modeLine"></p>
+        </div>
+
+        <div class="card today-card" id="todayCard">
+            <h2 id="todayTitle">Carregando...</h2>
+            <p id="todaySub"></p>
+            <div class="today-actions" id="todayActions" style="display:none">
+                <button class="btn btn-green" id="btnWent">&#9989; Fui a aula!</button>
+                <button class="btn btn-danger" id="btnMissed">&#10060; Faltei</button>
+            </div>
+        </div>
+
+        <div class="card continue-card">
+            <h2>Continue de onde parou</h2>
+            <p id="nextLessonText"></p>
+            <button class="btn btn-primary" id="btnContinue">Comecar licao</button>
+        </div>
+
+        <div class="cards-row">
+            <div class="card mini-card">
+                <span class="mini-icon">&#129492;</span>
+                <strong id="statLessons">0</strong>
+                <span class="mini-label">licoes feitas</span>
+            </div>
+            <div class="card mini-card">
+                <span class="mini-icon">&#128483;&#65039;</span>
+                <strong id="statAttended">0</strong>
+                <span class="mini-label">aulas presencas</span>
+            </div>
+            <div class="card mini-card">
+                <span class="mini-icon">&#128554;</span>
+                <strong id="statMissed">0</strong>
+                <span class="mini-label">faltas</span>
+            </div>
+        </div>
+    </main>
+
+    <main class="page" id="pageLearn">
+        <h2 class="page-title" id="learnTitle">Posicoes <span>&#129718;</span></h2>
+        <p class="page-sub" id="learnSub">Aprimore suas posicoes e complete as licoes</p>
+        <div id="unitsContainer"></div>
+    </main>
+
+    <main class="page" id="pageHistory">
+        <h2 class="page-title">Historico</h2>
+        <p class="page-sub">Seu historico de aulas e vidas</p>
+        <div id="historyList"></div>
+        <div class="card empty-card" id="historyEmpty" style="display:none">
+            <p>Nenhum registro ainda. Marque sua primeira aula!</p>
+        </div>
+    </main>
+
+    <main class="page" id="pageSettings">
+        <h2 class="page-title">Ajustes</h2>
+        <div class="card form-card">
+            <label for="setName">Seu nome</label>
+            <input type="text" id="setName" placeholder="Seu nome">
+            <label for="setProf">Nome do professor</label>
+            <input type="text" id="setProf" placeholder="Nome do professor">
+
+            <label>Voce e juvenil?</label>
+            <div class="segmented" id="setJuvenil">
+                <button class="seg-btn" data-val="0">Adulto</button>
+                <button class="seg-btn" data-val="1">Juvenil</button>
+            </div>
+
+            <label>Sua faixa</label>
+            <div class="belt-selector" id="setBelt"></div>
+
+            <label>Como voce treina?</label>
+            <div class="segmented" id="setMode">
+                <button class="seg-btn" data-val="partner">Com parceiro</button>
+                <button class="seg-btn" data-val="solo">Sozinho</button>
+            </div>
+
+            <label>Dias de aula</label>
+            <div class="days-selector" id="daysSelector"></div>
+            <button class="btn btn-primary btn-block" id="btnSaveSettings">Salvar</button>
+            <button class="btn btn-outline btn-block" id="btnLogout" style="margin-top:10px">Sair da conta</button>
+        </div>
+        <div class="card danger-zone">
+            <button class="btn btn-outline btn-block" id="btnReset">Zerar progresso</button>
+        </div>
+    </main>
+
+    <nav class="bottom-nav">
+        <button class="nav-btn active" data-page="home"><span class="nav-icon">&#127968;</span><span class="nav-label">Inicio</span></button>
+        <button class="nav-btn" data-page="learn"><span class="nav-icon">&#129718;</span><span class="nav-label">Treino</span></button>
+        <button class="nav-btn" data-page="history"><span class="nav-icon">&#128200;</span><span class="nav-label">Historico</span></button>
+        <button class="nav-btn" data-page="settings"><span class="nav-icon">&#9881;&#65039;</span><span class="nav-label">Ajustes</span></button>
+    </nav>
+
+    <div class="modal-overlay" id="lessonModal">
+        <div class="modal">
+            <button class="modal-close" id="btnLessonClose">&times;</button>
+            <div class="modal-icon" id="lessonIcon">&#129718;</div>
+            <h2 id="lessonUnitTitle"></h2>
+            <h3 id="lessonTitle"></h3>
+            <p id="lessonDesc"></p>
+            <div class="video-wrapper" id="videoWrapper"></div>
+            <div class="video-note" id="videoNote"></div>
+            <button class="btn btn-primary btn-block" id="btnCompleteLesson">Concluir licao (+10 XP)</button>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="disclaimerModal">
+        <div class="modal">
+            <div class="modal-icon">&#9888;&#65039;</div>
+            <h2>Aviso importante de treino</h2>
+            <p>Antes de comecar, leia com atencao:</p>
+            <div class="disclaimer-list">
+                <p>1. Aque�a sempre antes de treinar (5-10 min).</p>
+                <p>2. Respeite os limites do seu corpo. Diferente nao e mais fraco.</p>
+                <p>3. Nunca aplique tecnicas em ninguem sem supervisao do professor.</p>
+                <p>4. Pare imediatamente se sentir dor ou desconforto no pescoco, joelhos ou costas.</p>
+                <p>5. Em caso de qualquer problema, consulte um profissional de saude.</p>
+            </div>
+            <button class="btn btn-primary btn-block" id="btnDisclaimerOk">Entendi, continuar</button>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="aiModal">
+        <div class="modal chat-modal">
+            <div class="chat-header">
+                <div class="ai-avatar">AI</div>
+                <div>
+                    <strong>Coach IA</strong>
+                    <p>Coach pessoal de treino</p>
+                </div>
+            </div>
+            <div class="chat-body" id="chatBody"></div>
+            <div class="chat-input-row">
+                <input type="text" id="chatInput" placeholder="Escreva sua resposta...">
+                <button class="btn btn-primary" id="btnChatSend">Enviar</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="onboardModal">
+        <div class="modal">
+            <div class="onboard-steps">
+                <span class="ob-step active" data-step="1">1</span>
+                <span class="ob-step" data-step="2">2</span>
+                <span class="ob-step" data-step="3">3</span>
+                <span class="ob-step" data-step="4">4</span>
+            </div>
+            <div class="onboard-icon">&#129718;</div>
+
+            <div class="ob-pane active" data-pane="1">
+                <h2>Bem-vindo ao BJJLingo!</h2>
+                <p>Seu treino personalizado de Jiu-Jitsu. Deixe eu te conhecer melhor.</p>
+                <label for="obName">Como voce se chama?</label>
+                <input type="text" id="obName" placeholder="Seu nome">
+                <label for="obProf">Quem e seu professor?</label>
+                <input type="text" id="obProf" placeholder="Nome do professor">
+            </div>
+
+            <div class="ob-pane" data-pane="2">
+                <h2>Voce e juvenil ou adulto?</h2>
+                <p>As faixas mudam conforme sua idade.</p>
+                <div class="big-options">
+                    <button class="big-opt" data-age="adult"><span class="big-opt-icon">&#128104;</span><strong>Adulto</strong></button>
+                    <button class="big-opt" data-age="juvenil"><span class="big-opt-icon">&#128118;</span><strong>Juvenil</strong></button>
+                </div>
+            </div>
+
+            <div class="ob-pane" data-pane="3">
+                <h2>Qual e a sua faixa?</h2>
+                <p id="obeltsub">Selecione sua faixa atual.</p>
+                <div class="belt-selector big" id="obBelts"></div>
+            </div>
+
+            <div class="ob-pane" data-pane="4">
+                <h2>Como voce vai treinar?</h2>
+                <p>Se treinar sozinho, vou te mostrar videos de treino solo.</p>
+                <div class="big-options">
+                    <button class="big-opt" data-mode="partner"><span class="big-opt-icon">&#129485;&#65039;</span><strong>Com parceiro</strong><small>Videos de tecnicas em dupla</small></button>
+                    <button class="big-opt" data-mode="solo"><span class="big-opt-icon">&#128100;</span><strong>Sozinho</strong><small>Videos de treino solo em casa</small></button>
+                </div>
+            </div>
+
+            <button class="btn btn-primary btn-block" id="btnOnboardNext">Continuar</button>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="googleSetupModal">
+        <div class="modal">
+            <button class="modal-close" id="btnGoogleSetupClose">&times;</button>
+            <div class="modal-icon">&#128506;&#65039;</div>
+            <h2>Login com Google</h2>
+            <p>Para ativar o login com Google, cole seu OAuth Client ID no <strong>script.js</strong> (variavel <code>GOOGLE_CLIENT_ID</code>, no topo do arquivo). Como configurar:</p>
+            <ol class="setup-steps">
+                <li>Acesse <strong>console.cloud.google.com</strong> e crie um projeto.</li>
+                <li>Em &quot;APIs e servicos&quot; &gt; &quot;Tela de consentimento OAuth&quot;, crie um app externo.</li>
+                <li>Em &quot;Credenciais&quot;, crie um <strong>Client ID OAuth</strong> tipo &quot;Aplicativo Web&quot;.</li>
+                <li>Adicione a origem autorizada: <code>http://localhost:8000</code>.</li>
+                <li>Copie o Client ID para o <code>script.js</code> e salve.</li>
+                <li>Abra o app por um servidor local (ex.: <code>python -m http.server 8000</code>) e acesse <code>http://localhost:8000</code>.</li>
+            </ol>
+            <button class="btn btn-primary btn-block" id="btnGoogleSetupOk">Entendi</button>
+        </div>
+    </div>
+
+    <div id="toast"></div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
