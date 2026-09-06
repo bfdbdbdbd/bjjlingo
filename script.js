@@ -1057,7 +1057,7 @@ document.addEventListener("DOMContentLoaded", function() {
         if (!btn) return;
         applyTheme(btn.dataset.val);
         renderSettings();
-        showToast(btn.dataset.val === "old" ? "Tema classico ativado" : "Tema moderno ativado");
+        showToast(btn.dataset.val === "old" ? "Tema antigo ativado" : "Tema novo ativado");
     });
 
     /* AI chat */

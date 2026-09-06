@@ -1,4 +1,4 @@
-*{margin:0;padding:0;box-sizing:border-box}
+﻿*{margin:0;padding:0;box-sizing:border-box}
 :root{
     --bg:#f6f5f2;
     --surface:#ffffff;
@@ -202,7 +202,7 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Aria
 .danger-zone{display:flex;flex-direction:column;gap:10px;background:transparent;box-shadow:none}
 .danger-zone .btn{width:100%}
 
-/* ---------- NAVEGAÇÃO ---------- */
+/* ---------- NAVEGAÃ‡ÃƒO ---------- */
 .bottom-nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:480px;background:var(--surface);border-top:1px solid var(--border);display:flex;justify-content:space-around;padding:7px 0 calc(7px + env(safe-area-inset-bottom));z-index:60}
 .nav-btn{background:none;border:none;display:flex;flex-direction:column;align-items:center;gap:3px;padding:4px 0;cursor:pointer;font-family:'Inter',sans-serif;color:var(--text-3);font-weight:600;font-size:.66rem;flex:1;transition:color .15s}
 .nav-btn.active{color:var(--red)}
@@ -293,119 +293,139 @@ code{background:#f1f0ec;padding:2px 6px;border-radius:6px;font-family:'Consolas'
 .pop-in{animation:popIn .4s}
 @keyframes popIn{0%{transform:scale(.6);opacity:0}60%{transform:scale(1.06)}100%{transform:scale(1);opacity:1}}
 
-/* ============ TEMA CLASSICO (RETRO) ============ */
+/* ============ TEMA ANTIGO (VISUAL ORIGINAL) ============ */
 body.theme-old{
-    --bg:#070d22;
-    --surface:#0f1a38;
-    --border:#29406e;
-    --border-strong:#3b5d9e;
-    --text:#e9f2ff;
-    --text-2:#b6c6e6;
-    --text-3:#7d90bf;
-    --red:#27d7ff;
-    --red-dark:#0ba7d6;
-    --red-soft:rgba(39,215,255,.14);
-    --green:#00e88f;
-    --green-dark:#00c37a;
-    --green-soft:rgba(0,232,143,.14);
-    --amber:#ffd700;
-    --amber-soft:rgba(255,215,0,.14);
-    --blue-soft:rgba(39,215,255,.12);
-    --radius:12px;
-    --radius-sm:9px;
-    --shadow:0 0 0 1px rgba(59,93,158,.35),0 4px 16px rgba(0,0,0,.45);
-    --shadow-lg:0 0 0 1px rgba(59,93,158,.5),0 10px 30px rgba(0,0,0,.6);
-    background:radial-gradient(circle at 50% -10%,#16255c 0%,#070d22 60%);
+    --bg:#f5f4f0;
+    --surface:#ffffff;
+    --border:#e6e4dd;
+    --border-strong:#e6e4dd;
+    --text:#3c3c3c;
+    --text-2:#777777;
+    --text-3:#999999;
+    --red:#dc2626;
+    --red-dark:#ae1f1f;
+    --red-soft:#fff5f5;
+    --green:#58cc02;
+    --green-dark:#46a302;
+    --green-soft:#e6f7d3;
+    --amber:#ff9600;
+    --amber-soft:#fff0d6;
+    --blue-soft:#e8f4fd;
+    --radius:16px;
+    --radius-sm:12px;
+    --shadow:none;
+    --shadow-lg:0 12px 40px rgba(0,0,0,.08);
+    font-family:'Nunito',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;
 }
-body.theme-old .topbar{background:rgba(7,13,34,.85);border-bottom:1px solid var(--border)}
-body.theme-old .bottom-nav{background:rgba(10,17,40,.96);border-top:1px solid var(--border)}
-body.theme-old .nav-btn.active{color:var(--amber)}
-body.theme-old .btn{font-family:'Press Start 2P',monospace;font-size:.66rem;letter-spacing:0;border-radius:6px}
-body.theme-old .btn-primary{background:linear-gradient(135deg,#00d4ff,#0072ff);color:#04204d;box-shadow:0 0 14px rgba(0,212,255,.35);border:1px solid #38ddff}
-body.theme-old .btn-secondary{background:rgba(15,26,56,.8);color:var(--text);border:1px solid var(--border-strong)}
-body.theme-old .btn-green{background:linear-gradient(135deg,#00ff9d,#00b36b);color:#03281a;box-shadow:0 0 12px rgba(0,232,143,.35);border:1px solid #33ffb2}
-body.theme-old .btn-danger-soft{background:rgba(255,77,109,.15);color:#ff5c7a;border:1px solid #ff5c7a}
-body.theme-old .btn-outline{background:transparent;color:var(--text-2);border:1px solid var(--border-strong)}
-body.theme-old .btn-outline-red{background:transparent;color:#ff5c7a;border:1px solid #ff5c7a}
-body.theme-old .btn-google{background:#fff;color:#222;border:1px solid #999}
-body.theme-old .field-label{font-family:'Press Start 2P',monospace;font-size:.6rem;letter-spacing:.4px;color:var(--amber)}
-body.theme-old .field input,.form-field input,.chat-input-row input{background:#0a1230;border:1px solid var(--border-strong);border-radius:6px;color:var(--text);font-family:'Orbitron',monospace;font-size:.9rem}
-body.theme-old .field input:focus,.chat-input-row input:focus{border-color:var(--amber);box-shadow:0 0 10px rgba(255,215,0,.25)}
-body.theme-old .login-card{background:linear-gradient(160deg,#101d45 0%,#0a1230 100%);border:1px solid #3b5d9e;box-shadow:0 0 24px rgba(0,212,255,.15);border-radius:14px}
-body.theme-old .wordmark{font-family:'Press Start 2P',monospace;font-size:1.35rem}
-body.theme-old .wordmark span{color:var(--amber)}
-body.theme-old .login-tag{font-family:'Orbitron',monospace;font-size:.68rem;color:#7d90bf}
-body.theme-old .mark-mark{background:linear-gradient(135deg,#ffd700,#ffaa00);color:#1c1200;font-family:'Press Start 2P',monospace;font-size:.6rem;border-radius:6px;text-shadow:none;box-shadow:0 0 12px rgba(255,215,0,.4)}
-body.theme-old .mark{background:linear-gradient(135deg,#ffd700,#ffaa00);color:#1c1200;font-family:'Press Start 2P',monospace;font-size:.55rem;border-radius:6px;text-shadow:none}
-body.theme-old .brand .wordmark{font-size:.95rem}
-body.theme-old .pill{background:#0a1230;border:1px solid var(--border-strong);font-family:'Orbitron',monospace;font-size:.75rem;color:var(--text)}
-body.theme-old .pill svg{color:var(--amber)}
-body.theme-old .greeting{font-family:'Press Start 2P',monospace;font-size:1.05rem;line-height:1.4;letter-spacing:0}
-body.theme-old .home-head-text .sub{font-family:'Orbitron',monospace;font-size:.68rem}
-body.theme-old .belt-badge{font-family:'Press Start 2P',monospace;font-size:.55rem;border:1px solid var(--border-strong);letter-spacing:.3px}
-body.theme-old .juvenil-tag{font-family:'Press Start 2P',monospace;font-size:.52rem}
-body.theme-old .no-belt{font-family:'Orbitron',monospace;font-size:.68rem}
-body.theme-old .avatar{background:linear-gradient(135deg,#00d4ff,#0072ff);color:#04204d;border:2px solid #38ddff;border-radius:50%}
-body.theme-old .card{background:var(--surface);border:1px solid var(--border);border-radius:10px;box-shadow:var(--shadow)}
-body.theme-old .card-icon-tile{border:1px solid var(--border)}
-body.theme-old .card-title,body.theme-old .page-title{font-family:'Press Start 2P',monospace;font-size:.78rem;letter-spacing:0}
-body.theme-old .section-kicker{font-family:'Press Start 2P',monospace;font-size:.5rem;color:var(--amber);letter-spacing:1px}
-body.theme-old .progress-bar{background:#0a1230;border:1px solid var(--border)}
-body.theme-old .progress-fill{background:linear-gradient(90deg,#ffd700,#ffaa00);box-shadow:0 0 12px rgba(255,215,0,.5);border-radius:99px}
-body.theme-old .stat-tile{background:var(--surface);border:1px solid var(--border);box-shadow:var(--shadow)}
-body.theme-old .stat-tile strong{font-family:'Orbitron',monospace;font-size:1.15rem;color:var(--amber)}
-body.theme-old .stat-label{font-family:'Press Start 2P',monospace;font-size:.46rem;letter-spacing:.4px}
-body.theme-old .path-chip{background:var(--surface);border:1px solid var(--border);border-radius:10px}
-body.theme-old .path-chip.done .path-ic{background:var(--green-soft);color:var(--green);border:1px solid rgba(0,232,143,.4)}
-body.theme-old .path-chip.now{border-color:var(--red);box-shadow:0 0 10px rgba(39,215,255,.4)}
-body.theme-old .path-chip.now .path-ic{background:var(--red-soft);color:var(--red);border:1px solid rgba(39,215,255,.4)}
-body.theme-old .path-seed{font-family:'Orbitron',monospace;font-size:.62rem}
-body.theme-old .segmented{background:#080f2b;border:1px solid var(--border);border-radius:10px}
-body.theme-old .seg-btn{font-family:'Press Start 2P',monospace;font-size:.58rem;color:var(--text-3)}
-body.theme-old .seg-btn.active{background:linear-gradient(135deg,#00d4ff,#0072ff);color:#04204d;border-radius:8px;box-shadow:0 0 10px rgba(0,212,255,.35)}
-body.theme-old .day-chip{background:#0a1230;border:1px solid var(--border-strong);border-radius:6px;font-family:'Press Start 2P',monospace;font-size:.5rem}
-body.theme-old .day-chip.on{background:var(--amber);border-color:var(--amber);color:#1c1200;box-shadow:0 0 10px rgba(255,215,0,.4)}
-body.theme-old .unit-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;box-shadow:var(--shadow)}
-body.theme-old .unit-title{font-family:'Press Start 2P',monospace;font-size:.68rem}
-body.theme-old .unit-progress{font-family:'Orbitron',monospace;font-size:.68rem;color:var(--text-3)}
-body.theme-old .lesson-row{background:var(--surface);border:1px solid var(--border);border-radius:8px}
+body.theme-old *{font-family:inherit}
+body.theme-old .btn{font-family:'Nunito',sans-serif;font-size:1rem;font-weight:800;border-radius:12px;letter-spacing:.2px}
+body.theme-old .btn-primary{background:var(--red);box-shadow:0 4px 0 var(--red-dark);border-radius:12px}
+body.theme-old .btn-primary:hover{background:#e03030}
+body.theme-old .btn-primary:active{box-shadow:0 2px 0 var(--red-dark);transform:translateY(2px)}
+body.theme-old .btn-secondary{background:#fff;color:var(--text);border:2px solid var(--border);box-shadow:none}
+body.theme-old .btn-green{background:var(--green);box-shadow:0 4px 0 var(--green-dark);flex:2}
+body.theme-old .btn-green:hover{background:#61d606}
+body.theme-old .btn-green:active{box-shadow:0 2px 0 var(--green-dark);transform:translateY(2px)}
+body.theme-old .btn-danger-soft{background:var(--red);color:#fff;box-shadow:0 4px 0 var(--red-dark);flex:1}
+body.theme-old .btn-danger-soft:hover{background:#ff5c5c}
+body.theme-old .btn-outline{background:transparent;color:var(--red);border:2px solid var(--red);box-shadow:none}
+body.theme-old .btn-outline:hover{background:#fff0f0}
+body.theme-old .btn-outline-red{background:transparent;color:var(--red);border:2px solid var(--red)}
+body.theme-old .btn-google{background:#fff;color:#3c4043;border:2px solid #dadce0}
+body.theme-old .field-label{font-family:'Nunito',sans-serif;font-size:.85rem;font-weight:800;color:var(--text);margin:14px 0 6px}
+body.theme-old .field input,.form-field input,.chat-input-row input{background:#fff;border:2px solid var(--border);border-radius:12px;font-family:'Nunito',sans-serif;font-weight:700;font-size:1rem;color:var(--text)}
+body.theme-old .field input:focus,.chat-input-row input:focus{border-color:var(--red)}
+body.theme-old .login-card{background:#fff;border:2px solid var(--border);border-radius:20px;box-shadow:0 12px 40px rgba(0,0,0,.08)}
+body.theme-old .login-hint{font-family:'Nunito',sans-serif;font-size:.8rem;color:var(--text-2)}
+body.theme-old .wordmark{font-family:'Nunito',sans-serif;font-weight:900;font-size:1.9rem;letter-spacing:-.5px}
+body.theme-old .wordmark span{color:var(--red)}
+body.theme-old .login-tag{font-family:'Nunito',sans-serif;font-weight:700;color:var(--text-2)}
+body.theme-old .mark-mark,.theme-old .mark{background:var(--red);color:#fff;font-family:'Nunito',sans-serif;font-weight:900;border-radius:10px;box-shadow:none;font-size:.8rem}
+body.theme-old .mark-sm{font-size:.72rem}
+body.theme-old .brand .wordmark{font-size:1.35rem}
+body.theme-old .pill{background:#fff;border:2px solid var(--border);border-radius:16px;font-family:'Nunito',sans-serif;font-weight:800;color:var(--text)}
+body.theme-old .greeting{font-family:'Nunito',sans-serif;font-weight:900;font-size:1.6rem;letter-spacing:-.5px}
+body.theme-old .home-head-text .sub{font-family:'Nunito',sans-serif;font-weight:600;color:var(--text-2)}
+body.theme-old .belt-badge{font-family:'Nunito',sans-serif;font-size:.9rem;font-weight:900;border:2px solid var(--border);letter-spacing:.4px}
+body.theme-old .no-belt{font-family:'Nunito',sans-serif;color:var(--text-2)}
+body.theme-old .avatar{background:var(--red);color:#fff;font-family:'Nunito',sans-serif;font-weight:900;border-radius:50%}
+body.theme-old .card{background:#fff;border:2px solid var(--border);border-radius:16px;padding:20px}
+body.theme-old .card-icon-tile{border-radius:12px}
+body.theme-old .card-title,.theme-old .page-title{font-family:'Nunito',sans-serif;font-weight:900;font-size:1.15rem}
+body.theme-old .section-kicker{font-family:'Nunito',sans-serif;font-weight:800;font-size:.72rem;color:var(--text-2)}
+body.theme-old .muted-sm{font-family:'Nunito',sans-serif;color:var(--text-2)}
+body.theme-old .progress-bar{background:#f0eeea;border:none}
+body.theme-old .progress-fill{background:var(--red);border-radius:99px}
+body.theme-old .stat-tile{background:#fff;border:2px solid var(--border);border-radius:16px}
+body.theme-old .stat-tile strong{font-family:'Nunito',sans-serif;font-weight:900;color:var(--text)}
+body.theme-old .stat-label{font-family:'Nunito',sans-serif;color:var(--text-2)}
+body.theme-old .path-chip{background:#fff;border:2px solid var(--border);border-radius:12px}
+body.theme-old .path-chip.done .path-ic{background:var(--green-soft);color:var(--green)}
+body.theme-old .path-chip.now{border-color:var(--red);box-shadow:0 0 0 3px rgba(220,38,38,.15)}
+body.theme-old .path-chip.now .path-ic{background:var(--red-soft);color:var(--red)}
+body.theme-old .segmented{background:#f0eeea;border-radius:12px;padding:4px}
+body.theme-old .seg-btn{font-family:'Nunito',sans-serif;font-weight:800;font-size:.85rem;color:var(--text-2)}
+body.theme-old .seg-btn.active{background:#fff;color:#3c3c3c;box-shadow:0 2px 6px rgba(0,0,0,.12)}
+body.theme-old .day-chip{background:#fff;border:2px solid var(--border);border-radius:12px;font-family:'Nunito',sans-serif;font-weight:800;font-size:.85rem;color:var(--text)}
+body.theme-old .day-chip.on{background:var(--red);border-color:var(--red);color:#fff}
+body.theme-old .belt-chip{background:#fff;border:2px solid var(--border);border-radius:30px;font-family:'Nunito',sans-serif;font-weight:800;font-size:.85rem;color:var(--text)}
+body.theme-old .belt-chip.active{border-color:var(--red);background:#fff5f5;box-shadow:0 0 0 3px rgba(220,38,38,.15)}
+body.theme-old .unit-card{background:#fff;border:2px solid var(--border);border-radius:16px}
+body.theme-old .unit-title{font-family:'Nunito',sans-serif;font-weight:900;font-size:1.15rem}
+body.theme-old .unit-progress{font-family:'Nunito',sans-serif;color:var(--text-2);font-size:.8rem;font-weight:700}
+body.theme-old .lesson-row{background:#fff;border:2px solid var(--border);border-radius:12px}
 body.theme-old .lesson-row:hover{border-color:var(--red)}
-body.theme-old .lesson-row.next{background:rgba(39,215,255,.07);border-color:var(--red);box-shadow:0 0 10px rgba(39,215,255,.25)}
-body.theme-old .lesson-row.completed{opacity:.55}
-body.theme-old .lesson-num{background:#0a1230;border:2px solid var(--border-strong);color:var(--text-2);font-family:'Orbitron',monospace;font-size:.7rem}
-body.theme-old .lesson-row.completed .lesson-num{background:var(--green);border-color:var(--green);color:#03281a}
-body.theme-old .lesson-row.next .lesson-num{background:var(--red);border-color:var(--red);color:#04204d}
-body.theme-old .lesson-info span{font-family:'Orbitron',monospace;font-size:.62rem}
-body.theme-old .solo-banner{background:var(--blue-soft);border:1px solid rgba(39,215,255,.35)}
-body.theme-old .history-item{background:var(--surface);border:1px solid var(--border);box-shadow:var(--shadow)}
-body.theme-old .history-flag{font-family:'Orbitron',monospace;font-size:.62rem;color:var(--amber)}
-body.theme-old .modal{background:linear-gradient(170deg,#101d45 0%,#0a1230 100%);border:1px solid #3b5d9e;border-radius:16px}
-body.theme-old .modal h2{font-family:'Press Start 2P',monospace;font-size:.85rem}
-body.theme-old .modal h3{font-family:'Press Start 2P',monospace;font-size:.68rem;color:var(--amber)}
-body.theme-old .chip-meta{background:var(--red-soft);color:var(--red);font-family:'Press Start 2P',monospace;font-size:.5rem}
-body.theme-old .modal p{font-family:'Orbitron',monospace;font-size:.72rem}
-body.theme-old .disclaimer-list{background:var(--amber-soft);border:1px solid rgba(255,215,0,.4)}
-body.theme-old .video-note{font-family:'Orbitron',monospace;font-size:.68rem}
-body.theme-old .chat-header{background:linear-gradient(90deg,#101d45,#0a1230);border-bottom:1px solid var(--border)}
-body.theme-old .ai-avatar{background:linear-gradient(135deg,#ffd700,#ffaa00);color:#1c1200;font-family:'Press Start 2P',monospace;font-size:.5rem}
-body.theme-old .msg.ai{background:#16245a;color:var(--text);border:1px solid var(--border-strong)}
-body.theme-old .msg.user{background:linear-gradient(135deg,#00d4ff,#0072ff);color:#04204d}
-body.theme-old .chip-btn{background:var(--surface);border:1px solid var(--border-strong);font-family:'Press Start 2P',monospace;font-size:.5rem;color:var(--text)}
-body.theme-old .chip-btn:hover{border-color:var(--amber);color:var(--amber)}
-body.theme-old .or-divider{font-family:'Press Start 2P',monospace;font-size:.5rem;color:var(--text-3)}
-body.theme-old .login-hint{font-family:'Orbitron',monospace;font-size:.6rem}
-body.theme-old .login-error{color:#ff5c7a;font-family:'Orbitron',monospace;font-size:.72rem}
-body.theme-old .heart{color:#ff4d6d;filter:drop-shadow(0 0 4px rgba(255,77,109,.6))}
-body.theme-old .modal-overlay{background:rgba(2,6,20,.75)}
-body.theme-old #toast{background:linear-gradient(90deg,#101d45,#0a1230);border:1px solid var(--amber);color:var(--amber);font-family:'Press Start 2P',monospace;font-size:.6rem;letter-spacing:.3px;box-shadow:0 0 16px rgba(255,215,0,.3);border-radius:4px}
-body.theme-old .set-opt-text strong{font-family:'Press Start 2P',monospace;font-size:.6rem}
-body.theme-old .set-opt-text span{font-family:'Orbitron',monospace;font-size:.62rem}
-body.theme-old .profile-text strong{font-family:'Press Start 2P',monospace;font-size:.75rem}
-body.theme-old .profile-text span{font-family:'Orbitron',monospace;font-size:.66rem}
-body.theme-old .page-sub{font-family:'Orbitron',monospace;font-size:.68rem}
-body.theme-old .today-card{color:var(--text)}
-body.theme-old .red-soft{background:var(--red-soft);color:var(--red);border:1px solid rgba(39,215,255,.35)}
-body.theme-old .belt-chip{font-family:'Press Start 2P',monospace;font-size:.5rem;border-radius:30px;background:#0a1230}
-body.theme-old .belt-chip.active{border-color:var(--amber);box-shadow:0 0 12px rgba(255,215,0,.4)}
-body.theme-old .empty-card{font-family:'Orbitron',monospace;font-size:.7rem}
-body.theme-old .login-brand .login-tag{letter-spacing:.5px}
+body.theme-old .lesson-row.next{border-color:var(--red);background:#fff5f5;box-shadow:0 0 0 3px rgba(220,38,38,.10)}
+body.theme-old .lesson-num{background:#e9e6df;color:var(--text);font-family:'Nunito',sans-serif;font-weight:800;font-size:.9rem;border:none}
+body.theme-old .lesson-row.completed .lesson-num{background:var(--green);color:#fff}
+body.theme-old .lesson-row.next .lesson-num{background:var(--red);color:#fff}
+body.theme-old .lesson-info strong{font-family:'Nunito',sans-serif}
+body.theme-old .lesson-info span{font-family:'Nunito',sans-serif;color:var(--text-2);font-weight:600}
+body.theme-old .solo-banner{background:linear-gradient(135deg,#eef6ff,#e8f7ee);border:2px solid #cfe5ff;border-radius:16px}
+body.theme-old .history-item{background:#fff;border:2px solid var(--border);border-radius:12px;box-shadow:none}
+body.theme-old .history-flag{font-family:'Nunito',sans-serif;color:var(--text-2)}
+body.theme-old .profile-text strong{font-family:'Nunito',sans-serif;font-weight:900}
+body.theme-old .profile-text span{font-family:'Nunito',sans-serif;color:var(--text-2)}
+body.theme-old .set-opt-text strong{font-family:'Nunito',sans-serif;font-weight:800;font-size:.95rem}
+body.theme-old .set-opt-text span{font-family:'Nunito',sans-serif;color:var(--text-2);font-size:.8rem;font-weight:600}
+body.theme-old .page-title{font-size:1.5rem}
+body.theme-old .page-sub{font-family:'Nunito',sans-serif;color:var(--text-2);font-size:.95rem;font-weight:700}
+body.theme-old .modal{background:#fff;border-radius:20px 20px 0 0;border:none}
+@media(min-width:600px){body.theme-old .modal{border-radius:20px}}
+body.theme-old .modal h2{font-family:'Nunito',sans-serif;font-weight:900;font-size:1.2rem}
+body.theme-old .modal h3{font-family:'Nunito',sans-serif;color:var(--red)}
+body.theme-old .modal p{font-family:'Nunito',sans-serif;color:var(--text-2);font-weight:600;font-size:.9rem}
+body.theme-old .chip-meta{background:var(--red-soft);color:var(--red);font-family:'Nunito',sans-serif;font-weight:800;font-size:.78rem}
+body.theme-old .disclaimer-list{background:#fff8ec;border:2px solid #ffe3a3}
+body.theme-old .disclaimer-list p{font-family:'Nunito',sans-serif;color:#6b4e00;font-weight:700;font-size:.88rem}
+body.theme-old .chat-header{border-bottom:2px solid var(--border)}
+body.theme-old .ai-avatar{background:linear-gradient(135deg,#dc2626,#7f1d1d);font-family:'Nunito',sans-serif;font-weight:900;font-size:.9rem}
+body.theme-old .msg.ai{background:#f1f0ec;color:#3c3c3c;border:none}
+body.theme-old .msg.user{background:var(--red);color:#fff}
+body.theme-old .chip-btn{background:#fff;border:2px solid var(--border);border-radius:30px;font-family:'Nunito',sans-serif;font-weight:700;font-size:.82rem;color:#3c3c3c}
+body.theme-old .chip-btn:hover{border-color:var(--red);color:var(--red)}
+body.theme-old .or-divider{font-family:'Nunito',sans-serif;color:var(--text-2);font-size:.8rem;font-weight:700}
+body.theme-old .login-error{font-family:'Nunito',sans-serif;color:#ff4b4b;font-weight:800;font-size:.85rem}
+body.theme-old .heart{color:#ff4b4b}
+body.theme-old .modal-overlay{background:rgba(0,0,0,.5)}
+body.theme-old #toast{background:#3c3c3c;color:#fff;font-family:'Nunito',sans-serif;font-weight:800;font-size:.9rem;border-radius:30px;box-shadow:0 6px 20px rgba(0,0,0,.2)}
+body.theme-old .today-card h2,body.theme-old .today-card p{font-family:'Nunito',sans-serif}
+body.theme-old .video-placeholder{background:linear-gradient(135deg,#1c1c1c,#000);color:#fff}
+body.theme-old .video-placeholder .vid-title{font-family:'Nunito',sans-serif;font-weight:800}
+body.theme-old .video-placeholder .vid-sub{font-family:'Nunito',sans-serif;color:var(--text-2)}
+body.theme-old .video-note{font-family:'Nunito',sans-serif;color:var(--text-2);font-weight:600;font-size:.85rem}
+body.theme-old .video-action-btn{background:#f0eeea;border:2px solid var(--border);border-radius:30px;font-family:'Nunito',sans-serif;font-weight:700;font-size:.85rem}
+body.theme-old .video-action-btn.youtube{background:#ff4b4b;border-color:#ff4b4b;color:#fff}
+body.theme-old .ob-step{background:#efede8;color:var(--text-2);font-family:'Nunito',sans-serif;font-weight:800}
+body.theme-old .ob-step.active{background:var(--red);color:#fff}
+body.theme-old .big-opt{background:#fff;border:2px solid var(--border);border-radius:14px;font-family:'Nunito',sans-serif}
+body.theme-old .big-opt:hover{border-color:var(--red)}
+body.theme-old .big-opt.selected{border-color:var(--red);background:#fff5f5;box-shadow:0 0 0 3px rgba(220,38,38,.15)}
+body.theme-old .big-opt strong{font-family:'Nunito',sans-serif;font-weight:800;color:var(--text)}
+body.theme-old .big-opt small{font-family:'Nunito',sans-serif;color:var(--text-2);font-weight:600}
+body.theme-old .setup-steps li{font-family:'Nunito',sans-serif;color:#6b6b6b;font-weight:700}
+body.theme-old .empty-card{font-family:'Nunito',sans-serif;color:var(--text-2)}
+body.theme-old .topbar{background:var(--bg);border-bottom:1px solid var(--border)}
+body.theme-old .bottom-nav{background:#fff;border-top:2px solid var(--border)}
+body.theme-old .nav-btn{font-family:'Nunito',sans-serif;color:var(--text-2);font-weight:700;font-size:.68rem}
+body.theme-old .nav-btn.active{color:var(--red);font-weight:800}
