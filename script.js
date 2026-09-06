@@ -176,7 +176,7 @@ const THEORY_UNIT = {
             title: "Montada",
             icon: "&#128081;",
             color: "#dc2626",
-            photo: "https://commons.wikimedia.org/wiki/Special:FilePath/Andrea_Galvao.jpg?width=640",
+            photo: "https://commons.wikimedia.org/wiki/Special:FilePath/Fm3-25-150combativesfig3-2frontmount.png?width=640",
             img: SCENE("#ffe0e0",
                 '<circle cx="52" cy="190" r="13" fill="#8b93a3"/>' +
                 '<rect x="70" y="180" width="135" height="24" rx="12" fill="#8b93a3"/>' +
