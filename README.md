@@ -18,6 +18,12 @@ e um coach pessoal que não te deixa desistir — mesmo quando a vida zerar.
 > Este app está em **fase de testes** e evolução constante. Se encontrar algum
 > problema ou tiver uma sugestão, sua ajuda é muito bem-vinda!
 
+> ### 🧠 Como este projeto foi feito
+> O BJJLingo teve **grande parte do desenvolvimento feita com ajuda de IA**,
+> mas também teve bastante trabalho manual meu: idealização, decisões de
+> funcionalidades, escolha das posições e lições, conteúdo e acompanhamento
+> de todo o processo de criação e publicação.
+
 ---
 
 ## 🤝 Ajude o projeto
