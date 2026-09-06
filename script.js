@@ -176,6 +176,7 @@ const THEORY_UNIT = {
             title: "Montada",
             icon: "&#128081;",
             color: "#dc2626",
+            photo: "https://commons.wikimedia.org/wiki/Special:FilePath/Andrea_Galvao.jpg?width=640",
             img: SCENE("#ffe0e0",
                 '<circle cx="52" cy="190" r="13" fill="#8b93a3"/>' +
                 '<rect x="70" y="180" width="135" height="24" rx="12" fill="#8b93a3"/>' +
@@ -191,6 +192,7 @@ const THEORY_UNIT = {
             title: "Guarda Fechada",
             icon: "&#128737;&#65039;",
             color: "#2b8a3e",
+            photo: "https://commons.wikimedia.org/wiki/Special:FilePath/Brazilian_Jiu-jitsu-Closed_guard.jpg?width=640",
             img: SCENE("#e2f2de",
                 '<circle cx="64" cy="186" r="13" fill="#8b93a3"/>' +
                 '<rect x="82" y="176" width="130" height="24" rx="12" fill="#8b93a3"/>' +
@@ -206,6 +208,7 @@ const THEORY_UNIT = {
             title: "Lateral (100kg)",
             icon: "&#128238;",
             color: "#3373cc",
+            photo: "https://commons.wikimedia.org/wiki/Special:FilePath/Royce_Gracie_Demonstration_09.jpg?width=640",
             img: SCENE("#dbe9fb",
                 '<circle cx="44" cy="188" r="13" fill="#8b93a3"/>' +
                 '<rect x="62" y="178" width="150" height="24" rx="12" fill="#8b93a3"/>' +
@@ -222,6 +225,7 @@ const THEORY_UNIT = {
             title: "Costas (Katagatame)",
             icon: "&#127891;",
             color: "#f2a007",
+            photo: "https://commons.wikimedia.org/wiki/Special:FilePath/Back_mount.jpg?width=640",
             img: SCENE("#fdf0d0",
                 '<circle cx="150" cy="92" r="13" fill="#8b93a3"/>' +
                 '<rect x="148" y="106" width="46" height="58" rx="11" fill="#8b93a3"/>' +
@@ -238,6 +242,7 @@ const THEORY_UNIT = {
             title: "Meia Guarda",
             icon: "&#8536;&#65039;",
             color: "#7d3cb5",
+            photo: "https://en.wikipedia.org/wiki/Special:FilePath/Half_guard_in_Brazilian_Jiu-Jitsu.jpg?width=640",
             img: SCENE("#efe4fa",
                 '<circle cx="60" cy="188" r="13" fill="#8b93a3"/>' +
                 '<rect x="78" y="178" width="140" height="24" rx="12" fill="#8b93a3"/>' +
@@ -255,6 +260,7 @@ const THEORY_UNIT = {
             title: "Joelho na Barriga",
             icon: "&#129458;",
             color: "#e06a00",
+            photo: "https://commons.wikimedia.org/wiki/Special:FilePath/Image943-knee_mount.jpg?width=640",
             img: SCENE("#ffead3",
                 '<circle cx="56" cy="188" r="13" fill="#8b93a3"/>' +
                 '<rect x="74" y="178" width="140" height="24" rx="12" fill="#8b93a3"/>' +
@@ -1161,7 +1167,10 @@ function openTheoryLesson(item) {
     document.getElementById("theoryUnitTitle").textContent = unit.title;
     document.getElementById("theoryTitle").textContent = lesson.title;
     document.getElementById("theoryIcon").innerHTML = lesson.icon;
-    document.getElementById("theoryImg").innerHTML = lesson.img;
+    const imgEl = document.getElementById("theoryImg");
+    imgEl.innerHTML = lesson.photo
+        ? "<img class='tb-photo' src='" + lesson.photo + "' alt='" + lesson.title + "' loading='lazy'>" + lesson.img + "<p class='tb-credit'>Foto: Wikipedia / Wikimedia Commons (CC BY-SA)</p>"
+        : lesson.img;
     const textEl = document.getElementById("theoryText");
     textEl.innerHTML = "";
     String(lesson.text).split("\n\n").forEach(function(p) {
