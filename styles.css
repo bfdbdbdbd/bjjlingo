@@ -373,3 +373,25 @@ body.dark .modal{background:var(--surface)}
 body.dark .theory-card.next{background:rgba(124,58,237,.12)}
 body.dark .theory-block{border-color:var(--border-strong)}
 body.dark .theory-block strong{color:var(--text)}
+
+/* ============ BUSCA / GLOSSARIO ============ */
+.search-box{display:flex;align-items:center;gap:10px;background:var(--surface);border:1.5px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:4px 14px;margin-bottom:14px}
+.search-box:focus-within{border-color:var(--red);box-shadow:0 0 0 3px rgba(220,38,38,.08)}
+.search-box .search-ic-svg{color:var(--text-3);flex-shrink:0}
+.search-box input{border:none;outline:none;background:transparent;font-family:'Inter',sans-serif;font-size:.95rem;font-weight:600;color:var(--text);flex:1;padding:12px 0}
+.search-box input::placeholder{color:var(--text-3);font-weight:500}
+.search-results{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--radius-sm);box-shadow:var(--shadow);padding:12px;margin-bottom:14px}
+.search-title{font-weight:800;font-size:.82rem;letter-spacing:.2px;text-transform:uppercase;color:var(--text-2);margin-bottom:10px}
+.search-list{display:flex;flex-direction:column;gap:8px}
+.search-row{display:flex;align-items:center;gap:12px;padding:11px 12px;border:1.5px solid var(--border);border-radius:var(--radius-sm);cursor:pointer;transition:all .15s;background:var(--surface)}
+.search-row:hover{border-color:var(--text-3)}
+.search-ic{width:40px;height:40px;min-width:40px;border-radius:50%;background:var(--sc);color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.2rem}
+.search-info{flex:1;min-width:0}
+.search-info strong{display:block;font-size:.92rem;font-weight:700}
+.search-info span{color:var(--text-2);font-size:.75rem;font-weight:700}
+.search-empty{font-size:.86rem;font-weight:600;color:var(--text-2);line-height:1.6}
+.search-sug{display:inline-block;background:var(--red-soft);color:var(--red);font-weight:700;padding:2px 10px;border-radius:30px;cursor:pointer;font-size:.8rem;margin:2px}
+.search-sug:hover{background:var(--red);color:#fff}
+body.dark .search-box input{color:var(--text)}
+body.dark .search-row:hover{border-color:var(--border-strong)}
+body.dark .search-title{color:var(--text-3)}
