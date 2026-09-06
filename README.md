@@ -14,6 +14,20 @@ e um coach pessoal que não te deixa desistir — mesmo quando a vida zerar.
 
 **Status:** 📡 No ar pelo GitHub Pages
 
+> ### ⚠️ Versão de Teste
+> Este app está em **fase de testes** e evolução constante. Se encontrar algum
+> problema ou tiver uma sugestão, sua ajuda é muito bem-vinda!
+
+---
+
+## 🤝 Ajude o projeto
+
+> **Sobre o desenvolvedor:** Sou **estudante** e estou desenvolvendo o BJJLingo
+> para aprender e criar algo útil para a comunidade do Jiu-Jitsu. Toda ajuda
+> financeira é usada para manter o projeto no ar e evoluir o app.
+
+🔗 **Link da vaquinha:** *em breve (aguardando configuração)*
+
 ---
 
 ## 🚀 Acesso rápido
