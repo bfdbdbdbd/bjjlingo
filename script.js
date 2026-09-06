@@ -391,10 +391,10 @@ function avatarInit(name) {
 }
 
 function applyTheme(t) {
-    try { localStorage.setItem("bjjlingo_theme", t); } catch (e) {}
-    document.body.classList.toggle("theme-old", t === "old");
+    try { localStorage.setItem("bjjlingo_theme", t === "dark" ? "dark" : "light"); } catch (e) {}
+    document.body.classList.toggle("dark", t === "dark");
     const seg = document.querySelectorAll("#setTheme .seg-btn");
-    seg.forEach(function(b) { b.classList.toggle("active", b.dataset.val === t); });
+    seg.forEach(function(b) { b.classList.toggle("active", b.dataset.val === (t === "dark" ? "dark" : "light")); });
 }
 
 function renderHearts() {
@@ -603,7 +603,11 @@ function renderSettings() {
     const b = state.profile.belt;
     document.getElementById("settingsProfileBelt").textContent = b ? b.label + (state.profile.isJuvenil ? " (Juvenil)" : "") : "Sem faixa definida";
 
-    applyTheme((function() { try { return localStorage.getItem("bjjlingo_theme") || "new"; } catch (e) { return "new"; } })());
+    applyTheme((function() { try {
+        const v = localStorage.getItem("bjjlingo_theme");
+        if (v === "dark") return "dark";
+        return "light";
+    } catch (e) { return "light"; } })());
 
     document.getElementById("setName").value = state.profile.name;
     document.getElementById("setProf").value = state.profile.professor;
@@ -1057,7 +1061,7 @@ document.addEventListener("DOMContentLoaded", function() {
         if (!btn) return;
         applyTheme(btn.dataset.val);
         renderSettings();
-        showToast(btn.dataset.val === "old" ? "Tema antigo ativado" : "Tema novo ativado");
+        showToast(btn.dataset.val === "dark" ? "Modo escuro ativado" : "Modo claro ativado");
     });
 
     /* AI chat */

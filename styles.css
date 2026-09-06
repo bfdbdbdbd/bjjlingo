@@ -293,139 +293,52 @@ code{background:#f1f0ec;padding:2px 6px;border-radius:6px;font-family:'Consolas'
 .pop-in{animation:popIn .4s}
 @keyframes popIn{0%{transform:scale(.6);opacity:0}60%{transform:scale(1.06)}100%{transform:scale(1);opacity:1}}
 
-/* ============ TEMA ANTIGO (VISUAL ORIGINAL) ============ */
-body.theme-old{
-    --bg:#f5f4f0;
-    --surface:#ffffff;
-    --border:#e6e4dd;
-    --border-strong:#e6e4dd;
-    --text:#3c3c3c;
-    --text-2:#777777;
-    --text-3:#999999;
-    --red:#dc2626;
-    --red-dark:#ae1f1f;
-    --red-soft:#fff5f5;
-    --green:#58cc02;
-    --green-dark:#46a302;
-    --green-soft:#e6f7d3;
-    --amber:#ff9600;
-    --amber-soft:#fff0d6;
-    --blue-soft:#e8f4fd;
-    --radius:16px;
-    --radius-sm:12px;
-    --shadow:none;
-    --shadow-lg:0 12px 40px rgba(0,0,0,.08);
-    font-family:'Nunito',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;
+/* ============ MODO ESCURO ============ */
+body.dark{
+    --bg:#121317;
+    --surface:#1c1e23;
+    --border:#2b2e35;
+    --border-strong:#3a3f49;
+    --text:#f1f2f5;
+    --text-2:#b4b8c0;
+    --text-3:#7f8490;
+    --red:#e5484d;
+    --red-dark:#c0392e;
+    --red-soft:rgba(229,72,77,.14);
+    --green:#3fb950;
+    --green-dark:#2d8a3a;
+    --green-soft:rgba(63,185,80,.14);
+    --amber:#f5a623;
+    --amber-soft:rgba(245,166,35,.14);
+    --blue-soft:rgba(88,145,255,.15);
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 3px 10px rgba(0,0,0,.25);
+    --shadow-lg:0 6px 24px rgba(0,0,0,.45);
 }
-body.theme-old *{font-family:inherit}
-body.theme-old .btn{font-family:'Nunito',sans-serif;font-size:1rem;font-weight:800;border-radius:12px;letter-spacing:.2px}
-body.theme-old .btn-primary{background:var(--red);box-shadow:0 4px 0 var(--red-dark);border-radius:12px}
-body.theme-old .btn-primary:hover{background:#e03030}
-body.theme-old .btn-primary:active{box-shadow:0 2px 0 var(--red-dark);transform:translateY(2px)}
-body.theme-old .btn-secondary{background:#fff;color:var(--text);border:2px solid var(--border);box-shadow:none}
-body.theme-old .btn-green{background:var(--green);box-shadow:0 4px 0 var(--green-dark);flex:2}
-body.theme-old .btn-green:hover{background:#61d606}
-body.theme-old .btn-green:active{box-shadow:0 2px 0 var(--green-dark);transform:translateY(2px)}
-body.theme-old .btn-danger-soft{background:var(--red);color:#fff;box-shadow:0 4px 0 var(--red-dark);flex:1}
-body.theme-old .btn-danger-soft:hover{background:#ff5c5c}
-body.theme-old .btn-outline{background:transparent;color:var(--red);border:2px solid var(--red);box-shadow:none}
-body.theme-old .btn-outline:hover{background:#fff0f0}
-body.theme-old .btn-outline-red{background:transparent;color:var(--red);border:2px solid var(--red)}
-body.theme-old .btn-google{background:#fff;color:#3c4043;border:2px solid #dadce0}
-body.theme-old .field-label{font-family:'Nunito',sans-serif;font-size:.85rem;font-weight:800;color:var(--text);margin:14px 0 6px}
-body.theme-old .field input,.form-field input,.chat-input-row input{background:#fff;border:2px solid var(--border);border-radius:12px;font-family:'Nunito',sans-serif;font-weight:700;font-size:1rem;color:var(--text)}
-body.theme-old .field input:focus,.chat-input-row input:focus{border-color:var(--red)}
-body.theme-old .login-card{background:#fff;border:2px solid var(--border);border-radius:20px;box-shadow:0 12px 40px rgba(0,0,0,.08)}
-body.theme-old .login-hint{font-family:'Nunito',sans-serif;font-size:.8rem;color:var(--text-2)}
-body.theme-old .wordmark{font-family:'Nunito',sans-serif;font-weight:900;font-size:1.9rem;letter-spacing:-.5px}
-body.theme-old .wordmark span{color:var(--red)}
-body.theme-old .login-tag{font-family:'Nunito',sans-serif;font-weight:700;color:var(--text-2)}
-body.theme-old .mark-mark,.theme-old .mark{background:var(--red);color:#fff;font-family:'Nunito',sans-serif;font-weight:900;border-radius:10px;box-shadow:none;font-size:.8rem}
-body.theme-old .mark-sm{font-size:.72rem}
-body.theme-old .brand .wordmark{font-size:1.35rem}
-body.theme-old .pill{background:#fff;border:2px solid var(--border);border-radius:16px;font-family:'Nunito',sans-serif;font-weight:800;color:var(--text)}
-body.theme-old .greeting{font-family:'Nunito',sans-serif;font-weight:900;font-size:1.6rem;letter-spacing:-.5px}
-body.theme-old .home-head-text .sub{font-family:'Nunito',sans-serif;font-weight:600;color:var(--text-2)}
-body.theme-old .belt-badge{font-family:'Nunito',sans-serif;font-size:.9rem;font-weight:900;border:2px solid var(--border);letter-spacing:.4px}
-body.theme-old .no-belt{font-family:'Nunito',sans-serif;color:var(--text-2)}
-body.theme-old .avatar{background:var(--red);color:#fff;font-family:'Nunito',sans-serif;font-weight:900;border-radius:50%}
-body.theme-old .card{background:#fff;border:2px solid var(--border);border-radius:16px;padding:20px}
-body.theme-old .card-icon-tile{border-radius:12px}
-body.theme-old .card-title,.theme-old .page-title{font-family:'Nunito',sans-serif;font-weight:900;font-size:1.15rem}
-body.theme-old .section-kicker{font-family:'Nunito',sans-serif;font-weight:800;font-size:.72rem;color:var(--text-2)}
-body.theme-old .muted-sm{font-family:'Nunito',sans-serif;color:var(--text-2)}
-body.theme-old .progress-bar{background:#f0eeea;border:none}
-body.theme-old .progress-fill{background:var(--red);border-radius:99px}
-body.theme-old .stat-tile{background:#fff;border:2px solid var(--border);border-radius:16px}
-body.theme-old .stat-tile strong{font-family:'Nunito',sans-serif;font-weight:900;color:var(--text)}
-body.theme-old .stat-label{font-family:'Nunito',sans-serif;color:var(--text-2)}
-body.theme-old .path-chip{background:#fff;border:2px solid var(--border);border-radius:12px}
-body.theme-old .path-chip.done .path-ic{background:var(--green-soft);color:var(--green)}
-body.theme-old .path-chip.now{border-color:var(--red);box-shadow:0 0 0 3px rgba(220,38,38,.15)}
-body.theme-old .path-chip.now .path-ic{background:var(--red-soft);color:var(--red)}
-body.theme-old .segmented{background:#f0eeea;border-radius:12px;padding:4px}
-body.theme-old .seg-btn{font-family:'Nunito',sans-serif;font-weight:800;font-size:.85rem;color:var(--text-2)}
-body.theme-old .seg-btn.active{background:#fff;color:#3c3c3c;box-shadow:0 2px 6px rgba(0,0,0,.12)}
-body.theme-old .day-chip{background:#fff;border:2px solid var(--border);border-radius:12px;font-family:'Nunito',sans-serif;font-weight:800;font-size:.85rem;color:var(--text)}
-body.theme-old .day-chip.on{background:var(--red);border-color:var(--red);color:#fff}
-body.theme-old .belt-chip{background:#fff;border:2px solid var(--border);border-radius:30px;font-family:'Nunito',sans-serif;font-weight:800;font-size:.85rem;color:var(--text)}
-body.theme-old .belt-chip.active{border-color:var(--red);background:#fff5f5;box-shadow:0 0 0 3px rgba(220,38,38,.15)}
-body.theme-old .unit-card{background:#fff;border:2px solid var(--border);border-radius:16px}
-body.theme-old .unit-title{font-family:'Nunito',sans-serif;font-weight:900;font-size:1.15rem}
-body.theme-old .unit-progress{font-family:'Nunito',sans-serif;color:var(--text-2);font-size:.8rem;font-weight:700}
-body.theme-old .lesson-row{background:#fff;border:2px solid var(--border);border-radius:12px}
-body.theme-old .lesson-row:hover{border-color:var(--red)}
-body.theme-old .lesson-row.next{border-color:var(--red);background:#fff5f5;box-shadow:0 0 0 3px rgba(220,38,38,.10)}
-body.theme-old .lesson-num{background:#e9e6df;color:var(--text);font-family:'Nunito',sans-serif;font-weight:800;font-size:.9rem;border:none}
-body.theme-old .lesson-row.completed .lesson-num{background:var(--green);color:#fff}
-body.theme-old .lesson-row.next .lesson-num{background:var(--red);color:#fff}
-body.theme-old .lesson-info strong{font-family:'Nunito',sans-serif}
-body.theme-old .lesson-info span{font-family:'Nunito',sans-serif;color:var(--text-2);font-weight:600}
-body.theme-old .solo-banner{background:linear-gradient(135deg,#eef6ff,#e8f7ee);border:2px solid #cfe5ff;border-radius:16px}
-body.theme-old .history-item{background:#fff;border:2px solid var(--border);border-radius:12px;box-shadow:none}
-body.theme-old .history-flag{font-family:'Nunito',sans-serif;color:var(--text-2)}
-body.theme-old .profile-text strong{font-family:'Nunito',sans-serif;font-weight:900}
-body.theme-old .profile-text span{font-family:'Nunito',sans-serif;color:var(--text-2)}
-body.theme-old .set-opt-text strong{font-family:'Nunito',sans-serif;font-weight:800;font-size:.95rem}
-body.theme-old .set-opt-text span{font-family:'Nunito',sans-serif;color:var(--text-2);font-size:.8rem;font-weight:600}
-body.theme-old .page-title{font-size:1.5rem}
-body.theme-old .page-sub{font-family:'Nunito',sans-serif;color:var(--text-2);font-size:.95rem;font-weight:700}
-body.theme-old .modal{background:#fff;border-radius:20px 20px 0 0;border:none}
-@media(min-width:600px){body.theme-old .modal{border-radius:20px}}
-body.theme-old .modal h2{font-family:'Nunito',sans-serif;font-weight:900;font-size:1.2rem}
-body.theme-old .modal h3{font-family:'Nunito',sans-serif;color:var(--red)}
-body.theme-old .modal p{font-family:'Nunito',sans-serif;color:var(--text-2);font-weight:600;font-size:.9rem}
-body.theme-old .chip-meta{background:var(--red-soft);color:var(--red);font-family:'Nunito',sans-serif;font-weight:800;font-size:.78rem}
-body.theme-old .disclaimer-list{background:#fff8ec;border:2px solid #ffe3a3}
-body.theme-old .disclaimer-list p{font-family:'Nunito',sans-serif;color:#6b4e00;font-weight:700;font-size:.88rem}
-body.theme-old .chat-header{border-bottom:2px solid var(--border)}
-body.theme-old .ai-avatar{background:linear-gradient(135deg,#dc2626,#7f1d1d);font-family:'Nunito',sans-serif;font-weight:900;font-size:.9rem}
-body.theme-old .msg.ai{background:#f1f0ec;color:#3c3c3c;border:none}
-body.theme-old .msg.user{background:var(--red);color:#fff}
-body.theme-old .chip-btn{background:#fff;border:2px solid var(--border);border-radius:30px;font-family:'Nunito',sans-serif;font-weight:700;font-size:.82rem;color:#3c3c3c}
-body.theme-old .chip-btn:hover{border-color:var(--red);color:var(--red)}
-body.theme-old .or-divider{font-family:'Nunito',sans-serif;color:var(--text-2);font-size:.8rem;font-weight:700}
-body.theme-old .login-error{font-family:'Nunito',sans-serif;color:#ff4b4b;font-weight:800;font-size:.85rem}
-body.theme-old .heart{color:#ff4b4b}
-body.theme-old .modal-overlay{background:rgba(0,0,0,.5)}
-body.theme-old #toast{background:#3c3c3c;color:#fff;font-family:'Nunito',sans-serif;font-weight:800;font-size:.9rem;border-radius:30px;box-shadow:0 6px 20px rgba(0,0,0,.2)}
-body.theme-old .today-card h2,body.theme-old .today-card p{font-family:'Nunito',sans-serif}
-body.theme-old .video-placeholder{background:linear-gradient(135deg,#1c1c1c,#000);color:#fff}
-body.theme-old .video-placeholder .vid-title{font-family:'Nunito',sans-serif;font-weight:800}
-body.theme-old .video-placeholder .vid-sub{font-family:'Nunito',sans-serif;color:var(--text-2)}
-body.theme-old .video-note{font-family:'Nunito',sans-serif;color:var(--text-2);font-weight:600;font-size:.85rem}
-body.theme-old .video-action-btn{background:#f0eeea;border:2px solid var(--border);border-radius:30px;font-family:'Nunito',sans-serif;font-weight:700;font-size:.85rem}
-body.theme-old .video-action-btn.youtube{background:#ff4b4b;border-color:#ff4b4b;color:#fff}
-body.theme-old .ob-step{background:#efede8;color:var(--text-2);font-family:'Nunito',sans-serif;font-weight:800}
-body.theme-old .ob-step.active{background:var(--red);color:#fff}
-body.theme-old .big-opt{background:#fff;border:2px solid var(--border);border-radius:14px;font-family:'Nunito',sans-serif}
-body.theme-old .big-opt:hover{border-color:var(--red)}
-body.theme-old .big-opt.selected{border-color:var(--red);background:#fff5f5;box-shadow:0 0 0 3px rgba(220,38,38,.15)}
-body.theme-old .big-opt strong{font-family:'Nunito',sans-serif;font-weight:800;color:var(--text)}
-body.theme-old .big-opt small{font-family:'Nunito',sans-serif;color:var(--text-2);font-weight:600}
-body.theme-old .setup-steps li{font-family:'Nunito',sans-serif;color:#6b6b6b;font-weight:700}
-body.theme-old .empty-card{font-family:'Nunito',sans-serif;color:var(--text-2)}
-body.theme-old .topbar{background:var(--bg);border-bottom:1px solid var(--border)}
-body.theme-old .bottom-nav{background:#fff;border-top:2px solid var(--border)}
-body.theme-old .nav-btn{font-family:'Nunito',sans-serif;color:var(--text-2);font-weight:700;font-size:.68rem}
-body.theme-old .nav-btn.active{color:var(--red);font-weight:800}
+body.dark .topbar{background:var(--bg)}
+body.dark .bottom-nav{background:var(--surface);border-top-color:var(--border)}
+body.dark .login-card{background:var(--surface)}
+body.dark .pill{background:var(--surface)}
+body.dark .btn-secondary{background:var(--surface);color:var(--text)}
+body.dark .btn-google{background:var(--surface);color:var(--text-2);border-color:var(--border-strong)}
+body.dark .segmented{background:#121419}
+body.dark .seg-btn.active{background:var(--surface);color:var(--text);box-shadow:0 1px 3px rgba(0,0,0,.5)}
+body.dark .field input,.form-field input,.chat-input-row input{background:var(--surface);color:var(--text);border-color:var(--border-strong)}
+body.dark .lesson-num{background:#262a31;color:var(--text-2)}
+body.dark .lesson-row.next{background:rgba(229,72,77,.08)}
+body.dark .lesson-row.completed{opacity:.5}
+body.dark .progress-bar{background:#262a31}
+body.dark .msg.ai{background:#2b2e36;color:var(--text)}
+body.dark .chip-btn{background:var(--surface);color:var(--text);border-color:var(--border-strong)}
+body.dark .video-action-btn{background:#262a31;color:var(--text);border-color:var(--border-strong)}
+body.dark .video-action-btn.youtube{background:var(--red);border-color:var(--red);color:#fff}
+body.dark .ob-step{background:#262a31;color:var(--text-3)}
+body.dark .onboard-steps .ob-step.active{background:var(--red);color:#fff}
+body.dark .belt-chip.active,body.dark .big-opt.selected{box-shadow:0 0 0 3px rgba(229,72,77,.2)}
+body.dark .solo-banner{border-color:var(--border)}
+body.dark .history-item{background:var(--surface)}
+body.dark #toast{background:#2b2e36;color:var(--text);border:1px solid var(--border-strong)}
+body.dark .modal-overlay{background:rgba(0,0,0,.6)}
+body.dark .day-chip{background:var(--surface);color:var(--text)}
+body.dark .chat-header{background:var(--surface)}
+body.dark .chat-body{background:var(--bg)}
+body.dark .modal{background:var(--surface)}
