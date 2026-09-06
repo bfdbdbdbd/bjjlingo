@@ -385,29 +385,57 @@ function setPage(pageId) {
     window.scrollTo({ top: 0 });
 }
 
+function avatarInit(name) {
+    const n = (name || "A").trim();
+    return n.charAt(0).toUpperCase();
+}
+
 function renderHearts() {
     const el = document.getElementById("hearts");
+    const h = '<svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>';
     let html = "";
     for (let i = 0; i < state.maxHearts; i++) {
-        html += "<span class='heart" + (i < state.hearts ? "" : " lost") + "'>&#10084;&#65039;</span>";
+        html += "<span class='heart" + (i < state.hearts ? "" : " lost") + "'>" + h + "</span>";
     }
     el.innerHTML = html;
 }
 
+function renderPath() {
+    const container = document.getElementById("learningPath");
+    if (!container) return;
+    const units = activeUnits();
+    const next = getNextLesson();
+    const stats = allLessonsDone();
+    let html = "";
+    units.forEach(function(u) {
+        const done = u.lessons.filter(function(l) { return state.lessonsDone[l.id]; }).length;
+        const allDone = done === u.lessons.length;
+        const isNow = next && next.unit === u;
+        const cls = allDone ? "done" : (isNow ? "now" : "");
+        html += "<div class='path-chip " + cls + "'><span class='path-ic'>" + u.icon + "</span><span class='path-seed'>" + done + "/" + u.lessons.length + "</span></div>";
+    });
+    container.innerHTML = html;
+    container.querySelectorAll(".path-chip").forEach(function(chip) {
+        chip.addEventListener("click", function() { setPage("learn"); });
+    });
+    const countEl = document.getElementById("pathCount");
+    if (countEl) countEl.textContent = stats.done + "/" + stats.total;
+}
+
 function renderHome() {
-    document.getElementById("userName").textContent = state.profile.name;
-    document.getElementById("profName").textContent = state.profile.professor;
+    const name = state.profile.name || "Aluno";
+    document.getElementById("userName").textContent = "Oi, " + name + "!";
+    document.getElementById("homeAvatar").textContent = avatarInit(name);
     document.getElementById("xpCount").textContent = state.xp;
     document.getElementById("streakCount").textContent = computeStreak();
 
     const beltRow = document.getElementById("beltRow");
     if (state.profile.belt) {
         const b = state.profile.belt;
-        beltRow.innerHTML = "<div class='belt-badge' style='background:" + b.color + ";color:" + b.text + "'>" + b.label + "</div>" + (state.profile.isJuvenil ? "<span class='juvenil-tag'>Juvenil</span>" : "");
+        beltRow.innerHTML = "<span class='belt-badge' style='background:" + b.color + ";color:" + b.text + "'>" + b.label + "</span>" + (state.profile.isJuvenil ? "<span class='juvenil-tag'>Juvenil</span>" : "");
     } else {
-        beltRow.innerHTML = "<span class='no-belt'>Sem faixa definida ainda - ajuste nos Ajustes.</span>";
+        beltRow.innerHTML = "<span class='no-belt'>Sem faixa definida - ajuste nos Ajustes.</span>";
     }
-    document.getElementById("modeLine").textContent = state.profile.soloTraining ? "Treinando sozinho em casa - drills de solo" : "Treinando com parceiro na academia";
 
     const stats = allLessonsDone();
     const attended = state.log.filter(function(e) { return e.type === "went"; }).length;
@@ -415,6 +443,7 @@ function renderHome() {
     document.getElementById("statLessons").textContent = stats.done;
     document.getElementById("statAttended").textContent = attended;
     document.getElementById("statMissed").textContent = missed;
+    document.getElementById("statStreak").textContent = computeStreak();
 
     const todayCard = document.getElementById("todayCard");
     const title = document.getElementById("todayTitle");
@@ -422,6 +451,7 @@ function renderHome() {
     const actions = document.getElementById("todayActions");
 
     const dayIdx = todayDayIndex();
+    todayCard.style.display = "flex";
     if (isClassDay(dayIdx)) {
         title.textContent = "Hoje tem aula!";
         if (alreadyMarkedToday()) {
@@ -439,14 +469,32 @@ function renderHome() {
         actions.style.display = "none";
     }
 
+    const pct = stats.total ? Math.round((stats.done / stats.total) * 100) : 0;
+    document.getElementById("homeProgressFill").style.width = pct + "%";
+    document.getElementById("homeProgressText").textContent = pct + "%";
+    const label = document.getElementById("homeProgressLabel");
+    if (label) label.textContent = state.profile.soloTraining ? "Treino solo" : "Curso de posicoes";
+
     const next = getNextLesson();
-    if (next) {
-        document.getElementById("nextLessonText").textContent = next.unit.title + " - " + next.lesson.title;
-        document.getElementById("btnContinue").textContent = "Comecar licao";
-    } else {
-        document.getElementById("nextLessonText").textContent = "Voce completou todas as " + (state.profile.soloTraining ? "licoes de treino solo" : "posicoes") + "! Parabens!";
-        document.getElementById("btnContinue").textContent = "Treinar de novo";
+    const progressBar = document.getElementById("continueProgress");
+    const doneCheck = document.getElementById("continueCheck");
+    if (progressBar && next) {
+        const doneInUnit = next.unit.lessons.filter(function(l) { return state.lessonsDone[l.id]; }).length;
+        progressBar.style.width = Math.round((doneInUnit / next.unit.lessons.length) * 100) + "%";
     }
+    if (next) {
+        document.getElementById("nextLessonTitle").textContent = next.unit.title;
+        document.getElementById("nextLessonText").textContent = next.lesson.title;
+        document.getElementById("btnContinue").textContent = "Comecar licao";
+        if (doneCheck) doneCheck.style.display = "none";
+    } else {
+        document.getElementById("nextLessonTitle").textContent = "Tudo concluido!";
+        document.getElementById("nextLessonText").textContent = "Voce completou todas as " + (state.profile.soloTraining ? "licoes de treino solo" : "posicoes") + "!";
+        document.getElementById("btnContinue").textContent = "Treinar de novo";
+        if (doneCheck) doneCheck.style.display = "flex";
+    }
+
+    renderPath();
 }
 
 function nextClassDay(fromIdx) {
@@ -470,7 +518,7 @@ function renderUnits() {
     const next = getNextLesson();
     units.forEach(function(unit, ui) {
         const doneCount = unit.lessons.filter(function(l) { return state.lessonsDone[l.id]; }).length;
-        html += "<div class='unit-card'><div class='unit-head'><div class='unit-icon' style='background:" + unit.color + "22'>" + unit.icon + "</div><div><div class='unit-title'>" + unit.title + "</div><div class='unit-progress'>" + doneCount + "/" + unit.lessons.length + " licOes</div></div></div><div class='unit-lessons'>";
+        html += "<div class='unit-card'><div class='unit-head'><div class='unit-icon' style='background:" + unit.color + "22'>" + unit.icon + "</div><div><div class='unit-title'>" + unit.title + "</div><div class='unit-progress'>" + doneCount + "/" + unit.lessons.length + " licoes</div></div></div><div class='unit-lessons'>";
         unit.lessons.forEach(function(lesson, li) {
             const done = !!state.lessonsDone[lesson.id];
             const isNext = next && next.lesson.id === lesson.id;
@@ -543,6 +591,11 @@ function beltChips(beltList, selectedLabel, containerId) {
 }
 
 function renderSettings() {
+    document.getElementById("settingsAvatar").textContent = avatarInit(state.profile.name);
+    document.getElementById("settingsProfileName").textContent = state.profile.name || "Aluno(a)";
+    const b = state.profile.belt;
+    document.getElementById("settingsProfileBelt").textContent = b ? b.label + (state.profile.isJuvenil ? " (Juvenil)" : "") : "Sem faixa definida";
+
     document.getElementById("setName").value = state.profile.name;
     document.getElementById("setProf").value = state.profile.professor;
 
