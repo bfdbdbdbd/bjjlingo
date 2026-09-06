@@ -2,7 +2,7 @@ const ACCOUNTS_KEY = "bjjlingo_accounts";
 const SESSION_KEY = "bjjlingo_session";
 const LEGACY_KEY = "bjjlingo_v1";
 
-const GOOGLE_CLIENT_ID = ""; // Cole aqui seu OAuth Client ID do Google (veja o modal "Conectar com Google")
+const GOOGLE_CLIENT_ID = "470545192889-b6gq29mat02rhgqfi29e9doa74gi4fte.apps.googleusercontent.com";
 
 const DEFAULT_STATE = {
     profile: { name: "Aluno", professor: "Professor", days: [1, 3, 6], isJuvenil: false, belt: null, soloTraining: false, disclaimerSeen: false },
