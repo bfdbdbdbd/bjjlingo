@@ -388,6 +388,7 @@ body.dark .theory-block strong{color:var(--text)}
 .search-row{display:flex;align-items:center;gap:12px;padding:11px 12px;border:1.5px solid var(--border);border-radius:var(--radius-sm);cursor:pointer;transition:all .15s;background:var(--surface)}
 .search-row:hover{border-color:var(--text-3)}
 .search-ic{width:40px;height:40px;min-width:40px;border-radius:50%;background:var(--sc);color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.2rem}
+.search-photo{width:44px;height:44px;min-width:44px;border-radius:10px;object-fit:cover;border:1px solid var(--border);display:block}
 .search-info{flex:1;min-width:0}
 .search-info strong{display:block;font-size:.92rem;font-weight:700}
 .search-info span{color:var(--text-2);font-size:.75rem;font-weight:700}

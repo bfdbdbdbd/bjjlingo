@@ -294,12 +294,21 @@ function catColor(cat) {
     return CAT_COLORS[cat] || "#64748b";
 }
 
+function photoFor(g) {
+    if (g && g.photo) return g.photo;
+    if (g && g.theoryId) {
+        const l = THEORY_UNIT.lessons.filter(function(x) { return x.id === g.theoryId; })[0];
+        if (l && l.photo) return l.photo;
+    }
+    return "";
+}
+
 function norm(s) {
     return String(s || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 }
 
 const GLOSSARY = [
-    { name: "Guarda", icon: "&#128737;", cat: "Guarda",
+    { name: "Guarda", icon: "&#128737;", cat: "Guarda", photo: "https://commons.wikimedia.org/wiki/Special:FilePath/Brazilian_Jiu-jitsu-Closed_guard.jpg?width=640",
         tags: ["guarda", "baixo", "defesa", "base", "por baixo"],
         text: "A guarda e a posicao em que voce esta por baixo, com as pernas trabalhando entre o seu corpo e o do adversario. E da guarda que nascem as raspagens, as finalizacoes e as principais defesas do jiu-jitsu.\n\nCada variante de guarda resolve um problema diferente: umas controlam a distancia, outras o quadril, outras os bracos. Quanto mais guardas voce conhece, mais opcoes tem por baixo.",
         related: ["Guarda Fechada", "Meia Guarda", "Guarda De La Riva", "Guarda Borboleta", "Guarda de Aranha", "X-Guard"] },
@@ -313,15 +322,15 @@ const GLOSSARY = [
         tags: ["guarda", "meia", "dominada", "half", "baixo"],
         text: "A meia guarda dominada (deep half) e a variante em que voce passa a cabeca por baixo da perna do adversario e trabalha por dentro do quadril dele.\n\nDe la, as opcoes principais sao a raspagem de profundidade e o giro para as costas, quando o adversario reage para frente.",
         related: ["Meia Guarda", "Raspagem da Meia Guarda", "Costas"] },
-    { name: "Guarda De La Riva", icon: "&#9889;", cat: "Guarda",
+    { name: "Guarda De La Riva", icon: "&#9889;", cat: "Guarda", photo: "https://commons.wikimedia.org/wiki/Special:FilePath/De_la_Riva_guard.jpg?width=640",
         tags: ["guarda", "de la riva", "dlr", "perna", "baixo", "grip"],
         text: "A guarda de la riva usa uma perna enganchada por dentro da perna da frente do adversario, abaixando o quadro dele e criando desequilibrio.\n\nE uma guarda muito usada em campeonatos: de la saem raspagens, pegadas nas costas e varridoes de cintura quando ele tenta passar de pe.",
         related: ["Guarda", "Raspagem da Meia Guarda", "Costas", "X-Guard"] },
-    { name: "Guarda de Aranha", icon: "&#128375;", cat: "Guarda",
+    { name: "Guarda de Aranha", icon: "&#128375;", cat: "Guarda", photo: "https://commons.wikimedia.org/wiki/Special:FilePath/BJJ_spider_guard_01.jpg?width=640",
         tags: ["guarda", "aranha", "spider", "pernas", "manga", "baixo"],
         text: "Na guarda de aranha (spider guard), os pes ficam apoiados nos bracos do adversario enquanto suas maos seguram as mangas dele, controlando a distancia e criando garras de pressao.\n\nOs bracos esticados e os pes no quadril dele geram desequilibrio constante, abrindo espaco para raspagens e pegadas fortes.",
         related: ["Guarda", "Guarda Fechada", "Raspagem de Guarda Fechada"] },
-    { name: "Guarda Borboleta", icon: "&#129419;", cat: "Guarda",
+    { name: "Guarda Borboleta", icon: "&#129419;", cat: "Guarda", photo: "https://commons.wikimedia.org/wiki/Special:FilePath/Judo10-butterfly_guard.jpg?width=640",
         tags: ["guarda", "borboleta", "butterfly", "baixo", "gancho"],
         text: "Na guarda borboleta (butterfly), os dois pes ficam enganchados por dentro das pernas do adversario, com os quadris muito ativos.\n\nE a guarda preferida de quem gosta de jogo no ar: de la saem raspagens dinamicas e o balancao para as costas.",
         related: ["Guarda", "Gancho de Quadril", "Raspagem da Meia Guarda"] },
@@ -371,25 +380,25 @@ const GLOSSARY = [
     { name: "Raspagem Leva-e-Traz", icon: "&#11015;&#65039;", cat: "Raspagem", tags: ["raspagem", "leva", "traz"],
         text: "A raspagem leva-e-traz usa um balanco de lado com o adversario de joelhos ou agachado, alternando o quadril para desequilibra-lo.\n\nE uma raspagem dinamica de pressao: ao balancar, voce comanda o ritmo e encontra o momento de projetar.",
         related: ["Guarda Borboleta", "Lateral", "Raspagem de Guarda Fechada"] },
-    { name: "Arm-lock", icon: "&#128170;", cat: "Finalizacao", tags: ["armlock", "chave", "braco", "cotovelo", "finalizacao"],
+    { name: "Arm-lock", icon: "&#128170;", cat: "Finalizacao", photo: "https://commons.wikimedia.org/wiki/Special:FilePath/Holly-armbar-on-Kennedy,-RLA-Melb-10.11.2007.jpg?width=640", tags: ["armlock", "chave", "braco", "cotovelo", "finalizacao"],
         text: "O arm-lock (chave de braco) estica o cotovelo do adversario contra a articulacao, usando seu corpo como ponto de apoio.\n\nDa montada, da lateral e da guarda fechada ha versoes: o principio e sempre o mesmo, isolar o braco, apertar as coxas e esticar o cotovelo.",
         related: ["Montada", "Guarda Fechada", "Triangulo"] },
-    { name: "Kimura", icon: "&#129421;", cat: "Finalizacao", tags: ["kimura", "chave", "braco", "ombro", "finalizacao", "garra"],
+    { name: "Kimura", icon: "&#129421;", cat: "Finalizacao", photo: "https://commons.wikimedia.org/wiki/Special:FilePath/Brazilian_Jiu-jitsu_Kimura_lock_from_guard.jpg?width=640", tags: ["kimura", "chave", "braco", "ombro", "finalizacao", "garra"],
         text: "A kimura e uma chave de ombro feita com as duas maos trancadas (a garra kimura), girando o braco do adversario para tras das costas.\n\nAlem de finalizar, e uma arma de controle e transicao: de qualquer posicao por cima ela ameaca e abre caminho para montada e costas.",
         related: ["Lateral", "Americana", "Costas"] },
     { name: "Americana", icon: "&#128170;", cat: "Finalizacao", tags: ["americana", "chave", "braco", "ombro", "finalizacao"],
         text: "A americana pressiona o braco do adversario dobrado contra o proprio corpo, forcando o ombro na direcao errada.\n\nDa lateral e da montada, ela aparece quando o adversario comeca a defender: segura o punho, abre o braco e gira o ombro.",
         related: ["Lateral", "Montada", "Kimura"] },
-    { name: "Mata-leao", icon: "&#129409;", cat: "Finalizacao", tags: ["mata leao", "rear naked", "choke", "pescoco", "estrangulamento", "costas"],
+    { name: "Mata-leao", icon: "&#129409;", cat: "Finalizacao", photo: "https://commons.wikimedia.org/wiki/Special:FilePath/MCMAP_Rear_choke_-_Defense_Visual_Information_Center_2006.jpg?width=640", tags: ["mata leao", "rear naked", "choke", "pescoco", "estrangulamento", "costas"],
         text: "O mata-leao (rear naked choke) estrangula o pescoco do adversario por tras, com um braco pressionando cada lado do pescoco.\n\nE a finalizacao mais famosa do MMA e do jiu-jitsu: da posicao de costas, um braco passa por cima do bracaco dele e o outro sela o estrangulamento.",
         related: ["Costas", "Estrangulamento", "Gancho de Quadril"] },
-    { name: "Triangulo", icon: "&#128208;", cat: "Finalizacao", tags: ["triangulo", "triangle", "pernas", "guarda", "estrangulamento"],
+    { name: "Triangulo", icon: "&#128208;", cat: "Finalizacao", photo: "https://commons.wikimedia.org/wiki/Special:FilePath/Triangle_choke.jpeg?width=640", tags: ["triangulo", "triangle", "pernas", "guarda", "estrangulamento"],
         text: "O triangulo usa as duas pernas cruzadas ao redor do pescoco e de um braco do adversario, estrangulando pelas laterais do pescoco.\n\nDa guarda fechada, ele e finalizacao e transicao ao mesmo tempo: quando o adversario defende o braco, chave de braco aparece.",
         related: ["Guarda Fechada", "Arm-lock", "Guarda 50/50"] },
-    { name: "Omoplata", icon: "&#128641;", cat: "Finalizacao", tags: ["omoplata", "chave", "ombro", "guard", "finalizacao"],
+    { name: "Omoplata", icon: "&#128641;", cat: "Finalizacao", photo: "https://commons.wikimedia.org/wiki/Special:FilePath/Omoplata_armlock.jpg?width=640", tags: ["omoplata", "chave", "ombro", "guard", "finalizacao"],
         text: "A omoplata trava o braco do adversario com as pernas e os quadris, girando o ombro dele ao contrario do movimento.\n\nE uma finalizacao de surpresa: sai da guarda e de transicoes, e quando o adversario roda para fugir, ele devolve as costas.",
         related: ["Guarda", "Costas", "Triangulo"] },
-    { name: "Guilhotina", icon: "&#9995;", cat: "Finalizacao", tags: ["guilhotina", "guillotine", "pescoco", "estrangulamento", "de pe"],
+    { name: "Guilhotina", icon: "&#9995;", cat: "Finalizacao", photo: "https://commons.wikimedia.org/wiki/Special:FilePath/Guillotine_choke.jpg?width=640", tags: ["guilhotina", "guillotine", "pescoco", "estrangulamento", "de pe"],
         text: "A guilhotina estrangula o pescoco com o braco ao redor, seja de pe, no solo ou em quedas de dupla.\n\nA chave esta no encaixe: a lateral do pescoco na dobra do cotovelo, a cintura alta e o quadril fechando o estrangulamento.",
         related: ["Estrangulamento", "Raspagem com Tripe", "Costas"] },
     { name: "Choke de Gola", icon: "&#128085;", cat: "Finalizacao", tags: ["choke", "gola", "lapel", "gi", "kimono", "estrangulamento"],
@@ -484,7 +493,8 @@ function renderSearch(q) {
     } else {
         html += "<div class='search-list'>";
         res.forEach(function(g) {
-            html += "<div class='search-row' data-name='" + g.name + "'><span class='search-ic' style='--sc:" + catColor(g.cat) + "'>" + g.icon + "</span><div class='search-info'><strong>" + g.name + "</strong><span>" + g.cat + "</span></div><span class='lesson-check'>&#128214;</span></div>";
+            const ph = photoFor(g);
+            html += "<div class='search-row' data-name='" + g.name + "'>" + (ph ? "<img class='search-photo' src='" + ph + "' alt='" + g.name + "' loading='lazy'>" : "<span class='search-ic' style='--sc:" + catColor(g.cat) + "'>" + g.icon + "</span>") + "<div class='search-info'><strong>" + g.name + "</strong><span>" + g.cat + "</span></div><span class='lesson-check'>&#128214;</span></div>";
         });
         html += "</div>";
     }
@@ -513,7 +523,9 @@ function openLookup(entry) {
     document.getElementById("theoryTitle").textContent = entry.name;
     document.getElementById("theoryIcon").innerHTML = entry.icon;
     const imgEl = document.getElementById("theoryImg");
-    if (entry.img) { imgEl.innerHTML = entry.img; imgEl.style.display = "flex"; }
+    const ph = photoFor(entry);
+    if (ph) { imgEl.innerHTML = "<img class='tb-photo' src='" + ph + "' alt='" + entry.name + "' loading='lazy'><p class='tb-credit'>Foto: Wikipedia / Wikimedia Commons (CC BY-SA)</p>"; imgEl.style.display = "flex"; }
+    else if (entry.img) { imgEl.innerHTML = entry.img; imgEl.style.display = "flex"; }
     else { imgEl.innerHTML = ""; imgEl.style.display = "none"; }
     const textEl = document.getElementById("theoryText");
     textEl.innerHTML = "";
