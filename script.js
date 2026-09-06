@@ -147,6 +147,139 @@ const SOLO_UNITS = [
     }
 ];
 
+/* ---------- TRILHA 2 (TEORIA) ---------- */
+
+function FIG(color, x, y, sc) {
+    return '<g transform="translate(' + x + ' ' + y + ') scale(' + sc + ')" fill="' + color + '">' +
+        '<circle cx="30" cy="14" r="10"/>' +
+        '<rect x="21" y="26" width="18" height="30" rx="8"/>' +
+        '<path d="M21 34 L12 52 M39 34 L48 52" stroke="' + color + '" stroke-width="6" stroke-linecap="round" fill="none"/>' +
+        '<path d="M27 54 L22 86 M33 54 L38 86" stroke="' + color + '" stroke-width="7" stroke-linecap="round" fill="none"/>' +
+        '</g>';
+}
+
+function SCENE(soft, extra) {
+    return '<svg viewBox="0 0 340 230" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="4" width="332" height="222" rx="18" fill="' + soft + '"/>' + extra + '</svg>';
+}
+
+function THTEXT(paras) {
+    return paras;
+}
+
+const THEORY_UNIT = {
+    title: "Trilha 2 - Teoria das Posicoes",
+    icon: "&#128214;",
+    color: "#7c3aed",
+    lessons: [
+        {
+            id: "th-mount",
+            title: "Montada",
+            icon: "&#128081;",
+            color: "#dc2626",
+            img: SCENE("#ffe0e0",
+                '<circle cx="52" cy="190" r="13" fill="#8b93a3"/>' +
+                '<rect x="70" y="180" width="135" height="24" rx="12" fill="#8b93a3"/>' +
+                '<path d="M205 186 L252 172 M205 194 L254 200" stroke="#8b93a3" stroke-width="9" stroke-linecap="round"/>' +
+                '<path d="M96 180 L82 142 M130 180 L142 140" stroke="#8b93a3" stroke-width="8" stroke-linecap="round"/>' +
+                FIG("#dc2626", 116, 60, 1) +
+                '<path d="M137 94 L116 156 M165 94 L184 154" stroke="#dc2626" stroke-width="8" stroke-linecap="round"/>'),
+            text: THTEXT("A Montada e a posicao mais dominante do jiu-jitsu. Voce fica por cima, com seu peso sobre o abdomen do adversario, controlando o ritmo, a respiracao e todas as opcoes de ataque.\n\nO segredo esta no controle: quadril baixo, joelhos bem abertos e o peso encaixado na frontal do quadril, sobre o tronco do adversario. Com esse controle, ele gasta muita energia para tentar escapar e abre espaco para finalizacoes como o arm-lock e os estrangulamentos.\n\nErro comum: sentar afastado, aliviando o peso e devolvendo liberdade ao adversario. O peso da montada precisa ficar no tronco dele, nao nos seus joelhos."),
+            tips: ["Mantenha os pes apoiados nas costas dele, nao no chao.", "Quadril baixo: o peso sobre o abdomen, nao sobre os joelhos.", "Controle os bracos antes de tentar finalizar.", "Ao escapar, faca por lados: crie a ponte e o espaco de um lado so."]
+        },
+        {
+            id: "th-guard",
+            title: "Guarda Fechada",
+            icon: "&#128737;&#65039;",
+            color: "#2b8a3e",
+            img: SCENE("#e2f2de",
+                '<circle cx="64" cy="186" r="13" fill="#8b93a3"/>' +
+                '<rect x="82" y="176" width="130" height="24" rx="12" fill="#8b93a3"/>' +
+                '<path d="M96 176 L84 138 M136 176 L148 136" stroke="#8b93a3" stroke-width="8" stroke-linecap="round"/>' +
+                '<path d="M150 184 C148 140 122 130 100 150 M180 176 C188 140 214 134 236 150" stroke="#8b93a3" stroke-width="9" stroke-linecap="round" fill="none"/>' +
+                FIG("#2b8a3e", 168, 60, 1) +
+                '<path d="M189 96 L156 128 M207 96 L238 122" stroke="#2b8a3e" stroke-width="8" stroke-linecap="round"/>'),
+            text: THTEXT("A Guarda Fechada e a posicao em que voce, por baixo, fecha as pernas na cintura do adversario. E a base de todo o jiu-jitsu: de la voce ataca, defende e derruba sem dar espaco.\n\nAs maos controlam as mangas ou o pescoco, e o quadril fica sempre ativo. Quando ele tentar ficar em pe, puxe com as pernas e desequilibre. Ninguem passa a guarda fechada sem abri-la primeiro - e abrir ja e abrir espaco para o seu ataque.\n\nErro comum: guarda passiva, apenas segurando com as pernas. A guarda e agressiva: puxe, desequilibre e ataque assim que sentir o adversario se mover."),
+            tips: ["Puxe o quadril dele para perto do seu peito.", "Braco preso entre as pernas? Ataque kimura ou armlock.", "Controle a postura puxando o pescoco para baixo.", "Cuide do espaco: bracos entre o corpo dele e o seu."]
+        },
+        {
+            id: "th-side",
+            title: "Lateral (100kg)",
+            icon: "&#128238;",
+            color: "#3373cc",
+            img: SCENE("#dbe9fb",
+                '<circle cx="44" cy="188" r="13" fill="#8b93a3"/>' +
+                '<rect x="62" y="178" width="150" height="24" rx="12" fill="#8b93a3"/>' +
+                '<path d="M212 184 L258 198 M212 192 L256 210" stroke="#8b93a3" stroke-width="9" stroke-linecap="round"/>' +
+                '<path d="M76 178 L60 140 M120 178 L132 140" stroke="#8b93a3" stroke-width="8" stroke-linecap="round"/>' +
+                FIG("#3373cc", 132, 88, 1) +
+                '<path d="M153 124 L132 176 M183 124 L204 178" stroke="#3373cc" stroke-width="8" stroke-linecap="round"/>' +
+                '<path d="M145 156 L110 200 M175 156 L212 200" stroke="#3373cc" stroke-width="9" stroke-linecap="round"/>'),
+            text: THTEXT("A Lateral (cem kilos) e o controle em que voce pressiona o peito do adversario contra o chao, com seu corpo atravessado sobre o dele. Passou a guarda e chegou na lateral? Voce esta na frente do jogo.\n\nO cerebro da lateral e a pressao: seu pescoco encostado nele, o peito por cima do peito e o quadril baixo. Com um braco, controle o bracaco dele; com o outro, a cabeca. De la saem transicoes para a montada, para as costas e finalizacoes como a americana.\n\nErro comum: deixar espaco entre o seu corpo e o do adversario. Espaco na lateral significa fuga."),
+            tips: ["Peso sobre o peito dele, nao sobre os joelhos.", "Controle a cabeca e o braco mais proximo de voce.", "Joelho de tres pontos para bloquear a fuga.", "Quando ele virar de lado, suba para a montada."]
+        },
+        {
+            id: "th-back",
+            title: "Costas (Katagatame)",
+            icon: "&#127891;",
+            color: "#f2a007",
+            img: SCENE("#fdf0d0",
+                '<circle cx="150" cy="92" r="13" fill="#8b93a3"/>' +
+                '<rect x="148" y="106" width="46" height="58" rx="11" fill="#8b93a3"/>' +
+                '<path d="M148 116 L112 146 M194 116 L230 146" stroke="#8b93a3" stroke-width="8" stroke-linecap="round"/>' +
+                '<path d="M160 162 L152 208 M182 162 L190 208" stroke="#8b93a3" stroke-width="9" stroke-linecap="round"/>' +
+                FIG("#f2a007", 108, 44, 0.85) +
+                '<path d="M128 74 C150 62 158 76 148 88 M122 74 C102 62 100 78 106 90" stroke="#f2a007" stroke-width="7" stroke-linecap="round" fill="none"/>' +
+                '<path d="M120 118 L96 196 M132 118 L146 198" stroke="#f2a007" stroke-width="8" stroke-linecap="round"/>'),
+            text: THTEXT("As Costas (tambem chamadas de katagatame pelos faixas-brancas) e a posicao em que voce fica nas costas do adversario, com os calcanhares encaixados nos quadris dele: os ganchos.\n\nQuem tem as costas tem o controle total: o adversario nao te ve, nao consegue usar o peso contra voce e os dois braco proximos do pescoco dele estao prontos para o mata-leao. As costas sao uma das posicoes mais seguras e mais demoradas do jiu-jitsu.\n\nErro comum: deixar os calcanhares caidos. Sem os ganchos grudados no quadril, o adversario escapa com facilidade."),
+            tips: ["Um braco passa por baixo do bracaco dele, do outro lado.", "Calcanhares sempre grudados no quadril dele.", "Controle cabeca e quadril antes de tentar finalizar.", "Se ele conseguir virar, recolha os ganchos e recoloque."]
+        },
+        {
+            id: "th-half",
+            title: "Meia Guarda",
+            icon: "&#8536;&#65039;",
+            color: "#7d3cb5",
+            img: SCENE("#efe4fa",
+                '<circle cx="60" cy="188" r="13" fill="#8b93a3"/>' +
+                '<rect x="78" y="178" width="140" height="24" rx="12" fill="#8b93a3"/>' +
+                '<path d="M92 178 L80 140" stroke="#8b93a3" stroke-width="8" stroke-linecap="round"/>' +
+                '<path d="M104 176 C96 130 116 120 140 138" stroke="#8b93a3" stroke-width="9" stroke-linecap="round" fill="none"/>' +
+                '<path d="M218 182 L268 194" stroke="#8b93a3" stroke-width="9" stroke-linecap="round"/>' +
+                FIG("#7d3cb5", 156, 66, 1) +
+                '<path d="M177 102 L146 128 M199 102 L230 120" stroke="#7d3cb5" stroke-width="8" stroke-linecap="round"/>' +
+                '<path d="M178 132 L196 200 M160 132 L138 200" stroke="#7d3cb5" stroke-width="6" stroke-linecap="round"/>'),
+            text: THTEXT("A Meia Guarda e onde boa parte dos rolos acontece: voce esta por baixo com uma perna dele presa entre as suas pernas. Nem passou, nem passou - quem passa a perna e quem mantem a perna presa disputa cada segundo.\n\nPor baixo, o objetivo e ganhar a guarda fechada, buscar uma raspagem ou virar para cima. Por cima, o plano e libertar a perna presa e passar, ou congelar o adversario com pressao ate ele errar.\n\nErro comum: apertar a perna do adversario so com as coxas e esquecer o quadril. E o quadril que gira, desequilibra e gera a raspagem."),
+            tips: ["Trabalhe para recolocar a guarda fechada.", "Quadril ativo: quem gira com ele controla o ritmo.", "Por cima, nao force a perna: primeiro libere o joelho.", "Por baixo, mantenha o pescoco da linha do quadril dele."]
+        },
+        {
+            id: "th-knee",
+            title: "Joelho na Barriga",
+            icon: "&#129458;",
+            color: "#e06a00",
+            img: SCENE("#ffead3",
+                '<circle cx="56" cy="188" r="13" fill="#8b93a3"/>' +
+                '<rect x="74" y="178" width="140" height="24" rx="12" fill="#8b93a3"/>' +
+                '<path d="M88 178 L74 138 M130 178 L142 134" stroke="#8b93a3" stroke-width="8" stroke-linecap="round"/>' +
+                '<path d="M214 184 L264 176 M214 192 L262 198" stroke="#8b93a3" stroke-width="9" stroke-linecap="round"/>' +
+                FIG("#e06a00", 138, 84, 1) +
+                '<path d="M159 120 L132 150 M195 120 L212 144" stroke="#e06a00" stroke-width="8" stroke-linecap="round"/>' +
+                '<circle cx="132" cy="158" r="11" fill="#e06a00"/>' +
+                '<path d="M136 168 L128 208" stroke="#e06a00" stroke-width="9" stroke-linecap="round"/>' +
+                '<path d="M196 138 L218 206" stroke="#e06a00" stroke-width="9" stroke-linecap="round"/>'),
+            text: THTEXT("O Joelho na Barriga e um controle de transicao bastante poderoso: uma canela atravessada no abdomen do adversario enquanto voce controla a cabeca e o braco dele.\n\nDesconfortavel, essa posicao obriga o adversario a reagir - e e exatamente essa reacao que voce usa para trocar de controle. Dali surgem montadas, laterais e finalizacoes.\n\nErro comum: deixar o joelho escorregar para fora da linha do abdome. O joelho precisa ficar pressionado na regiao do estomago, controlando para onde ele vai se mover."),
+            tips: ["Joelho na linha do umbigo, nao no peito.", "Controle cabeca e braco com a mao livre.", "Use a reacao dele para trocar para outra posicao.", "Quando sentir o quadril dele abrir, suba para a montada."]
+        }
+    ]
+};
+
+function theoryDone() {
+    return THEORY_UNIT.lessons.filter(function(l) { return state.lessonsDone[l.id]; }).length;
+}
+
+function isTrail1Done() {
+    const s = allLessonsDone();
+    return s.total > 0 && s.done === s.total;
+}
+
 const DAY_NAMES = ["Domingo", "Segunda", "Terca", "Quarta", "Quinta", "Sexta", "Sabado"];
 const DAY_NAMES_SHORT = ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sab"];
 
@@ -372,6 +505,12 @@ function getNextLesson() {
             if (!state.lessonsDone[l.id]) return { unit: activeUnits()[ui], lesson: l };
         }
     }
+    if (isTrail1Done()) {
+        for (let li = 0; li < THEORY_UNIT.lessons.length; li++) {
+            const l = THEORY_UNIT.lessons[li];
+            if (!state.lessonsDone[l.id]) return { unit: THEORY_UNIT, lesson: l, theory: true };
+        }
+    }
     return null;
 }
 
@@ -537,6 +676,24 @@ function renderUnits() {
         });
         html += "</div></div>";
     });
+
+    /* Trilha 2 (teoria) */
+    const t1stats = allLessonsDone();
+    const t1Done = isTrail1Done();
+    const tDone = theoryDone();
+    const t1pct = t1stats.total ? Math.round((t1stats.done / t1stats.total) * 100) : 0;
+    if (t1Done) {
+        html += "<div class='theory-head'><div class='unit-icon unit-icon-lg' style='background:" + THEORY_UNIT.color + "22'>" + THEORY_UNIT.icon + "</div><div><div class='unit-title'>" + THEORY_UNIT.title + "</div><div class='unit-progress'>" + tDone + "/" + THEORY_UNIT.lessons.length + " teorias concluidas</div></div></div><div class='theory-grid'>";
+        THEORY_UNIT.lessons.forEach(function(lesson, li) {
+            const done = !!state.lessonsDone[lesson.id];
+            const isNext = next && next.theory && next.lesson.id === lesson.id;
+            html += "<div class='theory-card" + (done ? " completed" : "") + (isNext ? " next" : "") + "' data-theory='" + li + "'><div class='theory-card-ic' style='--tc:" + lesson.color + "'>" + lesson.icon + "</div><div class='theory-card-body'><strong>" + lesson.title + "</strong><span>" + (done ? "Concluida" : "Posicao +10 XP") + "</span></div><span class='lesson-check'>" + (done ? "&#10004;&#65039;" : "&#128214;") + "</span></div>";
+        });
+        html += "</div>";
+    } else {
+        html += "<div class='theory-locked'><div class='locked-ic'>&#128274;</div><div><div class='unit-title'>" + THEORY_UNIT.title + "</div><div class='unit-progress'>Complete as " + t1stats.total + " licoes para desbloquear" + (t1stats.done > 0 ? " (" + t1pct + "%)" : "") + "</div><div class='theory-lock-bar'><div class='theory-lock-fill' style='width:" + t1pct + "%'></div></div></div></div>";
+    }
+
     container.innerHTML = html;
 
     container.querySelectorAll(".lesson-row").forEach(function(row) {
@@ -546,6 +703,13 @@ function renderUnits() {
             const unit = units[ui];
             const lesson = unit.lessons[li];
             openLesson(unit, lesson);
+        });
+    });
+
+    container.querySelectorAll(".theory-card").forEach(function(card) {
+        card.addEventListener("click", function() {
+            const li = parseInt(card.dataset.theory, 10);
+            openTheoryLesson(THEORY_UNIT.lessons[li]);
         });
     });
 }
@@ -731,6 +895,47 @@ function openLessonContent(unit, lesson) {
 
 function closeLesson() {
     document.getElementById("lessonModal").classList.remove("open");
+}
+
+function openTheoryLesson(item) {
+    const lesson = item.unit ? item.lesson : item;
+    const unit = item.unit ? item.unit : THEORY_UNIT;
+    document.getElementById("theoryUnitTitle").textContent = unit.title;
+    document.getElementById("theoryTitle").textContent = lesson.title;
+    document.getElementById("theoryIcon").innerHTML = lesson.icon;
+    document.getElementById("theoryImg").innerHTML = lesson.img;
+    const textEl = document.getElementById("theoryText");
+    textEl.innerHTML = "";
+    String(lesson.text).split("\n\n").forEach(function(p) {
+        const par = document.createElement("p");
+        par.textContent = p;
+        textEl.appendChild(par);
+    });
+    const tipsEl = document.getElementById("theoryTips");
+    tipsEl.innerHTML = "";
+    lesson.tips.forEach(function(tip) {
+        const li = document.createElement("li");
+        li.textContent = tip;
+        tipsEl.appendChild(li);
+    });
+    const btn = document.getElementById("btnCompleteTheory");
+    const done = !!state.lessonsDone[lesson.id];
+    btn.textContent = done ? "Ja concluida - Fechar" : "Concluir teoria (+10 XP)";
+    btn.onclick = function() {
+        if (!state.lessonsDone[lesson.id]) {
+            state.lessonsDone[lesson.id] = true;
+            state.xp += 10;
+            saveState();
+            render();
+            showToast("Teoria concluida! +10 XP");
+        }
+        closeTheoryLesson();
+    };
+    document.getElementById("theoryModal").classList.add("open");
+}
+
+function closeTheoryLesson() {
+    document.getElementById("theoryModal").classList.remove("open");
 }
 
 function showToast(msg) {
@@ -946,8 +1151,9 @@ document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("btnMissed").addEventListener("click", markMissed);
     document.getElementById("btnContinue").addEventListener("click", function() {
         const next = getNextLesson();
-        if (next) openLesson(next.unit, next.lesson);
-        else showToast("Parabens! Voce dominou tudo!");
+        if (!next) showToast("Parabens! Voce dominou tudo!");
+        else if (next.theory) openTheoryLesson(next);
+        else openLesson(next.unit, next.lesson);
     });
 
     /* Login */
@@ -1013,6 +1219,10 @@ document.addEventListener("DOMContentLoaded", function() {
     /* Lessons modal */
     document.getElementById("btnLessonClose").addEventListener("click", closeLesson);
     document.getElementById("lessonModal").addEventListener("click", function(e) { if (e.target === this) closeLesson(); });
+
+    /* Theory modal */
+    document.getElementById("btnTheoryClose").addEventListener("click", closeTheoryLesson);
+    document.getElementById("theoryModal").addEventListener("click", function(e) { if (e.target === this) closeTheoryLesson(); });
 
     /* Settings */
     document.getElementById("btnSaveSettings").addEventListener("click", function() {

@@ -342,3 +342,34 @@ body.dark .day-chip{background:var(--surface);color:var(--text)}
 body.dark .chat-header{background:var(--surface)}
 body.dark .chat-body{background:var(--bg)}
 body.dark .modal{background:var(--surface)}
+
+/* ============ TRILHA 2 (TEORIA) ============ */
+.theory-head{display:flex;align-items:center;gap:12px;margin:22px 0 12px;padding:16px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow)}
+.unit-icon-lg{width:48px;height:48px}
+.theory-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:22px}
+.theory-card{display:flex;align-items:center;gap:10px;padding:13px 12px;border:1.5px solid var(--border);border-radius:var(--radius-sm);cursor:pointer;transition:all .15s;background:var(--surface)}
+.theory-card:hover{border-color:var(--text-3)}
+.theory-card.next{border-color:#7c3aed;background:#fbf8ff;box-shadow:0 0 0 3px rgba(124,58,237,.1)}
+.theory-card.next .lesson-check{color:#7c3aed}
+.theory-card.completed{opacity:.62}
+.theory-card-ic{width:44px;height:44px;min-width:44px;border-radius:50%;background:var(--tc);color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.3rem}
+.theory-card-body{flex:1;min-width:0}
+.theory-card-body strong{display:block;font-size:.88rem;font-weight:700;line-height:1.2}
+.theory-card-body span{color:var(--text-2);font-size:.75rem;font-weight:600}
+.theory-locked{display:flex;align-items:center;gap:14px;margin:22px 0;padding:18px 16px;border:1.5px dashed var(--border-strong);border-radius:var(--radius);background:var(--surface);color:var(--text-3)}
+.locked-ic{font-size:2rem;opacity:.8}
+.theory-lock-bar{height:8px;border-radius:20px;background:var(--border);margin-top:10px;overflow:hidden}
+.theory-lock-fill{height:100%;border-radius:20px;background:var(--green)}
+.modal.theory-modal h2.theory-title{text-align:center;font-size:1.25rem}
+.theory-img{display:flex;justify-content:center;margin:14px 0 4px}
+.theory-img svg{width:100%;max-width:340px;height:auto;border-radius:16px}
+.theory-text{margin:8px 0 4px}
+.theory-text p{text-align:left;color:var(--text-2);font-weight:500;font-size:.9rem;line-height:1.5;margin-bottom:12px}
+.theory-block{background:var(--green-soft);border:1px solid var(--green);border-radius:var(--radius-sm);padding:14px 16px;margin:14px 0}
+.theory-block strong{color:var(--green-dark);font-size:.86rem;display:block;text-align:left}
+.theory-block ul{margin:8px 0 0;padding-left:18px}
+.theory-block ul li{font-size:.84rem;font-weight:600;color:var(--text-2);margin-bottom:6px;text-align:left}
+.theory-block ul li::marker{color:var(--green)}
+body.dark .theory-card.next{background:rgba(124,58,237,.12)}
+body.dark .theory-block{border-color:var(--border-strong)}
+body.dark .theory-block strong{color:var(--text)}
