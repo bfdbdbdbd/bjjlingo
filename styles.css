@@ -348,7 +348,7 @@ body.theme-old .no-belt{font-family:'Orbitron',monospace;font-size:.68rem}
 body.theme-old .avatar{background:linear-gradient(135deg,#00d4ff,#0072ff);color:#04204d;border:2px solid #38ddff;border-radius:50%}
 body.theme-old .card{background:var(--surface);border:1px solid var(--border);border-radius:10px;box-shadow:var(--shadow)}
 body.theme-old .card-icon-tile{border:1px solid var(--border)}
-body.theme-old .card-title,.page-title{font-family:'Press Start 2P',monospace;font-size:.78rem;letter-spacing:0}
+body.theme-old .card-title,body.theme-old .page-title{font-family:'Press Start 2P',monospace;font-size:.78rem;letter-spacing:0}
 body.theme-old .section-kicker{font-family:'Press Start 2P',monospace;font-size:.5rem;color:var(--amber);letter-spacing:1px}
 body.theme-old .progress-bar{background:#0a1230;border:1px solid var(--border)}
 body.theme-old .progress-fill{background:linear-gradient(90deg,#ffd700,#ffaa00);box-shadow:0 0 12px rgba(255,215,0,.5);border-radius:99px}
