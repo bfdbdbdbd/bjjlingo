@@ -390,6 +390,13 @@ function avatarInit(name) {
     return n.charAt(0).toUpperCase();
 }
 
+function applyTheme(t) {
+    try { localStorage.setItem("bjjlingo_theme", t); } catch (e) {}
+    document.body.classList.toggle("theme-old", t === "old");
+    const seg = document.querySelectorAll("#setTheme .seg-btn");
+    seg.forEach(function(b) { b.classList.toggle("active", b.dataset.val === t); });
+}
+
 function renderHearts() {
     const el = document.getElementById("hearts");
     const h = '<svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>';
@@ -595,6 +602,8 @@ function renderSettings() {
     document.getElementById("settingsProfileName").textContent = state.profile.name || "Aluno(a)";
     const b = state.profile.belt;
     document.getElementById("settingsProfileBelt").textContent = b ? b.label + (state.profile.isJuvenil ? " (Juvenil)" : "") : "Sem faixa definida";
+
+    applyTheme((function() { try { return localStorage.getItem("bjjlingo_theme") || "new"; } catch (e) { return "new"; } })());
 
     document.getElementById("setName").value = state.profile.name;
     document.getElementById("setProf").value = state.profile.professor;
@@ -1041,6 +1050,14 @@ document.addEventListener("DOMContentLoaded", function() {
         saveState();
         render();
         showToast(state.profile.soloTraining ? "Modo Treino Solo ativado" : "Modo Treino com Parceiro ativado");
+    });
+
+    document.getElementById("setTheme").addEventListener("click", function(e) {
+        const btn = e.target.closest(".seg-btn");
+        if (!btn) return;
+        applyTheme(btn.dataset.val);
+        renderSettings();
+        showToast(btn.dataset.val === "old" ? "Tema classico ativado" : "Tema moderno ativado");
     });
 
     /* AI chat */
