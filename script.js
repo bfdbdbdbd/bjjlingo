@@ -11,7 +11,8 @@ const DEFAULT_STATE = {
     xp: 0,
     log: [],
     lessonsDone: {},
-    aiConversations: 0
+    aiConversations: 0,
+    planLog: {}
 };
 
 const BELTS_ADULT = [
@@ -41,9 +42,9 @@ const UNITS = [
         icon: "&#128081;",
         color: "#ff4b4b",
         lessons: [
-            { id: "mount1", title: "Posicionamento na Montada", desc: "Controle completo da posicao superior: posicionamento, distribuicao de peso e dominancia.", videoId: "TBM7bnCT4kg" },
-            { id: "mount2", title: "Manter a Montada", desc: "Dicas do lendario Jean Jacques Machado para segurar a montada e impedir fugas.", videoId: "HfGbR0oTGQY" },
-            { id: "mount3", title: "Arm-lock da Montada", desc: "Aprenda o arm-lock classico direto da montada, passo a passo.", videoId: "iUap4TaYVQc" }
+            { id: "mount1", title: "Posicionamento na Montada", desc: "Controle completo da posição superior: posicionamento, distribuição de peso e dominância.", videoId: "TBM7bnCT4kg" },
+            { id: "mount2", title: "Manter a Montada", desc: "Dicas do lendário Jean Jacques Machado para segurar a montada e impedir fugas.", videoId: "HfGbR0oTGQY" },
+            { id: "mount3", title: "Arm-lock da Montada", desc: "Aprenda o arm-lock clássico direto da montada, passo a passo.", videoId: "iUap4TaYVQc" }
         ]
     },
     {
@@ -51,9 +52,9 @@ const UNITS = [
         icon: "&#128737;&#65039;",
         color: "#2b8a3e",
         lessons: [
-            { id: "guard1", title: "Guarda Fechada para Iniciantes", desc: "A guarda fechada e a posicao mais importante do iniciante. Entenda os fundamentos.", videoId: "sEzqfr2FGGM" },
-            { id: "guard2", title: "Fundamentos da Guarda", desc: "Controle, postura e ataques basicos do guard fechado.", videoId: "z0bOvViHp-Q" },
-            { id: "guard3", title: "Tecnicas do Guard", desc: "Uma serie de tecnicas completas para atacar a partir da guarda fechada.", videoId: "RYn7Th3aGgw" }
+            { id: "guard1", title: "Guarda Fechada para Iniciantes", desc: "A guarda fechada é a posição mais importante do iniciante. Entenda os fundamentos.", videoId: "sEzqfr2FGGM" },
+            { id: "guard2", title: "Fundamentos da Guarda", desc: "Controle, postura e ataques básicos do guard fechado.", videoId: "z0bOvViHp-Q" },
+            { id: "guard3", title: "Técnicas do Guard", desc: "Uma série de técnicas completas para atacar a partir da guarda fechada.", videoId: "RYn7Th3aGgw" }
         ]
     },
     {
@@ -61,7 +62,7 @@ const UNITS = [
         icon: "&#128238;",
         color: "#3373cc",
         lessons: [
-            { id: "side1", title: "Guia Completo da Lateral", desc: "Guia definitivo de controle lateral e transicoes.", videoId: "v5-bylGlnQA" },
+            { id: "side1", title: "Guia Completo da Lateral", desc: "Guia definitivo de controle lateral e transições.", videoId: "v5-bylGlnQA" },
             { id: "side2", title: "Escapar da Lateral", desc: "As duas principais fugas que todo faixa-branca precisa dominar.", videoId: "kLygTlvevuQ" },
             { id: "side3", title: "Americana da Lateral", desc: "Segredos para uma americana devastadora direto da lateral.", videoId: "_XjAAnIBlhA" }
         ]
@@ -71,9 +72,9 @@ const UNITS = [
         icon: "&#127891;",
         color: "#f2a007",
         lessons: [
-            { id: "back1", title: "Controle das Costas", desc: "Posicionamento, ganchos e principios de controle da posicao de costas.", videoId: "iIVXVKAvk_Y" },
-            { id: "back2", title: "Ganhar as Costas", desc: "Pegue as costas do adversario direto da lateral, como um faixa-branca.", videoId: "ROKKtEdFOGU" },
-            { id: "back3", title: "Mata-leao (Rear Naked Choke)", desc: "O estrangulamento mais temido do jiu-jitsu, ensinado passo a passo.", videoId: "KW2RvtWgBxU" }
+            { id: "back1", title: "Controle das Costas", desc: "Posicionamento, ganchos e princípios de controle da posição de costas.", videoId: "iIVXVKAvk_Y" },
+            { id: "back2", title: "Ganhar as Costas", desc: "Pegue as costas do adversário direto da lateral, como um faixa-branca.", videoId: "ROKKtEdFOGU" },
+            { id: "back3", title: "Mata-Leão (Rear Naked Choke)", desc: "O estrangulamento mais temido do jiu-jitsu, ensinado passo a passo.", videoId: "KW2RvtWgBxU" }
         ]
     },
     {
@@ -81,8 +82,8 @@ const UNITS = [
         icon: "&#8536;&#65039;",
         color: "#7d3cb5",
         lessons: [
-            { id: "half1", title: "Dominando a Meia Guarda", desc: "Controle, seguranca e raspagens da meia guarda explicadas.", videoId: "LkeRE8pZE5M" },
-            { id: "half2", title: "Raspagem da Meia Guarda", desc: "Uma raspagem eficiente que funciona contra adversarios maiores e mais fortes.", videoId: "pehyN1TcawE" }
+            { id: "half1", title: "Dominando a Meia Guarda", desc: "Controle, segurança e raspagens da meia guarda explicadas.", videoId: "LkeRE8pZE5M" },
+            { id: "half2", title: "Raspagem da Meia Guarda", desc: "Uma raspagem eficiente que funciona contra adversários maiores e mais fortes.", videoId: "pehyN1TcawE" }
         ]
     },
     {
@@ -90,8 +91,8 @@ const UNITS = [
         icon: "&#129458;",
         color: "#e06a00",
         lessons: [
-            { id: "knee1", title: "Joelho na Barriga", desc: "Sistema completo de controle e finalizacoes com o joelho no abdomen.", videoId: "wh0ArrZsTwo" },
-            { id: "knee2", title: "Ataques do Joelho na Barriga", desc: "Muitas opcoes de ataque e finalizacao da posicao.", videoId: "3p-6MUsIy90" }
+            { id: "knee1", title: "Joelho na Barriga", desc: "Sistema completo de controle e finalizações com o joelho no abdômen.", videoId: "wh0ArrZsTwo" },
+            { id: "knee2", title: "Ataques do Joelho na Barriga", desc: "Muitas opções de ataque e finalização da posição.", videoId: "3p-6MUsIy90" }
         ]
     }
 ];
@@ -102,9 +103,9 @@ const SOLO_UNITS = [
         icon: "&#128095;",
         color: "#e11d48",
         lessons: [
-            { id: "solo1", title: "5 Movimentos Solo", desc: "Treino versatil: movimentos fundamentais para treinar sem parceiro, ensinado por Stephan Kesting.", videoId: "GyQo5xhhNtw" },
-            { id: "solo2", title: "3 Drills Solo (BJJ e Judo)", desc: "Tres drills simples de solo que melhoram sua movimentacao em jiujitsu e judo.", videoId: "Pk47adzLzfc" },
-            { id: "solo3", title: "10 Solo Drills p/ Iniciantes", desc: "Dez series praticas de treino solo para quem esta comecando.", videoId: "B1teX9V_Vyc" }
+            { id: "solo1", title: "5 Movimentos Solo", desc: "Treino versátil: movimentos fundamentais para treinar sem parceiro, ensinado por Stephan Kesting.", videoId: "GyQo5xhhNtw" },
+            { id: "solo2", title: "3 Drills Solo (BJJ e Judo)", desc: "Três drills simples de solo que melhoram sua movimentação em jiujitsu e judo.", videoId: "Pk47adzLzfc" },
+            { id: "solo3", title: "10 Solo Drills p/ Iniciantes", desc: "Dez séries práticas de treino solo para quem está começando.", videoId: "B1teX9V_Vyc" }
         ]
     },
     {
@@ -142,7 +143,7 @@ const SOLO_UNITS = [
         icon: "&#128737;&#65039;",
         color: "#2563eb",
         lessons: [
-            { id: "solo13", title: "8 Drills de Guard Retention", desc: "Oito drills basicos de guarda para treinar sozinho, com Cobrinha.", videoId: "4yJBduVVSBo" }
+            { id: "solo13", title: "8 Drills de Guard Retention", desc: "Oito drills básicos de guarda para treinar sozinho, com Cobrinha.", videoId: "4yJBduVVSBo" }
         ]
     }
 ];
@@ -184,8 +185,8 @@ const THEORY_UNIT = {
                 '<path d="M96 180 L82 142 M130 180 L142 140" stroke="#8b93a3" stroke-width="8" stroke-linecap="round"/>' +
                 FIG("#dc2626", 116, 60, 1) +
                 '<path d="M137 94 L116 156 M165 94 L184 154" stroke="#dc2626" stroke-width="8" stroke-linecap="round"/>'),
-            text: THTEXT("A Montada e a posicao mais dominante do jiu-jitsu. Voce fica por cima, com seu peso sobre o abdomen do adversario, controlando o ritmo, a respiracao e todas as opcoes de ataque.\n\nO segredo esta no controle: quadril baixo, joelhos bem abertos e o peso encaixado na frontal do quadril, sobre o tronco do adversario. Com esse controle, ele gasta muita energia para tentar escapar e abre espaco para finalizacoes como o arm-lock e os estrangulamentos.\n\nErro comum: sentar afastado, aliviando o peso e devolvendo liberdade ao adversario. O peso da montada precisa ficar no tronco dele, nao nos seus joelhos."),
-            tips: ["Mantenha os pes apoiados nas costas dele, nao no chao.", "Quadril baixo: o peso sobre o abdomen, nao sobre os joelhos.", "Controle os bracos antes de tentar finalizar.", "Ao escapar, faca por lados: crie a ponte e o espaco de um lado so."]
+            text: THTEXT("A Montada é a posição mais dominante do jiu-jitsu. Você fica por cima, com seu peso sobre o abdômen do adversário, controlando o ritmo, a respiração e todas as opções de ataque.\n\nO segredo está no controle: quadril baixo, joelhos bem abertos e o peso encaixado na frontal do quadril, sobre o tronco do adversário. Com esse controle, ele gasta muita energia para tentar escapar e abre espaço para finalizações como o arm-lock e os estrangulamentos.\n\nErro comum: sentar afastado, aliviando o peso e devolvendo liberdade ao adversário. O peso da montada precisa ficar no tronco dele, não nos seus joelhos."),
+            tips: ["Mantenha os pés apoiados nas costas dele, não no chão.", "Quadril baixo: o peso sobre o abdômen, não sobre os joelhos.", "Controle os braços antes de tentar finalizar.", "Ao escapar, faça por lados: crie a ponte e o espaço de um lado só."]
         },
         {
             id: "th-guard",
@@ -200,8 +201,8 @@ const THEORY_UNIT = {
                 '<path d="M150 184 C148 140 122 130 100 150 M180 176 C188 140 214 134 236 150" stroke="#8b93a3" stroke-width="9" stroke-linecap="round" fill="none"/>' +
                 FIG("#2b8a3e", 168, 60, 1) +
                 '<path d="M189 96 L156 128 M207 96 L238 122" stroke="#2b8a3e" stroke-width="8" stroke-linecap="round"/>'),
-            text: THTEXT("A Guarda Fechada e a posicao em que voce, por baixo, fecha as pernas na cintura do adversario. E a base de todo o jiu-jitsu: de la voce ataca, defende e derruba sem dar espaco.\n\nAs maos controlam as mangas ou o pescoco, e o quadril fica sempre ativo. Quando ele tentar ficar em pe, puxe com as pernas e desequilibre. Ninguem passa a guarda fechada sem abri-la primeiro - e abrir ja e abrir espaco para o seu ataque.\n\nErro comum: guarda passiva, apenas segurando com as pernas. A guarda e agressiva: puxe, desequilibre e ataque assim que sentir o adversario se mover."),
-            tips: ["Puxe o quadril dele para perto do seu peito.", "Braco preso entre as pernas? Ataque kimura ou armlock.", "Controle a postura puxando o pescoco para baixo.", "Cuide do espaco: bracos entre o corpo dele e o seu."]
+            text: THTEXT("A Guarda Fechada é a posição em que você, por baixo, fecha as pernas na cintura do adversário. É a base de todo o jiu-jitsu: de lá você ataca, defende e derruba sem dar espaço.\n\nAs mãos controlam as mangas ou o pescoço, e o quadril fica sempre ativo. Quando ele tentar ficar de pé, puxe com as pernas e desequilibre. Ninguém passa a guarda fechada sem abri-la primeiro - e abrir já é abrir espaço para o seu ataque.\n\nErro comum: guarda passiva, apenas segurando com as pernas. A guarda é agressiva: puxe, desequilibre e ataque assim que sentir o adversário se mover."),
+            tips: ["Puxe o quadril dele para perto do seu peito.", "Braço preso entre as pernas? Ataque kimura ou armlock.", "Controle a postura puxando o pescoço para baixo.", "Cuide do espaço: braços entre o corpo dele e o seu."]
         },
         {
             id: "th-side",
@@ -217,8 +218,8 @@ const THEORY_UNIT = {
                 FIG("#3373cc", 132, 88, 1) +
                 '<path d="M153 124 L132 176 M183 124 L204 178" stroke="#3373cc" stroke-width="8" stroke-linecap="round"/>' +
                 '<path d="M145 156 L110 200 M175 156 L212 200" stroke="#3373cc" stroke-width="9" stroke-linecap="round"/>'),
-            text: THTEXT("A Lateral (cem kilos) e o controle em que voce pressiona o peito do adversario contra o chao, com seu corpo atravessado sobre o dele. Passou a guarda e chegou na lateral? Voce esta na frente do jogo.\n\nO cerebro da lateral e a pressao: seu pescoco encostado nele, o peito por cima do peito e o quadril baixo. Com um braco, controle o bracaco dele; com o outro, a cabeca. De la saem transicoes para a montada, para as costas e finalizacoes como a americana.\n\nErro comum: deixar espaco entre o seu corpo e o do adversario. Espaco na lateral significa fuga."),
-            tips: ["Peso sobre o peito dele, nao sobre os joelhos.", "Controle a cabeca e o braco mais proximo de voce.", "Joelho de tres pontos para bloquear a fuga.", "Quando ele virar de lado, suba para a montada."]
+            text: THTEXT("A Lateral (cem quilos) é o controle em que você pressiona o peito do adversário contra o chão, com seu corpo atravessado sobre o dele. Passou a guarda e chegou na lateral? Você está na frente do jogo.\n\nO cérebro da lateral é a pressão: seu pescoço encostado nele, o peito por cima do peito e o quadril baixo. Com um braço, controle o braçaco dele; com o outro, a cabeça. De lá saem transições para a montada, para as costas e finalizações como a americana.\n\nErro comum: deixar espaço entre o seu corpo e o do adversário. Espaço na lateral significa fuga."),
+            tips: ["Peso sobre o peito dele, não sobre os joelhos.", "Controle a cabeça e o braço mais próximo de você.", "Joelho de três pontos para bloquear a fuga.", "Quando ele virar de lado, suba para a montada."]
         },
         {
             id: "th-back",
@@ -234,8 +235,8 @@ const THEORY_UNIT = {
                 FIG("#f2a007", 108, 44, 0.85) +
                 '<path d="M128 74 C150 62 158 76 148 88 M122 74 C102 62 100 78 106 90" stroke="#f2a007" stroke-width="7" stroke-linecap="round" fill="none"/>' +
                 '<path d="M120 118 L96 196 M132 118 L146 198" stroke="#f2a007" stroke-width="8" stroke-linecap="round"/>'),
-            text: THTEXT("As Costas (tambem chamadas de katagatame pelos faixas-brancas) e a posicao em que voce fica nas costas do adversario, com os calcanhares encaixados nos quadris dele: os ganchos.\n\nQuem tem as costas tem o controle total: o adversario nao te ve, nao consegue usar o peso contra voce e os dois braco proximos do pescoco dele estao prontos para o mata-leao. As costas sao uma das posicoes mais seguras e mais demoradas do jiu-jitsu.\n\nErro comum: deixar os calcanhares caidos. Sem os ganchos grudados no quadril, o adversario escapa com facilidade."),
-            tips: ["Um braco passa por baixo do bracaco dele, do outro lado.", "Calcanhares sempre grudados no quadril dele.", "Controle cabeca e quadril antes de tentar finalizar.", "Se ele conseguir virar, recolha os ganchos e recoloque."]
+            text: THTEXT("As Costas (também chamadas de katagatame pelos faixas-brancas) é a posição em que você fica nas costas do adversário, com os calcanhares encaixados nos quadris dele: os ganchos.\n\nQuem tem as costas tem o controle total: o adversário não te vê, não consegue usar o peso contra você e os dois braços próximos do pescoço dele estão prontos para o mata-leão. As costas são uma das posições mais seguras e mais demoradas do jiu-jitsu.\n\nErro comum: deixar os calcanhares caídos. Sem os ganchos grudados no quadril, o adversário escapa com facilidade."),
+            tips: ["Um braço passa por baixo do braçaco dele, do outro lado.", "Calcanhares sempre grudados no quadril dele.", "Controle cabeça e quadril antes de tentar finalizar.", "Se ele conseguir virar, recolha os ganchos e recoloque."]
         },
         {
             id: "th-half",
@@ -252,8 +253,8 @@ const THEORY_UNIT = {
                 FIG("#7d3cb5", 156, 66, 1) +
                 '<path d="M177 102 L146 128 M199 102 L230 120" stroke="#7d3cb5" stroke-width="8" stroke-linecap="round"/>' +
                 '<path d="M178 132 L196 200 M160 132 L138 200" stroke="#7d3cb5" stroke-width="6" stroke-linecap="round"/>'),
-            text: THTEXT("A Meia Guarda e onde boa parte dos rolos acontece: voce esta por baixo com uma perna dele presa entre as suas pernas. Nem passou, nem passou - quem passa a perna e quem mantem a perna presa disputa cada segundo.\n\nPor baixo, o objetivo e ganhar a guarda fechada, buscar uma raspagem ou virar para cima. Por cima, o plano e libertar a perna presa e passar, ou congelar o adversario com pressao ate ele errar.\n\nErro comum: apertar a perna do adversario so com as coxas e esquecer o quadril. E o quadril que gira, desequilibra e gera a raspagem."),
-            tips: ["Trabalhe para recolocar a guarda fechada.", "Quadril ativo: quem gira com ele controla o ritmo.", "Por cima, nao force a perna: primeiro libere o joelho.", "Por baixo, mantenha o pescoco da linha do quadril dele."]
+            text: THTEXT("A Meia Guarda é onde boa parte dos rolos acontece: você está por baixo com uma perna dele presa entre as suas pernas. Nem passou, nem passou - quem passa a perna e quem mantém a perna presa disputa cada segundo.\n\nPor baixo, o objetivo é ganhar a guarda fechada, buscar uma raspagem ou virar para cima. Por cima, o plano é libertar a perna presa e passar, ou congelar o adversário com pressão até ele errar.\n\nErro comum: apertar a perna do adversário só com as coxas e esquecer o quadril. É o quadril que gira, desequilibra e gera a raspagem."),
+            tips: ["Trabalhe para recolocar a guarda fechada.", "Quadril ativo: quem gira com ele controla o ritmo.", "Por cima, não force a perna: primeiro libere o joelho.", "Por baixo, mantenha o pescoço na linha do quadril dele."]
         },
         {
             id: "th-knee",
@@ -271,8 +272,8 @@ const THEORY_UNIT = {
                 '<circle cx="132" cy="158" r="11" fill="#e06a00"/>' +
                 '<path d="M136 168 L128 208" stroke="#e06a00" stroke-width="9" stroke-linecap="round"/>' +
                 '<path d="M196 138 L218 206" stroke="#e06a00" stroke-width="9" stroke-linecap="round"/>'),
-            text: THTEXT("O Joelho na Barriga e um controle de transicao bastante poderoso: uma canela atravessada no abdomen do adversario enquanto voce controla a cabeca e o braco dele.\n\nDesconfortavel, essa posicao obriga o adversario a reagir - e e exatamente essa reacao que voce usa para trocar de controle. Dali surgem montadas, laterais e finalizacoes.\n\nErro comum: deixar o joelho escorregar para fora da linha do abdome. O joelho precisa ficar pressionado na regiao do estomago, controlando para onde ele vai se mover."),
-            tips: ["Joelho na linha do umbigo, nao no peito.", "Controle cabeca e braco com a mao livre.", "Use a reacao dele para trocar para outra posicao.", "Quando sentir o quadril dele abrir, suba para a montada."]
+            text: THTEXT("O Joelho na Barriga é um controle de transição bastante poderoso: uma canela atravessada no abdômen do adversário enquanto você controla a cabeça e o braço dele.\n\nDesconfortável, essa posição obriga o adversário a reagir - e é exatamente essa reação que você usa para trocar de controle. Dali surgem montadas, laterais e finalizações.\n\nErro comum: deixar o joelho escorregar para fora da linha do abdômen. O joelho precisa ficar pressionado na região do estômago, controlando para onde ele vai se mover."),
+            tips: ["Joelho na linha do umbigo, não no peito.", "Controle cabeça e braço com a mão livre.", "Use a reação dele para trocar para outra posição.", "Quando sentir o quadril dele abrir, suba para a montada."]
         }
     ]
 };
@@ -288,7 +289,7 @@ function isTrail1Done() {
 
 /* ---------- GLOSSARIO (BUSCA) ---------- */
 
-const CAT_COLORS = { "Guarda": "#2b8a3e", "Posicao": "#3373cc", "Finalizacao": "#dc2626", "Passagem": "#b45309", "Raspagem": "#7d3cb5", "Conceito": "#0e7490", "Treino": "#64748b" };
+const CAT_COLORS = { "Guarda": "#2b8a3e", "Posição": "#3373cc", "Finalização": "#dc2626", "Passagem": "#b45309", "Raspagem": "#7d3cb5", "Conceito": "#0e7490", "Treino": "#64748b" };
 
 function catColor(cat) {
     return CAT_COLORS[cat] || "#64748b";
@@ -310,147 +311,149 @@ function norm(s) {
 const GLOSSARY = [
     { name: "Guarda", icon: "&#128737;", cat: "Guarda", photo: "https://commons.wikimedia.org/wiki/Special:FilePath/Brazilian_Jiu-jitsu-Closed_guard.jpg?width=640",
         tags: ["guarda", "baixo", "defesa", "base", "por baixo"],
-        text: "A guarda e a posicao em que voce esta por baixo, com as pernas trabalhando entre o seu corpo e o do adversario. E da guarda que nascem as raspagens, as finalizacoes e as principais defesas do jiu-jitsu.\n\nCada variante de guarda resolve um problema diferente: umas controlam a distancia, outras o quadril, outras os bracos. Quanto mais guardas voce conhece, mais opcoes tem por baixo.",
+        text: "A guarda é a posição em que você está por baixo, com as pernas trabalhando entre o seu corpo e o do adversário. É da guarda que nascem as raspagens, as finalizações e as principais defesas do jiu-jitsu.\n\nCada variante de guarda resolve um problema diferente: umas controlam a distância, outras o quadril, outras os braços. Quanto mais guardas você conhece, mais opções tem por baixo.",
         related: ["Guarda Fechada", "Meia Guarda", "Guarda De La Riva", "Guarda Borboleta", "Guarda de Aranha", "X-Guard"] },
     { name: "Guarda Fechada", icon: "&#128274;", cat: "Guarda", theoryId: "th-guard",
         tags: ["guarda", "fechada", "fechado", "baixo", "base"],
-        related: ["Triangulo", "Arm-lock", "Guarda"] },
+        related: ["Triângulo", "Arm-lock", "Guarda"] },
     { name: "Meia Guarda", icon: "&#9986;", cat: "Guarda", theoryId: "th-half",
         tags: ["guarda", "meia", "half", "baixo"],
         related: ["Meia Guarda Dominada", "Guarda", "Raspagem da Meia Guarda"] },
     { name: "Meia Guarda Dominada", icon: "&#129354;", cat: "Guarda",
         tags: ["guarda", "meia", "dominada", "half", "baixo"],
-        text: "A meia guarda dominada (deep half) e a variante em que voce passa a cabeca por baixo da perna do adversario e trabalha por dentro do quadril dele.\n\nDe la, as opcoes principais sao a raspagem de profundidade e o giro para as costas, quando o adversario reage para frente.",
+        text: "A meia guarda dominada (deep half) é a variante em que você passa a cabeça por baixo da perna do adversário e trabalha por dentro do quadril dele.\n\nDe lá, as opções principais são a raspagem de profundidade e o giro para as costas, quando o adversário reage para frente.",
         related: ["Meia Guarda", "Raspagem da Meia Guarda", "Costas"] },
     { name: "Guarda De La Riva", icon: "&#9889;", cat: "Guarda", photo: "https://commons.wikimedia.org/wiki/Special:FilePath/De_la_Riva_guard.jpg?width=640",
         tags: ["guarda", "de la riva", "dlr", "perna", "baixo", "grip"],
-        text: "A guarda de la riva usa uma perna enganchada por dentro da perna da frente do adversario, abaixando o quadro dele e criando desequilibrio.\n\nE uma guarda muito usada em campeonatos: de la saem raspagens, pegadas nas costas e varridoes de cintura quando ele tenta passar de pe.",
+        text: "A guarda de la riva usa uma perna enganchada por dentro da perna da frente do adversário, abaixando o quadro dele e criando desequilíbrio.\n\nÉ uma guarda muito usada em campeonatos: de lá saem raspagens, pegadas nas costas e varridões de cintura quando ele tenta passar de pé.",
         related: ["Guarda", "Raspagem da Meia Guarda", "Costas", "X-Guard"] },
     { name: "Guarda de Aranha", icon: "&#128375;", cat: "Guarda", photo: "https://commons.wikimedia.org/wiki/Special:FilePath/BJJ_spider_guard_01.jpg?width=640",
         tags: ["guarda", "aranha", "spider", "pernas", "manga", "baixo"],
-        text: "Na guarda de aranha (spider guard), os pes ficam apoiados nos bracos do adversario enquanto suas maos seguram as mangas dele, controlando a distancia e criando garras de pressao.\n\nOs bracos esticados e os pes no quadril dele geram desequilibrio constante, abrindo espaco para raspagens e pegadas fortes.",
+        text: "Na guarda de aranha (spider guard), os pés ficam apoiados nos braços do adversário enquanto suas mãos seguram as mangas dele, controlando a distância e criando garras de pressão.\n\nOs braços esticados e os pés no quadril dele geram desequilíbrio constante, abrindo espaço para raspagens e pegadas fortes.",
         related: ["Guarda", "Guarda Fechada", "Raspagem de Guarda Fechada"] },
     { name: "Guarda Borboleta", icon: "&#129419;", cat: "Guarda", photo: "https://commons.wikimedia.org/wiki/Special:FilePath/Judo10-butterfly_guard.jpg?width=640",
         tags: ["guarda", "borboleta", "butterfly", "baixo", "gancho"],
-        text: "Na guarda borboleta (butterfly), os dois pes ficam enganchados por dentro das pernas do adversario, com os quadris muito ativos.\n\nE a guarda preferida de quem gosta de jogo no ar: de la saem raspagens dinamicas e o balancao para as costas.",
+        text: "Na guarda borboleta (butterfly), os dois pés ficam enganchados por dentro das pernas do adversário, com os quadris muito ativos.\n\nÉ a guarda preferida de quem gosta de jogo no ar: de lá saem raspagens dinâmicas e o balanção para as costas.",
         related: ["Guarda", "Gancho de Quadril", "Raspagem da Meia Guarda"] },
-    { name: "X-Guard", icon: "&#10007;", cat: "Guarda",
+    { name: "X-Guard", icon: "&#10007;", cat: "Guarda", photo: "https://commons.wikimedia.org/wiki/Special:FilePath/XGuard.jpg?width=640",
         tags: ["guarda", "x guard", "baixo", "pernas", "derrubada"],
-        text: "O X-guard coloca as duas pernas enganchadas e cruzadas sob o adversario, levantando o quadril dele e tirando toda a base.\n\nDe la, as raspagens e derrubadas sao quase maquina: o adversario desequilibra para todos os lados enquanto voce escolhe para onde vai.",
+        text: "O X-guard coloca as duas pernas enganchadas e cruzadas sob o adversário, levantando o quadril dele e tirando toda a base.\n\nDe lá, as raspagens e derrubadas são quase máquina: o adversário desequilibra para todos os lados enquanto você escolhe para onde vai.",
         related: ["Guarda", "Guarda De La Riva", "Guarda Borboleta"] },
     { name: "Guarda 50/50", icon: "&#9878;&#65039;", cat: "Guarda", tags: ["guarda", "50", "cinquenta", "pernas", "travas"],
-        text: "Na guarda 50/50, as duas pernas de cada lutador ficam enganchadas uma dentro da outra, criando um jogo simetrico de ataques e travamentos.\n\nE uma posicao defensiva e calculista, muito usada para controlar lutadores explosivos e trabalhar finalizacoes de perna.",
-        related: ["Guarda", "X-Guard", "Triangulo"] },
+        text: "Na guarda 50/50, as duas pernas de cada lutador ficam enganchadas uma dentro da outra, criando um jogo simétrico de ataques e travamentos.\n\nÉ uma posição defensiva e calculista, muito usada para controlar lutadores explosivos e trabalhar finalizações de perna.",
+        related: ["Guarda", "X-Guard", "Triângulo"] },
     { name: "Guarda Meia-Perna", icon: "&#127744;", cat: "Guarda", tags: ["guarda", "meia perna", "perna", "reversa", "baixo"],
-        text: "A guarda meia-perna (tambem chamada de guarda reversa de de la riva) trabalha com a perna enganchada por fora, pressionando o quadril do adversario para dentro.\n\nE uma guarda de defesa agressiva, cheia de opcoes para pegar as costas e raspar lutadores grandes.",
+        text: "A guarda meia-perna (também chamada de guarda reversa de de la riva) trabalha com a perna enganchada por fora, pressionando o quadril do adversário para dentro.\n\nÉ uma guarda de defesa agressiva, cheia de opções para pegar as costas e raspar lutadores grandes.",
         related: ["Guarda", "Guarda De La Riva", "Costas"] },
-    { name: "Montada", icon: "&#128081;", cat: "Posicao", theoryId: "th-mount",
+    { name: "Montada", icon: "&#128081;", cat: "Posição", theoryId: "th-mount",
         tags: ["montada", "cima", "dominancia", "por cima"],
         related: ["Lateral", "Arm-lock", "Ponte"] },
-    { name: "Lateral", icon: "&#128238;", cat: "Posicao", theoryId: "th-side",
+    { name: "Lateral", icon: "&#128238;", cat: "Posição", theoryId: "th-side",
         tags: ["lateral", "100kg", "cem kilos", "controle", "cima"],
         related: ["Montada", "Americana", "Kimura"] },
-    { name: "Costas", icon: "&#127891;", cat: "Posicao", theoryId: "th-back",
+    { name: "Costas", icon: "&#127891;", cat: "Posição", theoryId: "th-back",
         tags: ["costas", "katagatame", "ganchos", "cima", "atras"],
-        related: ["Mata-leao", "Gancho de Quadril", "Ponte"] },
-    { name: "Joelho na Barriga", icon: "&#129458;", cat: "Posicao", theoryId: "th-knee",
+        related: ["Mata-Leão", "Gancho de Quadril", "Ponte"] },
+    { name: "Joelho na Barriga", icon: "&#129458;", cat: "Posição", theoryId: "th-knee",
         tags: ["joelho", "barriga", "joelho na barriga", "transicao", "cima"],
         related: ["Montada", "Lateral", "Passagem por cima"] },
     { name: "Passagem por Cima", icon: "&#11014;", cat: "Passagem", tags: ["passagem", "guarda", "cima", "controle"],
-        text: "Passar a guarda por cima e o objetivo de quem esta por cima: superar as pernas do adversario e chegar na lateral ou em uma posicao de controle.\n\nOs pilares sao a postura, o controle das pernas e o quadril baixo. Comecando pelo joelho pressionado, o caminho para a lateral fica aberto.",
+        text: "Passar a guarda por cima é o objetivo de quem está por cima: superar as pernas do adversário e chegar na lateral ou em uma posição de controle.\n\nOs pilares são a postura, o controle das pernas e o quadril baixo. Começando pelo joelho pressionado, o caminho para a lateral fica aberto.",
         related: ["Lateral", "Montada", "Passagem da Meia Guarda"] },
     { name: "Passagem Toreando", icon: "&#128668;", cat: "Passagem", tags: ["passagem", "guarda", "toreando", "joelhos", "cima"],
-        text: "A passagem toreando usa as duas maos segurando os joelhos do adversario, jogando ambos para o mesmo lado para abrir a guarda.\n\nE uma das passagens mais classicas do jiu-jitsu: simples, segura e eficiente em qualquer level.",
+        text: "A passagem toreando usa as duas mãos segurando os joelhos do adversário, jogando ambos para o mesmo lado para abrir a guarda.\n\nÉ uma das passagens mais clássicas do jiu-jitsu: simples, segura e eficiente em qualquer nível.",
         related: ["Passagem por Cima", "Lateral", "Passagem da Meia Guarda"] },
     { name: "Passagem da Meia Guarda", icon: "&#10145;", cat: "Passagem", tags: ["passagem", "meia", "guarda", "smoosh", "cima"],
-        text: "Quando o adversario fecha a meia guarda, a passagem precisa liberar a perna presa sem criar espaco: pressao com o quadril e giro do joelho.\n\nCom o peso esmagando o quadril dele e a cabeca vencendo a linha, a perna se libera e a lateral chega naturalmente.",
+        text: "Quando o adversário fecha a meia guarda, a passagem precisa liberar a perna presa sem criar espaço: pressão com o quadril e giro do joelho.\n\nCom o peso esmagando o quadril dele e a cabeça vencendo a linha, a perna se libera e a lateral chega naturalmente.",
         related: ["Meia Guarda", "Lateral", "Passagem Toreando"] },
     { name: "Passagem de Fundo", icon: "&#128682;", cat: "Passagem", tags: ["passagem", "guarda", "fundo", "backstep", "costas"],
-        text: "A passagem de fundo (backstep) joga o corpo para tras, passando por baixo da guarda aberta e terminando ao lado do quadril adversario.\n\nE moderna e veloz: quando o adversario reage para proteger a passagem por cima, as costas dele ficam expostas.",
+        text: "A passagem de fundo (backstep) joga o corpo para trás, passando por baixo da guarda aberta e terminando ao lado do quadril adversário.\n\nÉ moderna e veloz: quando o adversário reage para proteger a passagem por cima, as costas dele ficam expostas.",
         related: ["Passagem por Cima", "Costas", "Guarda Borboleta"] },
     { name: "Raspagem de Guarda Fechada", icon: "&#11015;&#65039;", cat: "Raspagem", tags: ["raspagem", "guarda", "fechada", "cima", "baixo"],
-        text: "A raspagem de guarda fechada comeca com o adversario tentando passar o quadril para o lado: voce gira junto e usa a perna como alavanca para derruba-lo.\n\nQuando ele se projetar para frente na tentativa de passar, a raspagem de quadril transforma a forca dele em desequilibrio a seu favor.",
+        text: "A raspagem de guarda fechada começa com o adversário tentando passar o quadril para o lado: você gira junto e usa a perna como alavanca para derrubá-lo.\n\nQuando ele se projetar para frente na tentativa de passar, a raspagem de quadril transforma a força dele em desequilíbrio a seu favor.",
         related: ["Guarda Fechada", "Lateral", "Montada"] },
-    { name: "Raspagem da Meia Guarda", icon: "&#11015;&#65039;", cat: "Raspagem", tags: ["raspagem", "meia", "guarda", "baixo", "cima"],
-        text: "Da meia guarda, a raspagem classica usa o gancho na perna de tras e o controle do braco para derrubar o adversario para o lado.\n\nQuando ele apoiar o joelho para passar, o gancho puxa e o controle do braco projeta: voce termina por cima na lateral.",
+    { name: "Raspagem da Meia Guarda", icon: "&#11015;&#65039;", cat: "Raspagem", photo: "https://commons.wikimedia.org/wiki/Special:FilePath/BJJ-half_guard.jpg?width=640",
+        tags: ["raspagem", "meia", "guarda", "baixo", "cima"],
+        text: "Da meia guarda, a raspagem clássica usa o gancho na perna de trás e o controle do braço para derrubar o adversário para o lado.\n\nQuando ele apoiar o joelho para passar, o gancho puxa e o controle do braço projeta: você termina por cima na lateral.",
         related: ["Meia Guarda", "Lateral", "Gancho de Quadril"] },
-    { name: "Raspagem com Tripe", icon: "&#11015;&#65039;", cat: "Raspagem", tags: ["raspagem", "tripe", "tripod", "de pe"],
-        text: "A raspagem com tripe acontece quando o adversario fica de pe: uma perna puxa a dele e a outra derruba pela perna de tras.\n\nAlem da perna, as maos seguram uma manga e nao se larga: o adversario cai e voce acompanha direto para o controle.",
+    { name: "Raspagem com Tripé", icon: "&#11015;&#65039;", cat: "Raspagem", tags: ["raspagem", "tripe", "tripod", "de pe"],
+        text: "A raspagem com tripé acontece quando o adversário fica de pé: uma perna puxa a dele e a outra derruba pela perna de trás.\n\nAlém da perna, as mãos seguram uma manga e não se larga: o adversário cai e você acompanha direto para o controle.",
         related: ["Guarda", "X-Guard", "Lateral"] },
-    { name: "Raspagem Leva-e-Traz", icon: "&#11015;&#65039;", cat: "Raspagem", tags: ["raspagem", "leva", "traz"],
-        text: "A raspagem leva-e-traz usa um balanco de lado com o adversario de joelhos ou agachado, alternando o quadril para desequilibra-lo.\n\nE uma raspagem dinamica de pressao: ao balancar, voce comanda o ritmo e encontra o momento de projetar.",
+    { name: "Raspagem Leva-e-Traz", icon: "&#11015;&#65039;", cat: "Raspagem", photo: "https://commons.wikimedia.org/wiki/Special:FilePath/BJJ,_brazilian-jiujitsu_05.jpg?width=640",
+        tags: ["raspagem", "leva", "traz"],
+        text: "A raspagem leva-e-traz usa um balanço de lado com o adversário de joelhos ou agachado, alternando o quadril para desequilibrá-lo.\n\nÉ uma raspagem dinâmica de pressão: ao balançar, você comanda o ritmo e encontra o momento de projetar.",
         related: ["Guarda Borboleta", "Lateral", "Raspagem de Guarda Fechada"] },
-    { name: "Arm-lock", icon: "&#128170;", cat: "Finalizacao", photo: "https://commons.wikimedia.org/wiki/Special:FilePath/Holly-armbar-on-Kennedy,-RLA-Melb-10.11.2007.jpg?width=640", tags: ["armlock", "chave", "braco", "cotovelo", "finalizacao"],
-        text: "O arm-lock (chave de braco) estica o cotovelo do adversario contra a articulacao, usando seu corpo como ponto de apoio.\n\nDa montada, da lateral e da guarda fechada ha versoes: o principio e sempre o mesmo, isolar o braco, apertar as coxas e esticar o cotovelo.",
-        related: ["Montada", "Guarda Fechada", "Triangulo"] },
-    { name: "Kimura", icon: "&#129421;", cat: "Finalizacao", photo: "https://commons.wikimedia.org/wiki/Special:FilePath/Brazilian_Jiu-jitsu_Kimura_lock_from_guard.jpg?width=640", tags: ["kimura", "chave", "braco", "ombro", "finalizacao", "garra"],
-        text: "A kimura e uma chave de ombro feita com as duas maos trancadas (a garra kimura), girando o braco do adversario para tras das costas.\n\nAlem de finalizar, e uma arma de controle e transicao: de qualquer posicao por cima ela ameaca e abre caminho para montada e costas.",
+    { name: "Arm-lock", icon: "&#128170;", cat: "Finalização", photo: "https://commons.wikimedia.org/wiki/Special:FilePath/Holly-armbar-on-Kennedy,-RLA-Melb-10.11.2007.jpg?width=640", tags: ["armlock", "chave", "braco", "cotovelo", "finalizacao"],
+        text: "O arm-lock (chave de braço) estica o cotovelo do adversário contra a articulação, usando seu corpo como ponto de apoio.\n\nDa montada, da lateral e da guarda fechada há versões: o princípio é sempre o mesmo, isolar o braço, apertar as coxas e esticar o cotovelo.",
+        related: ["Montada", "Guarda Fechada", "Triângulo"] },
+    { name: "Kimura", icon: "&#129421;", cat: "Finalização", photo: "https://commons.wikimedia.org/wiki/Special:FilePath/Brazilian_Jiu-jitsu_Kimura_lock_from_guard.jpg?width=640", tags: ["kimura", "chave", "braco", "ombro", "finalizacao", "garra"],
+        text: "A kimura é uma chave de ombro feita com as duas mãos trancadas (a garra kimura), girando o braço do adversário para trás das costas.\n\nAlém de finalizar, é uma arma de controle e transição: de qualquer posição por cima ela ameaça e abre caminho para montada e costas.",
         related: ["Lateral", "Americana", "Costas"] },
-    { name: "Americana", icon: "&#128170;", cat: "Finalizacao", tags: ["americana", "chave", "braco", "ombro", "finalizacao"],
-        text: "A americana pressiona o braco do adversario dobrado contra o proprio corpo, forcando o ombro na direcao errada.\n\nDa lateral e da montada, ela aparece quando o adversario comeca a defender: segura o punho, abre o braco e gira o ombro.",
+    { name: "Americana", icon: "&#128170;", cat: "Finalização", tags: ["americana", "chave", "braco", "ombro", "finalizacao"],
+        text: "A americana pressiona o braço do adversário dobrado contra o próprio corpo, forçando o ombro na direção errada.\n\nDa lateral e da montada, ela aparece quando o adversário começa a defender: segura o punho, abre o braço e gira o ombro.",
         related: ["Lateral", "Montada", "Kimura"] },
-    { name: "Mata-leao", icon: "&#129409;", cat: "Finalizacao", photo: "https://commons.wikimedia.org/wiki/Special:FilePath/MCMAP_Rear_choke_-_Defense_Visual_Information_Center_2006.jpg?width=640", tags: ["mata leao", "rear naked", "choke", "pescoco", "estrangulamento", "costas"],
-        text: "O mata-leao (rear naked choke) estrangula o pescoco do adversario por tras, com um braco pressionando cada lado do pescoco.\n\nE a finalizacao mais famosa do MMA e do jiu-jitsu: da posicao de costas, um braco passa por cima do bracaco dele e o outro sela o estrangulamento.",
+    { name: "Mata-Leão", icon: "&#129409;", cat: "Finalização", photo: "https://commons.wikimedia.org/wiki/Special:FilePath/MCMAP_Rear_choke_-_Defense_Visual_Information_Center_2006.jpg?width=640", tags: ["mata leao", "rear naked", "choke", "pescoco", "estrangulamento", "costas"],
+        text: "O mata-leão (rear naked choke) estrangula o pescoço do adversário por trás, com um braço pressionando cada lado do pescoço.\n\nÉ a finalização mais famosa do MMA e do jiu-jitsu: da posição de costas, um braço passa por cima do braçaco dele e o outro sela o estrangulamento.",
         related: ["Costas", "Estrangulamento", "Gancho de Quadril"] },
-    { name: "Triangulo", icon: "&#128208;", cat: "Finalizacao", photo: "https://commons.wikimedia.org/wiki/Special:FilePath/Triangle_choke.jpeg?width=640", tags: ["triangulo", "triangle", "pernas", "guarda", "estrangulamento"],
-        text: "O triangulo usa as duas pernas cruzadas ao redor do pescoco e de um braco do adversario, estrangulando pelas laterais do pescoco.\n\nDa guarda fechada, ele e finalizacao e transicao ao mesmo tempo: quando o adversario defende o braco, chave de braco aparece.",
+    { name: "Triângulo", icon: "&#128208;", cat: "Finalização", photo: "https://commons.wikimedia.org/wiki/Special:FilePath/Triangle_choke.jpeg?width=640", tags: ["triangulo", "triangle", "pernas", "guarda", "estrangulamento"],
+        text: "O triângulo usa as duas pernas cruzadas ao redor do pescoço e de um braço do adversário, estrangulando pelas laterais do pescoço.\n\nDa guarda fechada, ele é finalização e transição ao mesmo tempo: quando o adversário defende o braço, chave de braço aparece.",
         related: ["Guarda Fechada", "Arm-lock", "Guarda 50/50"] },
-    { name: "Omoplata", icon: "&#128641;", cat: "Finalizacao", photo: "https://commons.wikimedia.org/wiki/Special:FilePath/Omoplata_armlock.jpg?width=640", tags: ["omoplata", "chave", "ombro", "guard", "finalizacao"],
-        text: "A omoplata trava o braco do adversario com as pernas e os quadris, girando o ombro dele ao contrario do movimento.\n\nE uma finalizacao de surpresa: sai da guarda e de transicoes, e quando o adversario roda para fugir, ele devolve as costas.",
-        related: ["Guarda", "Costas", "Triangulo"] },
-    { name: "Guilhotina", icon: "&#9995;", cat: "Finalizacao", photo: "https://commons.wikimedia.org/wiki/Special:FilePath/Guillotine_choke.jpg?width=640", tags: ["guilhotina", "guillotine", "pescoco", "estrangulamento", "de pe"],
-        text: "A guilhotina estrangula o pescoco com o braco ao redor, seja de pe, no solo ou em quedas de dupla.\n\nA chave esta no encaixe: a lateral do pescoco na dobra do cotovelo, a cintura alta e o quadril fechando o estrangulamento.",
-        related: ["Estrangulamento", "Raspagem com Tripe", "Costas"] },
-    { name: "Choke de Gola", icon: "&#128085;", cat: "Finalizacao", tags: ["choke", "gola", "lapel", "gi", "kimono", "estrangulamento"],
-        text: "O choke de gola usa a lapela do kimono do adversario para estrangular em varias direcoes, como o arco e flecha e a cruzada.\n\nCom a gola na mao, cada movimento do adversario vira alavanca: e por isso o gi muda tanto o jogo de finalizacoes.",
-        related: ["Mata-leao", "Guilhotina", "Gi"] },
-    { name: "Estrangulamento", icon: "&#128168;", cat: "Conceito", tags: ["estrangulamento", "choke", "pescoco", "finalizacao", "conceito"],
-        text: "Estrangulamento e a finalizacao que corta a circulacao do sangue no pescoco, fazendo o adversario dormir se nao bater.\n\nE a finalizacao mais segura e eficiente do jiu-jitsu: funciona em qualquer tamanho e pressiona o pescoco, nunca a traqueia.",
-        related: ["Mata-leao", "Guilhotina", "Triangulo"] },
+    { name: "Omoplata", icon: "&#128641;", cat: "Finalização", photo: "https://commons.wikimedia.org/wiki/Special:FilePath/Omoplata_armlock.jpg?width=640", tags: ["omoplata", "chave", "ombro", "guard", "finalizacao"],
+        text: "A omoplata trava o braço do adversário com as pernas e os quadris, girando o ombro dele ao contrário do movimento.\n\nÉ uma finalização de surpresa: sai da guarda e de transições, e quando o adversário roda para fugir, ele devolve as costas.",
+        related: ["Guarda", "Costas", "Triângulo"] },
+    { name: "Guilhotina", icon: "&#9995;", cat: "Finalização", photo: "https://commons.wikimedia.org/wiki/Special:FilePath/Guillotine_choke.jpg?width=640", tags: ["guilhotina", "guillotine", "pescoco", "estrangulamento", "de pe"],
+        text: "A guilhotina estrangula o pescoço com o braço ao redor, seja de pé, no solo ou em quedas de dupla.\n\nA chave está no encaixe: a lateral do pescoço na dobra do cotovelo, a cintura alta e o quadril fechando o estrangulamento.",
+        related: ["Estrangulamento", "Raspagem com Tripé", "Costas"] },
+    { name: "Choke de Gola", icon: "&#128085;", cat: "Finalização", photo: "https://commons.wikimedia.org/wiki/Special:FilePath/Gi_grappling_at_Ginowan_City_Police_Station.jpg?width=640", tags: ["choke", "gola", "lapel", "gi", "kimono", "estrangulamento"],
+        text: "O choke de gola usa a lapela do kimono do adversário para estrangular em várias direções, como o arco e flecha e a cruzada.\n\nCom a gola na mão, cada movimento do adversário vira alavanca: é por isso que o gi muda tanto o jogo de finalizações.",
+        related: ["Mata-Leão", "Guilhotina", "Gi"] },
+    { name: "Estrangulamento", icon: "&#128168;", cat: "Conceito", photo: "https://commons.wikimedia.org/wiki/Special:FilePath/ArmyMilCombativesChokehold.jpg?width=640", tags: ["estrangulamento", "choke", "pescoco", "finalizacao", "conceito"],
+        text: "Estrangulamento é a finalização que corta a circulação do sangue no pescoço, fazendo o adversário dormir se não bater.\n\nÉ a finalização mais segura e eficiente do jiu-jitsu: funciona em qualquer tamanho e pressiona o pescoço, nunca a traqueia.",
+        related: ["Mata-Leão", "Guilhotina", "Triângulo"] },
     { name: "Ponte", icon: "&#127760;", cat: "Conceito", tags: ["ponte", "upa", "escapada", "fuga", "quadril", "montada"],
-        text: "A ponte (upa) e o movimento base da escapada: empurra no chao, levanta o quadril e desequilibra o adversario para o lado.\n\nE a base de quase todas as fugas de baixo. Sem quadril ativo da ponte, nao existe escape de montada nem abertura de espaco.",
+        text: "A ponte (upa) é o movimento base da escapada: empurra no chão, levanta o quadril e desequilibra o adversário para o lado.\n\nÉ a base de quase todas as fugas de baixo. Sem quadril ativo da ponte, não existe escape de montada nem abertura de espaço.",
         related: ["Fuga de Quadril", "Montada", "Postura"] },
     { name: "Fuga de Quadril", icon: "&#129424;", cat: "Conceito", tags: ["fuga", "quadril", "shrimp", "escapada", "velocidade"],
-        text: "A fuga de quadril (shrimping) move o quadril para o lado enquanto o corpo fica em arvore, criando espaco mesmo com o adversario em cima.\n\nCombinada com a ponte, ela reconstroi a guarda ou escapa de posicoes ruins. E o fundamento mais treinado de todos.",
+        text: "A fuga de quadril (shrimping) move o quadril para o lado enquanto o corpo fica em árvore, criando espaço mesmo com o adversário em cima.\n\nCombinada com a ponte, ela reconstrói a guarda ou escapa de posições ruins. É o fundamento mais treinado de todos.",
         related: ["Ponte", "Guarda Fechada", "Postura"] },
     { name: "Postura", icon: "&#128100;", cat: "Conceito", tags: ["postura", "upright", "cima", "base", "fator"],
-        text: "Postura e o controle da posicao de quem esta por cima: peito erguido, coluna forte e peso distribuido na base.\n\nQuem domina a postura domina o ritmo: o adversario acha horas de passagem, mas a postura concede e desce na medida.",
+        text: "Postura é o controle da posição de quem está por cima: peito erguido, coluna forte e peso distribuído na base.\n\nQuem domina a postura domina o ritmo: o adversário acha horas de passagem, mas a postura concede e desce na medida.",
         related: ["Passagem por Cima", "Base", "Montada"] },
     { name: "Base", icon: "&#129521;", cat: "Conceito", tags: ["base", "equilibrio", "centro", "estabilidade", "conceito"],
-        text: "Base e a distribuicao do peso no seu centro de gravidade, criando estabilidade para atacar e defendendo-se de derrubadas.\n\nQuem tem base nao cai sozinho: seja em pe, de joelhos ou embaixo, a base e o primeiro fundamento de tudo.",
-        related: ["Postura", "Controle", "Desequilibrio"] },
+        text: "Base é a distribuição do peso no seu centro de gravidade, criando estabilidade para atacar e defendendo-se de derrubadas.\n\nQuem tem base não cai sozinho: seja de pé, de joelhos ou embaixo, a base é o primeiro fundamento de tudo.",
+        related: ["Postura", "Controle", "Desequilíbrio"] },
     { name: "Gancho de Quadril", icon: "&#129457;", cat: "Conceito", tags: ["gancho", "hooks", "quadril", "pernas", "controle"],
-        text: "Os ganchos de quadril sao as pernas enganchadas no adversario: nem de pe nem pasando, eles controlam o caminho da guarda.\n\nDos ganchos nascem a borboleta, o x-guard e metade das raspagens: a perna vira um leme do quadril.",
+        text: "Os ganchos de quadril são as pernas enganchadas no adversário: nem de pé nem passando, eles controlam o caminho da guarda.\n\nDos ganchos nascem a borboleta, o x-guard e metade das raspagens: a perna vira um leme do quadril.",
         related: ["Guarda Borboleta", "X-Guard", "Costas"] },
     { name: "Controle", icon: "&#127919;", cat: "Conceito", tags: ["controle", "dominancia", "peso", "base"],
-        text: "Controle e a posicao em que voce usa peso, base e pressao para limitar os movimentos do adversario e fazer o jogo acontecer.\n\nE mais importante que a finalizacao: controle total no tempo certo abre a porta para qualquer ataque.",
+        text: "Controle é a posição em que você usa peso, base e pressão para limitar os movimentos do adversário e fazer o jogo acontecer.\n\nÉ mais importante que a finalização: controle total no tempo certo abre a porta para qualquer ataque.",
         related: ["Base", "Postura", "Lateral"] },
-    { name: "Desequilibrio", icon: "&#128171;", cat: "Conceito", tags: ["desequilibrio", "kuzushi", "quebrar", "quadril"],
-        text: "Desequilibrio (kuzushi) e mover o centro de gravidade do adversario: puxar, girar ou elevar o quadril dele fora da base.\n\nToda tecnica de jiu-jitsu encaixa melhor quando o adversario esta desequilibrado, antes ou durante o movimento.",
-        related: ["Raspagem com Tripe", "Raspagem de Guarda Fechada", "Passagem por Cima"] },
+    { name: "Desequilíbrio", icon: "&#128171;", cat: "Conceito", tags: ["desequilibrio", "kuzushi", "quebrar", "quadril"],
+        text: "Desequilíbrio (kuzushi) é mover o centro de gravidade do adversário: puxar, girar ou elevar o quadril dele fora da base.\n\nToda técnica de jiu-jitsu encaixa melhor quando o adversário está desequilibrado, antes ou durante o movimento.",
+        related: ["Raspagem com Tripé", "Raspagem de Guarda Fechada", "Passagem por Cima"] },
     { name: "Jiu-Jitsu", icon: "&#129355;", cat: "Conceito", tags: ["jiu jitsu", "bjj", "arte suave", "grappling", "luta"],
-        text: "O jiu-jitsu brasileiro e uma arte marcial focada em controle, posicao e finalizacao, onde tamanho pode ser superado por tecnica.\n\nDiferente da forca bruta, o jiu-jitsu premia quem pensa: cada posicao e um xadrez do corpo contra o chao.",
+        text: "O jiu-jitsu brasileiro é uma arte marcial focada em controle, posição e finalização, onde tamanho pode ser superado por técnica.\n\nDiferente da força bruta, o jiu-jitsu premia quem pensa: cada posição é um xadrez do corpo contra o chão.",
         related: ["Faixa", "Gi", "Rolo"] },
     { name: "Faixa", icon: "&#127942;", cat: "Conceito", tags: ["faixa", "belt", "graduacao", "cor", "ranking"],
-        text: "A faixa marca a evolucao no jiu-jitsu: da branca a preta, cada grau representa tempo, treino e conhecimento acumulado.\n\nAs cores mudam, mas a filosofia continua: a faixa e um lembrete de que o jiu-jitsu e uma jornada, nao um destino.",
+        text: "A faixa marca a evolução no jiu-jitsu: da branca à preta, cada grau representa tempo, treino e conhecimento acumulado.\n\nAs cores mudam, mas a filosofia continua: a faixa é um lembrete de que o jiu-jitsu é uma jornada, não um destino.",
         related: ["Jiu-Jitsu", "Treino", "Rolo"] },
     { name: "Gi / Kimono", icon: "&#128085;", cat: "Treino", tags: ["gi", "kimono", "uniforme", "gola", "manga", "treino"],
-        text: "O gi (ou kimono) e o uniforme tradicional do jiu-jitsu: suas golas e mangas viram ferramentas de pegada e finalizacao.\n\nTreinar no gi desenvolve controle fino: cada grip, gola e manga e uma alavanca para quem sabe usar.",
+        text: "O gi (ou kimono) é o uniforme tradicional do jiu-jitsu: suas golas e mangas viram ferramentas de pegada e finalização.\n\nTreinar no gi desenvolve controle fino: cada grip, gola e manga é uma alavanca para quem sabe usar.",
         related: ["Choke de Gola", "Jiu-Jitsu", "Treino"] },
     { name: "No-Gi", icon: "&#129340;", cat: "Treino", tags: ["no gi", "sem gi", "rashguard", "agarra", "edicao"],
-        text: "No-gi e o jiu-jitsu sem kimono: a pegada muda para o corpo, o pescoco e os bracos, e o jogo fica mais rapido e escorregadio.\n\nSem gola para segurar, o controle depende mais do quadril e da base, mantendo a essencia da luta.",
+        text: "No-gi é o jiu-jitsu sem kimono: a pegada muda para o corpo, o pescoço e os braços, e o jogo fica mais rápido e escorregadio.\n\nSem gola para segurar, o controle depende mais do quadril e da base, mantendo a essência da luta.",
         related: ["Jiu-Jitsu", "Guarda Fechada", "Treino"] },
     { name: "Treino", icon: "&#128170;", cat: "Treino", tags: ["treino", "aula", "drill", "exercicio", "academia"],
-        text: "O treino e onde tudo acontece: aquecimento, drills, posicoes e o rolo final que transforma repertorio em instinto.\n\nTreinar com constancia vale mais que treinar pesado um dia na semana: o corpo e a memoria constroem juntos.",
+        text: "O treino é onde tudo acontece: aquecimento, drills, posições e o rolo final que transforma repertório em instinto.\n\nTreinar com constância vale mais que treinar pesado um dia na semana: o corpo e a memória constroem juntos.",
         related: ["Aquecimento", "Drill", "Rolo"] },
     { name: "Aquecimento", icon: "&#128293;", cat: "Treino", tags: ["aquecimento", "warmup", "alongar", "prevenir", "lesao"],
-        text: "Aquecer prepara o corpo para o treino: eleva a temperatura, lubrifica as articulacoes e reduz o risco de lesao.\n\nCinco a dez minutos de alongamento e mobilidade antes do rolo fazem toda a diferenca para o dia seguinte.",
+        text: "Aquecer prepara o corpo para o treino: eleva a temperatura, lubrifica as articulações e reduz o risco de lesão.\n\nCinco a dez minutos de alongamento e mobilidade antes do rolo fazem toda a diferença para o dia seguinte.",
         related: ["Treino", "Fuga de Quadril", "Drill"] },
     { name: "Drill", icon: "&#128260;", cat: "Treino", tags: ["drill", "repeticao", "movimento", "solo", "pratica"],
-        text: "Drill e a repeticao de um movimento ate ele virar reflexo: o caminho mais rapido para uma tecnica nova parar de 'sair' no rolo.\n\nNos drills, menos foco em velocidade e mais em posicao: o joelho certo, o quadril certo, mil vezes.",
+        text: "Drill é a repetição de um movimento até ele virar reflexo: o caminho mais rápido para uma técnica nova parar de \"sair\" no rolo.\n\nNos drills, menos foco em velocidade e mais em posição: o joelho certo, o quadril certo, mil vezes.",
         related: ["Treino", "Aquecimento", "Rolo"] },
     { name: "Rolo", icon: "&#129340;", cat: "Treino", tags: ["rolo", "sparring", "roll", "luta livre", "treino"],
-        text: "Rolo e a parte do treino em que voce luta de verdade, testando tecnicas contra a resistencia total do adversario.\n\nE onde o jiu-jitsu vira jogo: errar no rolo e coletar dados, ganhar e consequencia da evolucao.",
+        text: "Rolo é a parte do treino em que você luta de verdade, testando técnicas contra a resistência total do adversário.\n\nÉ onde o jiu-jitsu vira jogo: errar no rolo é coletar dados, ganhar é consequência da evolução.",
         related: ["Treino", "Jiu-Jitsu", "Faixa"] }
 ];
 
@@ -585,7 +588,7 @@ function dataKey() { return "bjjlingo_data_" + (getSession() || "guest"); }
 
 function login(username, password) {
     const account = getAccount(username);
-    if (!account) return "Conta nao encontrada. Crie uma conta nova.";
+    if (!account) return "Conta não encontrada. Crie uma conta nova.";
     if (account !== password) return "Senha incorreta. Tente de novo.";
     localStorage.setItem(SESSION_KEY, username);
     aiFlow = null;
@@ -596,7 +599,7 @@ function login(username, password) {
 function createAccount(username, password) {
     const accounts = JSON.parse(localStorage.getItem(ACCOUNTS_KEY) || "{}");
     if (accounts[username]) return "Ja existe uma conta com esse nome.";
-    if (!username || username.length < 2) return "Escolha um nome de usuario com pelo menos 2 letras.";
+    if (!username || username.length < 2) return "Escolha um nome de usuário com pelo menos 2 letras.";
     if (!password || password.length < 3) return "A senha precisa ter pelo menos 3 caracteres.";
     accounts[username] = password;
     saveAccounts(accounts);
@@ -911,7 +914,7 @@ function renderHome() {
         if (doneCheck) doneCheck.style.display = "none";
     } else {
         document.getElementById("nextLessonTitle").textContent = "Tudo concluido!";
-        document.getElementById("nextLessonText").textContent = "Voce completou todas as " + (state.profile.soloTraining ? "licoes de treino solo" : "posicoes") + "!";
+        document.getElementById("nextLessonText").textContent = "Você completou todas as " + (state.profile.soloTraining ? "lições de treino solo" : "posições") + "!";
         document.getElementById("btnContinue").textContent = "Treinar de novo";
         if (doneCheck) doneCheck.style.display = "flex";
     }
@@ -931,16 +934,16 @@ function renderUnits() {
     const container = document.getElementById("unitsContainer");
     const units = activeUnits();
     document.getElementById("learnTitle").innerHTML = units === SOLO_UNITS ? "Treino Solo <span>&#127968;</span>" : "Posicoes <span>&#129718;</span>";
-    document.getElementById("learnSub").textContent = units === SOLO_UNITS ? "Treine sozinho em casa com drills de Jiu-Jitsu" : "Aprimore suas posicoes e complete as licoes";
+    document.getElementById("learnSub").textContent = units === SOLO_UNITS ? "Treine sozinho em casa com drills de Jiu-Jitsu" : "Aprimore suas posições e complete as lições";
 
     let html = "";
     if (units === SOLO_UNITS) {
-        html += "<div class='solo-banner'><strong>&#127968; Modo Treino Solo</strong><span>Aqueça bem, respeite seus limites e treine num espaco seguro e livre.</span></div>";
+        html += "<div class='solo-banner'><strong>&#127968; Modo Treino Solo</strong><span>Aqueça bem, respeite seus limites e treine num espaço seguro e livre.</span></div>";
     }
     const next = getNextLesson();
     units.forEach(function(unit, ui) {
         const doneCount = unit.lessons.filter(function(l) { return state.lessonsDone[l.id]; }).length;
-        html += "<div class='unit-card'><div class='unit-head'><div class='unit-icon' style='background:" + unit.color + "22'>" + unit.icon + "</div><div><div class='unit-title'>" + unit.title + "</div><div class='unit-progress'>" + doneCount + "/" + unit.lessons.length + " licoes</div></div></div><div class='unit-lessons'>";
+        html += "<div class='unit-card'><div class='unit-head'><div class='unit-icon' style='background:" + unit.color + "22'>" + unit.icon + "</div><div><div class='unit-title'>" + unit.title + "</div><div class='unit-progress'>" + doneCount + "/" + unit.lessons.length + " lições</div></div></div><div class='unit-lessons'>";
         unit.lessons.forEach(function(lesson, li) {
             const done = !!state.lessonsDone[lesson.id];
             const isNext = next && next.lesson.id === lesson.id;
@@ -959,15 +962,15 @@ function renderUnits() {
     const tDone = theoryDone();
     const t1pct = t1stats.total ? Math.round((t1stats.done / t1stats.total) * 100) : 0;
     if (t1Done) {
-        html += "<div class='theory-head'><div class='unit-icon unit-icon-lg' style='background:" + THEORY_UNIT.color + "22'>" + THEORY_UNIT.icon + "</div><div><div class='unit-title'>" + THEORY_UNIT.title + "</div><div class='unit-progress'>" + tDone + "/" + THEORY_UNIT.lessons.length + " teorias concluidas</div></div></div><div class='theory-grid'>";
+        html += "<div class='theory-head'><div class='unit-icon unit-icon-lg' style='background:" + THEORY_UNIT.color + "22'>" + THEORY_UNIT.icon + "</div><div><div class='unit-title'>" + THEORY_UNIT.title + "</div><div class='unit-progress'>" + tDone + "/" + THEORY_UNIT.lessons.length + " teorias concluídas</div></div></div><div class='theory-grid'>";
         THEORY_UNIT.lessons.forEach(function(lesson, li) {
             const done = !!state.lessonsDone[lesson.id];
             const isNext = next && next.theory && next.lesson.id === lesson.id;
-            html += "<div class='theory-card" + (done ? " completed" : "") + (isNext ? " next" : "") + "' data-theory='" + li + "'><div class='theory-card-ic' style='--tc:" + lesson.color + "'>" + lesson.icon + "</div><div class='theory-card-body'><strong>" + lesson.title + "</strong><span>" + (done ? "Concluida" : "Posicao +10 XP") + "</span></div><span class='lesson-check'>" + (done ? "&#10004;&#65039;" : "&#128214;") + "</span></div>";
+            html += "<div class='theory-card" + (done ? " completed" : "") + (isNext ? " next" : "") + "' data-theory='" + li + "'><div class='theory-card-ic' style='--tc:" + lesson.color + "'>" + lesson.icon + "</div><div class='theory-card-body'><strong>" + lesson.title + "</strong><span>" + (done ? "Concluída" : "Posição +10 XP") + "</span></div><span class='lesson-check'>" + (done ? "&#10004;&#65039;" : "&#128214;") + "</span></div>";
         });
         html += "</div>";
     } else {
-        html += "<div class='theory-locked'><div class='locked-ic'>&#128274;</div><div><div class='unit-title'>" + THEORY_UNIT.title + "</div><div class='unit-progress'>Complete as " + t1stats.total + " licoes para desbloquear" + (t1stats.done > 0 ? " (" + t1pct + "%)" : "") + "</div><div class='theory-lock-bar'><div class='theory-lock-fill' style='width:" + t1pct + "%'></div></div></div></div>";
+        html += "<div class='theory-locked'><div class='locked-ic'>&#128274;</div><div><div class='unit-title'>" + THEORY_UNIT.title + "</div><div class='unit-progress'>Complete as " + t1stats.total + " lições para desbloquear" + (t1stats.done > 0 ? " (" + t1pct + "%)" : "") + "</div><div class='theory-lock-bar'><div class='theory-lock-fill' style='width:" + t1pct + "%'></div></div></div></div>";
     }
 
     container.innerHTML = html;
@@ -1016,6 +1019,209 @@ function formatDate(dateStr) {
     const parts = dateStr.split("-");
     const d = new Date(parts[0], parts[1] - 1, parts[2]);
     return DAY_NAMES_SHORT[d.getDay()] + " " + parts[2] + "/" + parts[1];
+}
+
+/* ---------- PLANO DIARIO DE TREINO SOLO ---------- */
+
+const DRILL_POOL = {
+    warmup: [
+        { id: "w1", icon: "&#127947;&#65039;", title: "Pular corda", note: "Aqueça elevando o ritmo aos poucos", reps: "2 min" },
+        { id: "w2", icon: "&#128248;", title: "Alongamento dinamico", note: "Mobilidade de ombro, quadril e tornozelo", reps: "6 min" },
+        { id: "w3", icon: "&#127875;", title: "Polichinelo", note: "Elevar a frequencia cardiaca", reps: "3 x 30s" },
+        { id: "w4", icon: "&#127765;", title: "Corrida leve no lugar", note: "Termine com joelhos altos", reps: "3 min" }
+    ],
+    movement: [
+        { id: "m1", icon: "&#129424;", title: "Fuga de quadril (shrimp)", note: "Rode o quadril para o lado empurrando com o pe", reps: "10x cada lado" },
+        { id: "m2", icon: "&#127760;", title: "Ponte (upa)", note: "Empurre no chao e suba o quadril", reps: "10x" },
+        { id: "m3", icon: "&#127937;", title: "Granby roll", note: "Role por cima do ombro e volte em turtle", reps: "8x cada lado" },
+        { id: "m4", icon: "&#127338;", title: "Rolamentos para frente e tras", note: "Rola, levanta e repete", reps: "10x" },
+        { id: "m5", icon: "&#128669;", title: "Shrimp + ponte combinados", note: "Alterna sem parar os dois fundamentos", reps: "10x cada lado" }
+    ],
+    conditioning: [
+        { id: "c1", icon: "&#128170;", title: "Flexao", note: "Quadril alinhado e corpo reto", reps: "3 x 10" },
+        { id: "c2", icon: "&#129522;", title: "Abdominal", note: "Contracao controlada sem puxar o pescoco", reps: "3 x 15" },
+        { id: "c3", icon: "&#128248;", title: "Ponte de gluteo", note: "Fortalece quadril e lombar", reps: "3 x 12" },
+        { id: "c4", icon: "&#128170;", title: "Prancha", note: "Nucleo firme, quadris alinhados", reps: "3 x 30s" }
+    ]
+};
+
+function techniquePool() {
+    const arr = [];
+    activeUnits().forEach(function(u) {
+        u.lessons.forEach(function(l) {
+            arr.push({ id: "lt_" + l.id, icon: u.icon, title: l.title, note: "Siga o vídeo e repita os movimentos (" + u.title + ")", reps: "8 min", lessonId: l.id });
+        });
+    });
+    return arr;
+}
+
+function seededRand(seed) {
+    let s = seed >>> 0;
+    return function() {
+        s = (s * 1664525 + 1013904223) >>> 0;
+        return s / 4294967296;
+    };
+}
+
+function daySeed(dateStr, offset) {
+    let n = 7;
+    for (let i = 0; i < dateStr.length; i++) n = (n * 31 + dateStr.charCodeAt(i)) >>> 0;
+    return (n + offset * 7919) >>> 0;
+}
+
+function buildPlan(dateStr, offset) {
+    const rnd = seededRand(daySeed(dateStr, offset));
+    const warmP = DRILL_POOL.warmup.slice();
+    const movP = DRILL_POOL.movement.slice();
+    const techP = techniquePool();
+    const condP = DRILL_POOL.conditioning.slice();
+    function pick(arr) {
+        const i = Math.floor(rnd() * arr.length);
+        return arr.splice(i, 1)[0];
+    }
+    return [pick(warmP), pick(movP), pick(techP), pick(techP), pick(condP)].map(function(d) { return d.id; });
+}
+
+function getPlan() {
+    const key = todayStr();
+    if (!state.planLog[key]) {
+        state.planLog[key] = { ids: buildPlan(key, 0), done: [], seed: 0, xp: 0, complete: false };
+        saveState();
+    }
+    return { key: key, plan: state.planLog[key] };
+}
+
+function drillById(id) {
+    for (const cat in DRILL_POOL) {
+        for (const d of DRILL_POOL[cat]) if (d.id === id) return d;
+    }
+    if (id.indexOf("lt_") === 0) {
+        const lid = id.slice(3);
+        for (const u of activeUnits()) {
+            for (const l of u.lessons) {
+                if (l.id === lid) return { id: id, icon: u.icon, title: l.title, note: "Siga o vídeo e repita os movimentos (" + u.title + ")", reps: "8 min", lessonId: lid };
+            }
+        }
+    }
+    return null;
+}
+
+function findLessonByVideoId(videoId) {
+    [UNITS, SOLO_UNITS, [THEORY_UNIT]].forEach(function(units) {
+        for (const u of units) {
+            for (const l of u.lessons) {
+                if (l.id === videoId) return { unit: u, lesson: l };
+            }
+        }
+    });
+    return null;
+}
+
+function toggleDrill(id) {
+    const { plan } = getPlan();
+    if (!plan.ids.includes(id)) return;
+    const idx = plan.done.indexOf(id);
+    const allDoneBefore = plan.ids.length > 0 && plan.ids.every(function(x) { return plan.done.includes(x); });
+    if (idx >= 0) {
+        plan.done.splice(idx, 1);
+        plan.xp = Math.max(0, plan.xp - 2);
+        state.xp = Math.max(0, state.xp - 2);
+    } else {
+        plan.done.push(id);
+        plan.xp += 2;
+        state.xp += 2;
+        showToast("Drill concluido! +2 XP");
+    }
+    const allDone = plan.ids.length > 0 && plan.ids.every(function(x) { return plan.done.includes(x); });
+    if (allDone && !plan.complete) {
+        plan.complete = true;
+        plan.xp += 7;
+        state.xp += 7;
+        showToast("Plano do dia completo! +7 XP bonus");
+    } else if (allDoneBefore && !allDone) {
+        plan.complete = false;
+    }
+    saveState();
+    renderHome();
+}
+
+function rerollPlan() {
+    const { key, plan } = getPlan();
+    if (plan.complete) return;
+    state.planLog[key] = { ids: buildPlan(key, plan.seed + 1), done: [], seed: plan.seed + 1, xp: plan.xp, complete: false };
+    saveState();
+    renderHome();
+    showToast("Novo plano gerado!");
+}
+
+function computePlanStreak() {
+    let streak = 0;
+    const d = new Date();
+    for (;;) {
+        const key = d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0");
+        const p = state.planLog[key];
+        if (p && p.complete && p.ids.length && p.ids.every(function(id) { return p.done.includes(id); })) {
+            streak++;
+            d.setDate(d.getDate() - 1);
+        } else {
+            break;
+        }
+    }
+    return streak;
+}
+
+function renderPlan() {
+    const card = document.getElementById("planCard");
+    if (!card) return;
+    const { plan } = getPlan();
+    const drills = plan.ids.map(drillById).filter(Boolean);
+    const total = drills.length;
+    const doneCount = plan.done.length;
+    const allDone = total > 0 && doneCount === total;
+    const pct = total ? Math.round((doneCount / total) * 100) : 0;
+
+    document.getElementById("planStreak").textContent = computePlanStreak();
+    document.getElementById("planCount").textContent = doneCount + "/" + total;
+    document.getElementById("planProgress").style.width = pct + "%";
+    document.getElementById("planBar").classList.toggle("done", allDone);
+
+    let items = "";
+    drills.forEach(function(d) {
+        const isDone = plan.done.includes(d.id);
+        const watch = d.lessonId ? "<button class='plan-watch' data-lesson='" + d.lessonId + "' title='Assistir vídeo'>&#9654;&#65039;</button>" : "";
+        items += "<div class='plan-row" + (isDone ? " done" : "") + "' data-drill='" + d.id + "'>" +
+            "<span class='plan-check'>" + (isDone ? "&#10003;" : "") + "</span>" +
+            "<span class='plan-ic'>" + d.icon + "</span>" +
+            "<div class='plan-info'><strong>" + d.title + "</strong><span>" + d.note + " &#183; " + d.reps + "</span></div>" +
+            watch + "</div>";
+    });
+    if (!items) items = "<p class='muted-sm' style='text-align:center;padding:12px 0'>Nenhum drill para hoje. Toque em gerar novo plano.</p>";
+    document.getElementById("planList").innerHTML = items;
+
+    const btn = document.getElementById("btnRerollPlan");
+    if (allDone) {
+        btn.textContent = "Plano concluido! Amanha tem mais";
+        btn.classList.remove("btn-primary");
+        btn.classList.add("btn-green");
+        btn.disabled = true;
+    } else {
+        btn.textContent = "Gerar outro plano";
+        btn.classList.remove("btn-green");
+        btn.classList.add("btn-primary");
+        btn.disabled = false;
+    }
+
+    document.getElementById("planList").querySelectorAll(".plan-row").forEach(function(row) {
+        row.addEventListener("click", function() { toggleDrill(row.dataset.drill); });
+    });
+    document.getElementById("planList").querySelectorAll(".plan-watch").forEach(function(w) {
+        w.addEventListener("click", function(e) {
+            e.stopPropagation();
+            const found = findLessonByVideoId(w.dataset.lesson);
+            if (found) openLesson(found.unit, found.lesson);
+            else showToast("Licao nao encontrada");
+        });
+    });
 }
 
 function beltChips(beltList, selectedLabel, containerId) {
@@ -1111,7 +1317,7 @@ function markMissed() {
     render();
 
     if (state.hearts <= 0) {
-        showToast("Quebra total! A Coach IA quer falar com voce...");
+        showToast("Quebra total! A Coach IA quer falar com você...");
         document.getElementById("todayCard").classList.add("shake");
         setTimeout(function() {
             document.getElementById("todayCard").classList.remove("shake");
@@ -1145,23 +1351,23 @@ function openLessonContent(unit, lesson) {
     const note = document.getElementById("videoNote");
     const done = !!state.lessonsDone[lesson.id];
 
-    videoWrapper.innerHTML = '<div class="video-placeholder" id="videoPlaceholder"><div class="play-btn">&#9654;&#65039;</div><div class="vid-title">Assistir: ' + lesson.title + '</div><div class="vid-sub">Video do YouTube</div></div>';
+    videoWrapper.innerHTML = '<div class="video-placeholder" id="videoPlaceholder"><div class="play-btn">&#9654;&#65039;</div><div class="vid-title">Assistir: ' + lesson.title + '</div><div class="vid-sub">Vídeo do YouTube</div></div>';
     document.getElementById("videoPlaceholder").addEventListener("click", function() {
         videoWrapper.innerHTML = '<iframe src="https://www.youtube.com/embed/' + lesson.videoId + '?autoplay=1" title="' + lesson.title + '" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>';
     });
 
     note.style.display = done ? "none" : "block";
-    note.innerHTML = 'Assista ao video abaixo e depois marque como concluida. <span style="display:block;margin-top:6px"><a class="video-action-btn youtube" href="https://www.youtube.com/watch?v=' + lesson.videoId + '" target="_blank" rel="noopener">&#9654;&#65039; Abrir no YouTube</a></span>';
+    note.innerHTML = 'Assista ao vídeo abaixo e depois marque como concluída. <span style="display:block;margin-top:6px"><a class="video-action-btn youtube" href="https://www.youtube.com/watch?v=' + lesson.videoId + '" target="_blank" rel="noopener">&#9654;&#65039; Abrir no YouTube</a></span>';
 
     const btn = document.getElementById("btnCompleteLesson");
-    btn.textContent = done ? "Ja concluida - Fechar" : "Concluir licao (+10 XP)";
+    btn.textContent = done ? "Já concluída - Fechar" : "Concluir lição (+10 XP)";
     btn.onclick = function() {
         if (!state.lessonsDone[lesson.id]) {
             state.lessonsDone[lesson.id] = true;
             state.xp += 10;
             saveState();
             render();
-            showToast("Licao concluida! +10 XP");
+            showToast("Lição concluída! +10 XP");
         }
         closeLesson();
     };
@@ -1204,14 +1410,14 @@ function openTheoryLesson(item) {
     }
     const btn = document.getElementById("btnCompleteTheory");
     const done = !!state.lessonsDone[lesson.id];
-    btn.textContent = done ? "Ja concluida - Fechar" : "Concluir teoria (+10 XP)";
+    btn.textContent = done ? "Já concluída - Fechar" : "Concluir teoria (+10 XP)";
     btn.onclick = function() {
         if (!state.lessonsDone[lesson.id]) {
             state.lessonsDone[lesson.id] = true;
             state.xp += 10;
             saveState();
             render();
-            showToast("Teoria concluida! +10 XP");
+            showToast("Teoria concluída! +10 XP");
         }
         closeTheoryLesson();
     };
@@ -1249,14 +1455,14 @@ function onboardAdvance() {
     if (ob.step === 1) {
         ob.step = 2;
     } else if (ob.step === 2) {
-        if (!ob.age) { showToast("Escolha: voce e juvenil ou adulto?"); return; }
+        if (!ob.age) { showToast("Escolha: você é juvenil ou adulto?"); return; }
         renderObBelts();
         ob.step = 3;
     } else if (ob.step === 3) {
         if (!ob.belt) { showToast("Selecione sua faixa"); return; }
         ob.step = 4;
     } else if (ob.step === 4) {
-        if (!ob.mode) { showToast("Escolha como voce vai treinar"); return; }
+        if (!ob.mode) { showToast("Escolha como você vai treinar"); return; }
         state.profile.name = document.getElementById("obName").value.trim() || "Aluno";
         state.profile.professor = document.getElementById("obProf").value.trim() || "Professor";
         state.profile.isJuvenil = ob.age === "juvenil";
@@ -1309,7 +1515,7 @@ function openAiModal() {
     document.getElementById("aiModal").classList.add("open");
     const name = state.profile.name || "campeao";
     const missedCount = state.log.filter(function(e) { return e.type === "missed"; }).length;
-    aiSay("Ei, " + name + "... percebi que voce faltou " + missedCount + " vez(es) nas aulas. Tudo bem? O que aconteceu com voce?", [
+    aiSay("Ei, " + name + "... percebi que você faltou " + missedCount + " vez(es) nas aulas. Tudo bem? O que aconteceu com você?", [
         "Fiquei doente",
         "Trabalho / estudo",
         "Cansado, sem energia",
@@ -1376,12 +1582,12 @@ function userReply(text) {
 
     setTimeout(function() {
         let msg1 = "";
-        if (reason === "sick") msg1 = "Nossa, sinto muito! Sua saude vem primeiro, e meus amigos jiu-jiteiros que faltaram por doenca sempre voltaram com tudo. Espero que voce melhore rapido!";
-        else if (reason === "injury") msg1 = "Lesao e serio, hein. Nada de voltar antes da hora. No jiu-jitsu quem respeita o corpo dura mais no esporte.";
+        if (reason === "sick") msg1 = "Nossa, sinto muito! Sua saúde vem primeiro, e meus amigos jiu-jiteiros que faltaram por doença sempre voltaram com tudo. Espero que você melhore rápido!";
+        else if (reason === "injury") msg1 = "Lesão é sério, hein. Nada de voltar antes da hora. No jiu-jitsu quem respeita o corpo dura mais no esporte.";
         else if (reason === "work") msg1 = "Te entendo! Correria de trabalho/estudo derruba a energia de qualquer um. A dica e marcar a aula como prioridade na agenda, tipo um compromisso sagrado.";
         else if (reason === "lazy") msg1 = "Isso e normal, todo mundo tem dias de falta de energia. O segredo e nem pensar: coloca o kimono e vai. Depois da primeira chamada de calor, a energia volta.";
-        else if (reason === "personal") msg1 = "Forca! A vida acontece e o importante e nunca desistir de voce mesmo. O tatame vai estar aqui te esperando quando voce estiver pronto.";
-        else msg1 = "Te entendo... e super valido dar um tempo quando a cabeca ta cheia. Pode desabafar comigo, estou aqui pra isso.";
+        else if (reason === "personal") msg1 = "Força! A vida acontece e o importante é nunca desistir de você mesmo. O tatame vai estar aqui te esperando quando você estiver pronto.";
+        else msg1 = "Te entendo... e super valido dar um tempo quando a cabeça tá cheia. Pode desabafar comigo, estou aqui pra isso.";
 
         aiSay(msg1, ["Vou voltar essa semana", "Preciso de um tempo", "To precisando de motivacao"]);
         aiFlow.step = 1;
@@ -1392,7 +1598,7 @@ function finishAi() {
     if (aiFlow && aiFlow.done) return;
     aiFlow.done = true;
     const name = state.profile.name || "campeao";
-    aiSay("Beleza, " + name + "! Ninguem merece treinar de vidas zeradas. Vou te dar uma forca: restaurei suas 5 vidas. Vai com calma, um passo de cada vez. Eu acredito em voce!");
+    aiSay("Beleza, " + name + "! Ninguém merece treinar de vidas zeradas. Vou te dar uma força: restaurei suas 5 vidas. Vai com calma, um passo de cada vez. Eu acredito em você!");
     setTimeout(function() {
         state.hearts = state.maxHearts;
         state.aiConversations++;
@@ -1401,7 +1607,7 @@ function finishAi() {
         render();
         setTimeout(function() {
             document.getElementById("aiModal").classList.remove("open");
-            showToast("Vidas restauradas! A Coach IA acredita em voce");
+            showToast("Vidas restauradas! A Coach IA acredita em você");
         }, 1400);
     }, 1200 + Math.random() * 600);
 }
@@ -1412,8 +1618,8 @@ function handleNext(text) {
         const reason2 = classify(text);
         let msg2 = "";
         if (reason2 === "lazy") msg2 = "Entao bora quebrar esse gelo! Uma dica de ouro: viu o dia de aula no calendario? Ja marca treino. Depois que a rotina pega, a vontade vem junto.";
-        else if (reason2 === "personal") msg2 = "Respira fundo. O tatame faz milagres pela cabeca. Quando estiver pronto pra voltar, eu te espero com as vidas cheias. Fechado?";
-        else msg2 = "Pode contar comigo! Combinado entao: sem pressao, um passo de cada vez. O importante e nao desistir.";
+        else if (reason2 === "personal") msg2 = "Respira fundo. O tatame faz milagres pela cabeça. Quando estiver pronto pra voltar, eu te espero com as vidas cheias. Fechado?";
+        else msg2 = "Pode contar comigo! Combinado então: sem pressão, um passo de cada vez. O importante é não desistir.";
         aiSay(msg2);
         aiFlow.step = 2;
         finishAi();
@@ -1435,7 +1641,7 @@ document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("btnMissed").addEventListener("click", markMissed);
     document.getElementById("btnContinue").addEventListener("click", function() {
         const next = getNextLesson();
-        if (!next) showToast("Parabens! Voce dominou tudo!");
+        if (!next) showToast("Parabéns! Você dominou tudo!");
         else if (next.theory) openTheoryLesson(next);
         else openLesson(next.unit, next.lesson);
     });

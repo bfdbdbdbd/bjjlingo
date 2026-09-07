@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta name="theme-color" content="#dc2626">
     <title>BJJLingo - Treino de Jiu-Jitsu</title>
-    <link rel="stylesheet" href="styles.css?v=11">
+    <link rel="stylesheet" href="styles.css?v=13">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Orbitron:wght@600;800&display=swap" rel="stylesheet">
 </head>
@@ -23,7 +23,7 @@
         </div>
 
         <div class="login-card">
-            <label class="field-label" for="loginUser">Nome de usuario</label>
+            <label class="field-label" for="loginUser">Nome de usuário</label>
             <div class="field">
                 <input type="text" id="loginUser" placeholder="ex.: miguel" autocomplete="username" autocapitalize="none">
             </div>
@@ -97,6 +97,20 @@
             </div>
         </section>
 
+        <section class="card plan-card">
+            <div class="card-head-row">
+                <div class="section-kicker">PLANO DE HOJE</div>
+                <span class="muted-sm" title="Sequencia de planos completos">Foguinho <b id="planStreak">0</b></span>
+            </div>
+            <div class="plan-progress-wrap">
+                <div class="progress-bar plan-bar" id="planBar"><div class="progress-fill" id="planProgress" style="width:0%"></div></div>
+                <span class="muted-sm" id="planCount">0/5</span>
+            </div>
+            <p class="plan-date">Toque em cada drill para concluir. Nos vídeos, assista e repita os movimentos.</p>
+            <div class="plan-list" id="planList"></div>
+            <button class="btn btn-primary btn-block" id="btnRerollPlan">Gerar outro plano</button>
+        </section>
+
         <section class="card continue-card" id="continueCard">
             <div class="section-kicker">CONTINUE SEU TREINO</div>
             <h2 class="card-title">De onde parou</h2>
@@ -105,7 +119,7 @@
                     <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
                 </span>
                 <div class="continue-info" id="continueInfo">
-                    <strong id="nextLessonTitle">Posicao atual</strong>
+                    <strong id="nextLessonTitle">Posição atual</strong>
                     <span id="nextLessonText">Carregando...</span>
                 </div>
                 <span class="lesson-check" id="continueCheck" style="display:none">
@@ -129,12 +143,12 @@
             <div class="stat-tile">
                 <span class="stat-ic red-soft"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
                 <strong id="statLessons">0</strong>
-                <span class="stat-label">licoes</span>
+                <span class="stat-label">lições</span>
             </div>
             <div class="stat-tile">
                 <span class="stat-ic green-soft"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
                 <strong id="statAttended">0</strong>
-                <span class="stat-label">presencas</span>
+                <span class="stat-label">presenças</span>
             </div>
             <div class="stat-tile">
                 <span class="stat-ic amber-soft"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M13.5.67s.74 2.65.74 4.8c0 2.06-1.35 3.73-3.41 3.73-2.07 0-3.63-1.67-3.63-3.73l.03-.36C5.21 7.51 4 10.62 4 14c0 4.42 3.58 8 8 8s8-3.58 8-8C20 8.61 17.41 3.8 13.5.67z"/></svg></span>
@@ -161,11 +175,11 @@
     <main class="page" id="pageLearn">
         <div class="page-head">
             <h2 class="page-title" id="learnTitle">Posicoes</h2>
-            <p class="page-sub" id="learnSub">Complete as licoes e evolua</p>
+            <p class="page-sub" id="learnSub">Complete as lições e evolua</p>
         </div>
         <div class="search-box">
             <svg class="search-ic-svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-            <input id="searchInput" type="search" placeholder="Buscar tecnicas e posicoes (ex.: guarda, raspagem...)" autocomplete="off" />
+            <input id="searchInput" type="search" placeholder="Buscar técnicas e posições (ex.: guarda, raspagem...)" autocomplete="off" />
         </div>
         <div class="search-results" id="searchResults" style="display:none"></div>
         <div id="unitsContainer"></div>
@@ -175,7 +189,7 @@
     <main class="page" id="pageHistory">
         <div class="page-head">
             <h2 class="page-title">Historico</h2>
-            <p class="page-sub">Presencas, faltas e recuperacoes</p>
+            <p class="page-sub">Presenças, faltas e recuperações</p>
         </div>
         <div id="historyList"></div>
         <div class="card empty-card" id="historyEmpty" style="display:none">
@@ -187,7 +201,7 @@
     <main class="page" id="pageSettings">
         <div class="page-head">
             <h2 class="page-title">Ajustes</h2>
-            <p class="page-sub">Seu perfil e preferencias de treino</p>
+            <p class="page-sub">Seu perfil e preferências de treino</p>
         </div>
 
         <section class="card profile-card">
@@ -222,7 +236,7 @@
             <div class="belt-selector" id="setBelt"></div>
 
             <div class="set-opt">
-                <div class="set-opt-text"><strong>Forma de treino</strong><span>Como voce treina no dia a dia</span></div>
+                <div class="set-opt-text"><strong>Forma de treino</strong><span>Como você treina no dia a dia</span></div>
                 <div class="segmented segmented-row" id="setMode">
                     <button class="seg-btn" data-val="partner">Com parceiro</button>
                     <button class="seg-btn" data-val="solo">Sozinho</button>
@@ -230,7 +244,7 @@
             </div>
 
             <div class="set-opt">
-                <div class="set-opt-text"><strong>Dias de aula</strong><span>Quando voce treina na semana</span></div>
+                <div class="set-opt-text"><strong>Dias de aula</strong><span>Quando você treina na semana</span></div>
                 <div class="days-selector" id="daysSelector"></div>
             </div>
 
@@ -314,10 +328,10 @@
             <p>Antes de comecar, leia com atencao:</p>
             <div class="disclaimer-list">
                 <p>1. Aqueça sempre antes de treinar (5-10 min).</p>
-                <p>2. Respeite os limites do seu corpo. Diferente nao e mais fraco.</p>
-                <p>3. Nunca aplique tecnicas em ninguem sem supervisao do professor.</p>
-                <p>4. Pare imediatamente se sentir dor ou desconforto no pescoco, joelhos ou costas.</p>
-                <p>5. Em caso de qualquer problema, consulte um profissional de saude.</p>
+                <p>2. Respeite os limites do seu corpo. Diferente não é mais fraco.</p>
+                <p>3. Nunca aplique técnicas em ninguém sem supervisão do professor.</p>
+                <p>4. Pare imediatamente se sentir dor ou desconforto no pescoço, joelhos ou costas.</p>
+                <p>5. Em caso de qualquer problema, consulte um profissional de saúde.</p>
             </div>
             <button class="btn btn-primary btn-block" id="btnDisclaimerOk">Entendi, continuar</button>
         </div>
@@ -357,14 +371,14 @@
             <div class="ob-pane active" data-pane="1">
                 <h2>Bem-vindo ao BJJLingo!</h2>
                 <p>Seu treino personalizado de Jiu-Jitsu. Deixe eu te conhecer melhor.</p>
-                <label class="field-label" for="obName">Como voce se chama?</label>
+                <label class="field-label" for="obName">Como você se chama?</label>
                 <div class="field"><input type="text" id="obName" placeholder="Seu nome"></div>
-                <label class="field-label" for="obProf">Quem e seu professor?</label>
+                <label class="field-label" for="obProf">Quem é seu professor?</label>
                 <div class="field"><input type="text" id="obProf" placeholder="Nome do professor"></div>
             </div>
 
             <div class="ob-pane" data-pane="2">
-                <h2>Voce e juvenil ou adulto?</h2>
+                <h2>Você é juvenil ou adulto?</h2>
                 <p>As faixas mudam conforme sua idade.</p>
                 <div class="big-options">
                     <button class="big-opt" data-age="adult"><span class="big-opt-icon"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="7" r="4"/><path d="M5 21v-2a7 7 0 0 1 14 0v2"/></svg></span><strong>Adulto</strong></button>
@@ -373,17 +387,17 @@
             </div>
 
             <div class="ob-pane" data-pane="3">
-                <h2>Qual e a sua faixa?</h2>
+                <h2>Qual é a sua faixa?</h2>
                 <p id="obeltsub">Selecione sua faixa atual.</p>
                 <div class="belt-selector big" id="obBelts"></div>
             </div>
 
             <div class="ob-pane" data-pane="4">
-                <h2>Como voce vai treinar?</h2>
-                <p>Se treinar sozinho, vou te mostrar videos de treino solo.</p>
+                <h2>Como você vai treinar?</h2>
+                <p>Se treinar sozinho, vou te mostrar vídeos de treino solo.</p>
                 <div class="big-options">
-                    <button class="big-opt" data-mode="partner"><span class="big-opt-icon"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="7" r="4"/><path d="M4 21v-2a5 5 0 0 1 10 0v2"/><path d="M16 11a4 4 0 0 1 0 8"/><path d="M20 21v-2a4 4 0 0 0-1.2-2.8"/></svg></span><strong>Com parceiro</strong><small>Videos de tecnicas em dupla</small></button>
-                    <button class="big-opt" data-mode="solo"><span class="big-opt-icon"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="7" r="4"/><path d="M5 21v-2a7 7 0 0 1 14 0v2"/></svg></span><strong>Sozinho</strong><small>Videos de treino solo em casa</small></button>
+                    <button class="big-opt" data-mode="partner"><span class="big-opt-icon"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="7" r="4"/><path d="M4 21v-2a5 5 0 0 1 10 0v2"/><path d="M16 11a4 4 0 0 1 0 8"/><path d="M20 21v-2a4 4 0 0 0-1.2-2.8"/></svg></span><strong>Com parceiro</strong><small>Vídeos de técnicas em dupla</small></button>
+                    <button class="big-opt" data-mode="solo"><span class="big-opt-icon"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="7" r="4"/><path d="M5 21v-2a7 7 0 0 1 14 0v2"/></svg></span><strong>Sozinho</strong><small>Vídeos de treino solo em casa</small></button>
                 </div>
             </div>
 
@@ -416,6 +430,6 @@
 
     <div id="toast"></div>
 </div>
-<script src="script.js?v=11"></script>
+<script src="script.js?v=13"></script>
 </body>
 </html>
