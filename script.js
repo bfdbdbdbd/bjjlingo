@@ -376,7 +376,7 @@ const GLOSSARY = [
         tags: ["raspagem", "meia", "guarda", "baixo", "cima"],
         text: "Da meia guarda, a raspagem clássica usa o gancho na perna de trás e o controle do braço para derrubar o adversário para o lado.\n\nQuando ele apoiar o joelho para passar, o gancho puxa e o controle do braço projeta: você termina por cima na lateral.",
         related: ["Meia Guarda", "Lateral", "Gancho de Quadril"] },
-    { name: "Raspagem com Tripé", icon: "&#11015;&#65039;", cat: "Raspagem", photo: "https://commons.wikimedia.org/wiki/Special:FilePath/BJJ-half_guard.jpg?width=640", tags: ["raspagem", "tripe", "tripod", "de pe"],
+    { name: "Raspagem com Tripé", icon: "&#11015;&#65039;", cat: "Raspagem", photo: "https://commons.wikimedia.org/wiki/Special:FilePath/Staying_Fit_to_Fight_with_Jiu-Jitsu_(6858027).jpg?width=640", tags: ["raspagem", "tripe", "tripod", "de pe"],
         text: "A raspagem com tripé acontece quando o adversário fica de pé: uma perna puxa a dele e a outra derruba pela perna de trás.\n\nAlém da perna, as mãos seguram uma manga e não se larga: o adversário cai e você acompanha direto para o controle.",
         related: ["Guarda", "X-Guard", "Lateral"] },
     { name: "Raspagem Leva-e-Traz", icon: "&#11015;&#65039;", cat: "Raspagem", photo: "https://commons.wikimedia.org/wiki/Special:FilePath/BJJ,_brazilian-jiujitsu_05.jpg?width=640",
