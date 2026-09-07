@@ -369,7 +369,7 @@ const GLOSSARY = [
     { name: "Passagem de Fundo", icon: "&#128682;", cat: "Passagem", photo: "https://commons.wikimedia.org/wiki/Special:FilePath/Royce_Gracie_Demonstration_09.jpg?width=640", tags: ["passagem", "guarda", "fundo", "backstep", "costas"],
         text: "A passagem de fundo (backstep) joga o corpo para trás, passando por baixo da guarda aberta e terminando ao lado do quadril adversário.\n\nÉ moderna e veloz: quando o adversário reage para proteger a passagem por cima, as costas dele ficam expostas.",
         related: ["Passagem por Cima", "Costas", "Guarda Borboleta"] },
-    { name: "Raspagem de Guarda Fechada", icon: "&#11015;&#65039;", cat: "Raspagem", photo: "https://commons.wikimedia.org/wiki/Special:FilePath/BJJ,_brazilian-jiujitsu_05.jpg?width=640", tags: ["raspagem", "guarda", "fechada", "cima", "baixo"],
+    { name: "Raspagem de Guarda Fechada", icon: "&#11015;&#65039;", cat: "Raspagem", photo: "https://commons.wikimedia.org/wiki/Special:FilePath/GETXO_BJJ_CUP_GI_%26_NO-GI_2025_(1).jpg?width=640", tags: ["raspagem", "guarda", "fechada", "cima", "baixo"],
         text: "A raspagem de guarda fechada começa com o adversário tentando passar o quadril para o lado: você gira junto e usa a perna como alavanca para derrubá-lo.\n\nQuando ele se projetar para frente na tentativa de passar, a raspagem de quadril transforma a força dele em desequilíbrio a seu favor.",
         related: ["Guarda Fechada", "Lateral", "Montada"] },
     { name: "Raspagem da Meia Guarda", icon: "&#11015;&#65039;", cat: "Raspagem", photo: "https://commons.wikimedia.org/wiki/Special:FilePath/BJJ-half_guard.jpg?width=640",
