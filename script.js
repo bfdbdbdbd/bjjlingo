@@ -319,7 +319,7 @@ const GLOSSARY = [
     { name: "Meia Guarda", icon: "&#9986;", cat: "Guarda", theoryId: "th-half",
         tags: ["guarda", "meia", "half", "baixo"],
         related: ["Meia Guarda Dominada", "Guarda", "Raspagem da Meia Guarda"] },
-    { name: "Meia Guarda Dominada", icon: "&#129354;", cat: "Guarda", photo: "https://commons.wikimedia.org/wiki/Special:FilePath/XGuard.jpg?width=640",
+    { name: "Meia Guarda Dominada", icon: "&#129354;", cat: "Guarda", photo: "https://commons.wikimedia.org/wiki/Special:FilePath/Staying_Fit_to_Fight_with_Jiu-Jitsu_(6858024).jpg?width=640",
         tags: ["guarda", "meia", "dominada", "half", "baixo"],
         text: "A meia guarda dominada (deep half) é a variante em que você passa a cabeça por baixo da perna do adversário e trabalha por dentro do quadril dele.\n\nDe lá, as opções principais são a raspagem de profundidade e o giro para as costas, quando o adversário reage para frente.",
         related: ["Meia Guarda", "Raspagem da Meia Guarda", "Costas"] },
@@ -339,10 +339,10 @@ const GLOSSARY = [
         tags: ["guarda", "x guard", "baixo", "pernas", "derrubada"],
         text: "O X-guard coloca as duas pernas enganchadas e cruzadas sob o adversário, levantando o quadril dele e tirando toda a base.\n\nDe lá, as raspagens e derrubadas são quase máquina: o adversário desequilibra para todos os lados enquanto você escolhe para onde vai.",
         related: ["Guarda", "Guarda De La Riva", "Guarda Borboleta"] },
-    { name: "Guarda 50/50", icon: "&#9878;&#65039;", cat: "Guarda", photo: "https://commons.wikimedia.org/wiki/Special:FilePath/XGuard.jpg?width=640", tags: ["guarda", "50", "cinquenta", "pernas", "travas"],
+    { name: "Guarda 50/50", icon: "&#9878;&#65039;", cat: "Guarda", photo: "https://commons.wikimedia.org/wiki/Special:FilePath/GETXO_BJJ_CUP_GI_%26_NO-GI_2025_(2).jpg?width=640", tags: ["guarda", "50", "cinquenta", "pernas", "travas"],
         text: "Na guarda 50/50, as duas pernas de cada lutador ficam enganchadas uma dentro da outra, criando um jogo simétrico de ataques e travamentos.\n\nÉ uma posição defensiva e calculista, muito usada para controlar lutadores explosivos e trabalhar finalizações de perna.",
         related: ["Guarda", "X-Guard", "Triângulo"] },
-    { name: "Guarda Meia-Perna", icon: "&#127744;", cat: "Guarda", photo: "https://commons.wikimedia.org/wiki/Special:FilePath/De_la_Riva_guard.jpg?width=640", tags: ["guarda", "meia perna", "perna", "reversa", "baixo"],
+    { name: "Guarda Meia-Perna", icon: "&#127744;", cat: "Guarda", photo: "https://commons.wikimedia.org/wiki/Special:FilePath/Staying_Fit_to_Fight_with_Jiu-Jitsu_(6858026).jpg?width=640", tags: ["guarda", "meia perna", "perna", "reversa", "baixo"],
         text: "A guarda meia-perna (também chamada de guarda reversa de de la riva) trabalha com a perna enganchada por fora, pressionando o quadril do adversário para dentro.\n\nÉ uma guarda de defesa agressiva, cheia de opções para pegar as costas e raspar lutadores grandes.",
         related: ["Guarda", "Guarda De La Riva", "Costas"] },
     { name: "Montada", icon: "&#128081;", cat: "Posição", theoryId: "th-mount",
@@ -360,10 +360,10 @@ const GLOSSARY = [
     { name: "Passagem por Cima", icon: "&#11014;", cat: "Passagem", photo: "https://commons.wikimedia.org/wiki/Special:FilePath/Image943-knee_mount.jpg?width=640", tags: ["passagem", "guarda", "cima", "controle"],
         text: "Passar a guarda por cima é o objetivo de quem está por cima: superar as pernas do adversário e chegar na lateral ou em uma posição de controle.\n\nOs pilares são a postura, o controle das pernas e o quadril baixo. Começando pelo joelho pressionado, o caminho para a lateral fica aberto.",
         related: ["Lateral", "Montada", "Passagem da Meia Guarda"] },
-    { name: "Passagem Toreando", icon: "&#128668;", cat: "Passagem", photo: "https://commons.wikimedia.org/wiki/Special:FilePath/De_la_Riva_guard.jpg?width=640", tags: ["passagem", "guarda", "toreando", "joelhos", "cima"],
+    { name: "Passagem Toreando", icon: "&#128668;", cat: "Passagem", photo: "https://commons.wikimedia.org/wiki/Special:FilePath/Staying_Fit_to_Fight_with_Jiu-Jitsu_(6858025).jpg?width=640", tags: ["passagem", "guarda", "toreando", "joelhos", "cima"],
         text: "A passagem toreando usa as duas mãos segurando os joelhos do adversário, jogando ambos para o mesmo lado para abrir a guarda.\n\nÉ uma das passagens mais clássicas do jiu-jitsu: simples, segura e eficiente em qualquer nível.",
         related: ["Passagem por Cima", "Lateral", "Passagem da Meia Guarda"] },
-    { name: "Passagem da Meia Guarda", icon: "&#10145;", cat: "Passagem", photo: "https://commons.wikimedia.org/wiki/Special:FilePath/BJJ-half_guard.jpg?width=640", tags: ["passagem", "meia", "guarda", "smoosh", "cima"],
+    { name: "Passagem da Meia Guarda", icon: "&#10145;", cat: "Passagem", photo: "https://commons.wikimedia.org/wiki/Special:FilePath/Fm3-25-150combativesfig3-2frontmount.png?width=640", tags: ["passagem", "meia", "guarda", "smoosh", "cima"],
         text: "Quando o adversário fecha a meia guarda, a passagem precisa liberar a perna presa sem criar espaço: pressão com o quadril e giro do joelho.\n\nCom o peso esmagando o quadril dele e a cabeça vencendo a linha, a perna se libera e a lateral chega naturalmente.",
         related: ["Meia Guarda", "Lateral", "Passagem Toreando"] },
     { name: "Passagem de Fundo", icon: "&#128682;", cat: "Passagem", photo: "https://commons.wikimedia.org/wiki/Special:FilePath/Royce_Gracie_Demonstration_09.jpg?width=640", tags: ["passagem", "guarda", "fundo", "backstep", "costas"],
@@ -389,7 +389,7 @@ const GLOSSARY = [
     { name: "Kimura", icon: "&#129421;", cat: "Finalização", photo: "https://commons.wikimedia.org/wiki/Special:FilePath/Brazilian_Jiu-jitsu_Kimura_lock_from_guard.jpg?width=640", tags: ["kimura", "chave", "braco", "ombro", "finalizacao", "garra"],
         text: "A kimura é uma chave de ombro feita com as duas mãos trancadas (a garra kimura), girando o braço do adversário para trás das costas.\n\nAlém de finalizar, é uma arma de controle e transição: de qualquer posição por cima ela ameaça e abre caminho para montada e costas.",
         related: ["Lateral", "Americana", "Costas"] },
-    { name: "Americana", icon: "&#128170;", cat: "Finalização", photo: "https://commons.wikimedia.org/wiki/Special:FilePath/Brazilian_Jiu-jitsu_Kimura_lock_from_guard.jpg?width=640", tags: ["americana", "chave", "braco", "ombro", "finalizacao"],
+    { name: "Americana", icon: "&#128170;", cat: "Finalização", photo: "https://commons.wikimedia.org/wiki/Special:FilePath/Staying_Fit_to_Fight_with_Jiu-Jitsu_(6858028).jpg?width=640", tags: ["americana", "chave", "braco", "ombro", "finalizacao"],
         text: "A americana pressiona o braço do adversário dobrado contra o próprio corpo, forçando o ombro na direção errada.\n\nDa lateral e da montada, ela aparece quando o adversário começa a defender: segura o punho, abre o braço e gira o ombro.",
         related: ["Lateral", "Montada", "Kimura"] },
     { name: "Mata-Leão", icon: "&#129409;", cat: "Finalização", photo: "https://commons.wikimedia.org/wiki/Special:FilePath/MCMAP_Rear_choke_-_Defense_Visual_Information_Center_2006.jpg?width=640", tags: ["mata leao", "rear naked", "choke", "pescoco", "estrangulamento", "costas"],
@@ -919,6 +919,7 @@ function renderHome() {
         if (doneCheck) doneCheck.style.display = "flex";
     }
 
+    renderPlan();
     renderPath();
 }
 
@@ -1107,13 +1108,14 @@ function drillById(id) {
 }
 
 function findLessonByVideoId(videoId) {
-    [UNITS, SOLO_UNITS, [THEORY_UNIT]].forEach(function(units) {
-        for (const u of units) {
+    const lists = [UNITS, SOLO_UNITS, [THEORY_UNIT]];
+    for (let li = 0; li < lists.length; li++) {
+        for (const u of lists[li]) {
             for (const l of u.lessons) {
                 if (l.id === videoId) return { unit: u, lesson: l };
             }
         }
-    });
+    }
     return null;
 }
 
@@ -1639,6 +1641,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     document.getElementById("btnWent").addEventListener("click", markWent);
     document.getElementById("btnMissed").addEventListener("click", markMissed);
+    document.getElementById("btnRerollPlan").addEventListener("click", rerollPlan);
     document.getElementById("btnContinue").addEventListener("click", function() {
         const next = getNextLesson();
         if (!next) showToast("Parabéns! Você dominou tudo!");
