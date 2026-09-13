@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://bfdbdbdbd.github.io/bjjlingo/sitemap.xml
+Sitemap: https://choke-code.github.io/bjjlingo/sitemap.xml

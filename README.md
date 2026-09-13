@@ -41,7 +41,7 @@ e um coach pessoal que não te deixa desistir — mesmo quando a vida zerar.
 Abra no seu celular ou computador:
 
 ```
-https://bfdbdbdbd.github.io/bjjlingo/
+https://choke-code.github.io/bjjlingo/
 ```
 
 </div>
@@ -115,8 +115,8 @@ os criadores originais no YouTube.
 Seus dados de progresso ficam **somente no seu navegador** (localStorage) e não
 são enviados para nenhum servidor. Saiba mais:
 
-- [Política de Privacidade](https://bfdbdbdbd.github.io/bjjlingo/privacidade.html)
-- [Termos de Serviço](https://bfdbdbdbd.github.io/bjjlingo/termos.html)
+- [Política de Privacidade](https://choke-code.github.io/bjjlingo/privacidade.html)
+- [Termos de Serviço](https://choke-code.github.io/bjjlingo/termos.html)
 
 ---
 
