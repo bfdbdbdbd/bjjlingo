@@ -480,6 +480,10 @@ function searchGlossary(q) {
     return items.map(function(i) { return i.g; });
 }
 
+function esc(s) {
+    return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#39;");
+}
+
 function renderSearch(q) {
     const box = document.getElementById("searchResults");
     if (!box) return;
@@ -490,14 +494,15 @@ function renderSearch(q) {
         return;
     }
     const res = searchGlossary(q);
-    let html = "<div class='search-title'>Resultados para \"" + q + "\"" + (res.length ? " (" + res.length + ")" : "") + "</div>";
+    const qEsc = esc(q);
+    let html = "<div class='search-title'>Resultados para \"" + qEsc + "\"" + (res.length ? " (" + res.length + ")" : "") + "</div>";
     if (!res.length) {
         html += "<div class='search-empty'>Nenhum resultado. Tente: <span class='search-sug' data-q='guarda'>guarda</span> <span class='search-sug' data-q='montada'>montada</span> <span class='search-sug' data-q='raspagem'>raspagem</span> <span class='search-sug' data-q='finalizacao'>finalizacao</span></div>";
     } else {
         html += "<div class='search-list'>";
         res.forEach(function(g) {
             const ph = photoFor(g);
-            html += "<div class='search-row' data-name='" + g.name + "'>" + (ph ? "<img class='search-photo' src='" + ph + "' alt='" + g.name + "' loading='lazy'>" : "<span class='search-ic' style='--sc:" + catColor(g.cat) + "'>" + g.icon + "</span>") + "<div class='search-info'><strong>" + g.name + "</strong><span>" + g.cat + "</span></div><span class='lesson-check'>&#128214;</span></div>";
+            html += "<div class='search-row' data-name='" + esc(g.name) + "'>" + (ph ? "<img class='search-photo' src='" + esc(ph) + "' alt='" + esc(g.name) + "' loading='lazy'>" : "<span class='search-ic' style='--sc:" + catColor(g.cat) + "'>" + g.icon + "</span>") + "<div class='search-info'><strong>" + esc(g.name) + "</strong><span>" + esc(g.cat) + "</span></div><span class='lesson-check'>&#128214;</span></div>";
         });
         html += "</div>";
     }
@@ -589,6 +594,7 @@ function dataKey() { return "bjjlingo_data_" + (getSession() || "guest"); }
 function login(username, password) {
     const account = getAccount(username);
     if (!account) return "Conta não encontrada. Crie uma conta nova.";
+    if (account === "google") return "Essa conta usa login pelo Google. Use o botão \"Continuar com Google\".";
     if (account !== password) return "Senha incorreta. Tente de novo.";
     localStorage.setItem(SESSION_KEY, username);
     aiFlow = null;
@@ -1302,7 +1308,15 @@ function render() {
 
 /* ---------- PRESENCA ---------- */
 
+function todayLogged(type) {
+    return state.log.some(function(e) { return e.date === todayStr() && e.type === type; });
+}
+
 function markWent() {
+    if (todayLogged("went") || todayLogged("missed")) {
+        showToast("Você já marcou presença ou falta hoje");
+        return;
+    }
     state.log.push({ date: todayStr(), type: "went", day: todayDayIndex() });
     state.xp += 20;
     if (state.hearts < state.maxHearts) state.hearts++;
@@ -1313,6 +1327,10 @@ function markWent() {
 }
 
 function markMissed() {
+    if (todayLogged("went") || todayLogged("missed")) {
+        showToast("Você já marcou presença ou falta hoje");
+        return;
+    }
     state.log.push({ date: todayStr(), type: "missed", day: todayDayIndex() });
     state.hearts--;
     saveState();

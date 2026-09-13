@@ -28,6 +28,8 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Aria
 /* ---------- BOTOES ---------- */
 .btn{border:none;border-radius:12px;font-family:'Inter',sans-serif;font-weight:700;font-size:1rem;padding:13px 18px;cursor:pointer;transition:transform .06s ease,background .15s ease;letter-spacing:.1px;display:inline-flex;align-items:center;justify-content:center;gap:8px}
 .btn:active{transform:translateY(1px)}
+.btn:disabled{opacity:.7;cursor:not-allowed}
+.btn-green:disabled{background:var(--green-dark)}
 .btn-primary{background:var(--red);color:#fff}
 .btn-primary:hover{background:var(--red-dark)}
 .btn-secondary{background:var(--surface);color:var(--text);border:1.5px solid var(--border-strong)}
@@ -398,3 +400,23 @@ body.dark .theory-block strong{color:var(--text)}
 body.dark .search-box input{color:var(--text)}
 body.dark .search-row:hover{border-color:var(--border-strong)}
 body.dark .search-title{color:var(--text-3)}
+
+/* ============ PLANO DIARIO DE TREINO ============ */
+.plan-progress-wrap{display:flex;align-items:center;gap:10px;margin-top:10px}
+.plan-bar{flex:1;margin:0}
+.plan-bar .progress-fill{transition:width .25s ease,background .25s ease}
+.plan-bar.done .progress-fill{background:var(--green)}
+.plan-date{color:var(--text-2);font-weight:500;font-size:.8rem;margin-top:4px}
+.plan-list{display:flex;flex-direction:column;gap:8px;margin:12px 0 14px}
+.plan-row{display:flex;align-items:center;gap:12px;padding:11px 12px;border:1.5px solid var(--border);border-radius:var(--radius-sm);cursor:pointer;background:var(--surface);transition:all .15s;user-select:none}
+.plan-row:hover{border-color:var(--text-3)}
+.plan-row.done{background:var(--green-soft);border-color:var(--green);opacity:.88}
+.plan-check{width:26px;height:26px;min-width:26px;border-radius:50%;border:2px solid var(--border-strong);display:flex;align-items:center;justify-content:center;font-size:.9rem;color:#fff;transition:all .15s}
+.plan-row.done .plan-check{background:var(--green);border-color:var(--green)}
+.plan-ic{font-size:1.25rem;flex-shrink:0}
+.plan-info{flex:1;min-width:0}
+.plan-info strong{display:block;font-size:.9rem;font-weight:700}
+.plan-info span{color:var(--text-2);font-size:.76rem;font-weight:500}
+.plan-watch{background:var(--red-soft);color:var(--red);border:none;border-radius:50%;width:30px;height:30px;min-width:30px;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;font-size:.82rem;transition:all .15s}
+.plan-watch:hover{background:var(--red);color:#fff}
+body.dark .plan-watch{background:rgba(229,72,77,.16);color:var(--red)}
